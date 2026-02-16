@@ -1,7 +1,7 @@
 # PENAMBANGAN DATA
 
 ```{image} logo.png
-:width: 150px
+:width: 50px
 :align: center
 ```
 
