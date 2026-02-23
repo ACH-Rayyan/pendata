@@ -1,211 +1,38 @@
-# PERTEMUAN 2 
-
----
-
-## 1. CRISP-DM
-
-CRISP-DM (Cross Industry Standard Process for Data Mining) adalah standar proses dalam data mining.
-
-Tahapannya:
-
-1. Business Understanding  
-2. Data Understanding  
-3. Data Preparation  
-4. Modeling  
-5. Evaluation  
-6. Deployment  
-
-Pada pertemuan ini fokus pada tahap Data Understanding.
-
----
-
-## 2. DATA UNDERSTANDING
-
-Data Understanding adalah proses memahami isi dan karakteristik data sebelum dilakukan analisis atau modeling.
-
-Tujuannya:
-- Mengetahui struktur data
-- Mengetahui tipe data
-- Mengetahui kualitas data
-- Mengetahui hubungan antar variabel
-
----
-
-## 3. PENTINGNYA MEMAHAMI DATA
-
-Jika tidak memahami data:
-- Bisa salah memilih metode analisis
-- Bisa salah interpretasi hasil
-- Bisa salah mengambil keputusan
-
-Memahami data membantu:
-- Menentukan apakah masalah termasuk klasifikasi atau regresi
-- Menentukan fitur mana yang penting
-- Mengetahui apakah data bersih atau tidak
-
----
-
-## 4. KOMPONEN UTAMA MEMAHAMI DATA
-
-### 1. Pengumpulan Data Awal
-Mengumpulkan dataset dari sumber tertentu.
-
-Contoh: Dataset bunga Iris.
-
----
-
-### 2. Deskripsi Data
-Menjelaskan isi dataset:
-- Jumlah baris (data object)
-- Jumlah kolom (fitur)
-- Nama kolom
-- Tipe data
-
-Contoh kolom pada dataset Iris:
-- sepal_length
-- sepal_width
-- petal_length
-- petal_width
-- species
-
----
-
-### 3. Exploratory Data Analysis (EDA)
-
-EDA adalah proses eksplorasi data menggunakan statistik dan visualisasi.
-
-Yang dilakukan:
-- Menghitung mean (rata-rata)
-- Menghitung median (nilai tengah)
-- Melihat korelasi
-- Membuat scatter plot
-
----
-
-### 4. Kualitas Data
-
-Hal yang diperiksa:
-- Missing value
-- Data duplikat
-- Outlier
-- Konsistensi data
-
----
-
-## 5. TYPES DATA
-
-### A. Nominal / Kategorikal
-Data berupa label tanpa urutan.
-
-Contoh:
-- species (setosa, versicolor, virginica)
-
----
-
-### B. Ordinal
-Data kategorikal tetapi memiliki urutan.
-
-Contoh:
-- Rendah, Sedang, Tinggi
-
----
-
-### C. Biner
-Data dengan dua nilai.
-
-Simetris  
-Kedua nilai sama penting.  
-Contoh: Laki-laki / Perempuan
-
-Asimetris  
-Satu nilai lebih penting.  
-Contoh: Penyakit (Ya lebih penting dari Tidak)
-
----
-
-### D. Numerik
-
-Interval Scaled  
-Memiliki jarak yang sama tetapi tidak memiliki nol mutlak.  
-Contoh: Suhu Celsius.
-
-Ratio Scaled  
-Memiliki nol mutlak.  
-Contoh: Berat badan, tinggi badan.
-
-Nilai numerik:
-- Diskrit → bilangan bulat (jumlah anak)
-- Kontinu → bisa pecahan (tinggi badan)
-
----
-
-## 6. KOLOM DALAM DATA MINING
-
-Kolom disebut juga:
-- Fitur
-- Atribut
-- Dimensi
-- Variabel
-
-Jika dilakukan reduksi dimensi, jumlah kolom bisa berkurang dari kolom asli.
-
----
-
-## 7. VARIABLE
-
-Independent Variable (X)  
-Variabel yang mempengaruhi.
-
-Dependent Variable (Y)  
-Variabel yang dipengaruhi.
-
-Contoh pada dataset Iris:
-- X → sepal dan petal
-- Y → species
-
-Catatan:
-Variabel dependen tidak termasuk fitur.
-
----
-
-## 8. SELEKSI FITUR
-
-Seleksi fitur adalah proses memilih fitur yang paling berpengaruh terhadap target.
-
-Tujuannya:
-- Mengurangi kompleksitas model
-- Meningkatkan akurasi
-- Mengurangi noise
-
----
-
-## 9. KORELASI
-
-Korelasi adalah hubungan antara dua variabel.
-
-Nilai korelasi:
-- Mendekati +1 → hubungan positif kuat
-- Mendekati -1 → hubungan negatif kuat
-- Mendekati 0 → tidak ada hubungan
-
----
-
-## 10. DATA OBJECT
-
-Data object adalah satu baris data yang mewakili satu entitas.
-
-Contoh:
-Satu baris pada dataset Iris mewakili satu bunga iris.
-
----
-
 # ANALISIS DATASET IRIS 
 
-## 1. Statistik Deskriptif
+## 1. Import Library dan Membaca Dataset
 
-## Statistik Deskriptif Sepal Length
+```python
+import pandas as pd
 
-Berdasarkan hasil perhitungan menggunakan Python diperoleh:
+# Membaca dataset
+df = pd.read_csv("iris.csv")
+
+# Melihat 5 data pertama
+df.head()
+```
+
+---
+
+## 2. Statistik Deskriptif
+
+Untuk melihat statistik deskriptif seluruh kolom numerik:
+
+```python
+df.describe()
+```
+
+Untuk menghitung statistik pada kolom tertentu:
+
+```python
+df["sepal_length"].describe()
+```
+
+---
+
+## 3. Statistik Deskriptif Sepal Length
+
+Berdasarkan hasil perhitungan diperoleh:
 
 - Jumlah data: 150
 - Rata-rata (Mean): 5.84
@@ -217,53 +44,109 @@ Berdasarkan hasil perhitungan menggunakan Python diperoleh:
 
 ### Interpretasi
 
-- Rata-rata dan median hampir sama → distribusi relatif simetris.
+- Rata-rata dan median hampir sama sehingga distribusi relatif simetris.
 - Rentang data dari 4.3 sampai 7.9 menunjukkan variasi ukuran sepal cukup lebar.
-- 50% data berada di antara 5.1 dan 6.4.
-
-Dilakukan perhitungan:
-- Mean (rata-rata)
-- Median (nilai tengah)
-- Standar deviasi
-
-Tujuan:
-Untuk memahami distribusi data.
+- Sebanyak 50% data berada di antara 5.1 dan 6.4.
 
 ---
 
-## 2. Korelasi
+## 4. Statistik Deskriptif Sepal Width
 
-Hasil analisis menunjukkan bahwa:
+```python
+df["sepal_width"].describe()
+```
 
-Petal_length dan petal_width memiliki korelasi positif yang kuat.
+Ringkasan hasil:
 
-Artinya:
-Jika petal_length meningkat, maka petal_width juga meningkat.
+- Rata-rata sekitar 3.05
+- Nilai minimum sekitar 2.0
+- Nilai maksimum sekitar 4.4
 
----
+Interpretasi:
 
-## 3. Scatter Plot
-
-Scatter plot menunjukkan bahwa:
-- Setosa terpisah jelas dari dua spesies lainnya.
-- Versicolor dan Virginica sedikit berdekatan tetapi masih dapat dibedakan.
-
-Kesimpulan:
-Petal_length dan petal_width efektif digunakan untuk membedakan spesies.
+Sebaran sepal_width lebih sempit dibandingkan sepal_length dan memiliki variasi sedang.
 
 ---
 
-# INSIGHT ANALISIS
+## 5. Statistik Deskriptif Petal Length
 
-1. Petal_length dan petal_width memiliki hubungan positif yang kuat.
-2. Kedua fitur tersebut mampu memisahkan spesies secara jelas.
-3. Fitur sepal kurang kuat dibanding petal dalam membedakan spesies.
-4. Permasalahan pada dataset Iris termasuk masalah klasifikasi karena target berupa kategori (species).
+```python
+df["petal_length"].describe()
+```
 
+Ringkasan hasil:
 
+- Rata-rata sekitar 3.76
+- Nilai minimum 1.0
+- Nilai maksimum 6.9
 
-## Visualisasi Scatter Plot
+Interpretasi:
 
-Berikut adalah visualisasi hubungan antara petal_length dan petal_width:
+Petal_length memiliki rentang yang cukup lebar dan menunjukkan perbedaan signifikan antar spesies.
 
-![Scatter Plot Iris](images/scatter_iris.png)
+---
+
+## 6. Statistik Deskriptif Petal Width
+
+```python
+df["petal_width"].describe()
+```
+
+Ringkasan hasil:
+
+- Rata-rata sekitar 1.20
+- Nilai minimum 0.1
+- Nilai maksimum 2.5
+
+Interpretasi:
+
+Petal_width menunjukkan variasi yang jelas antar spesies dan berpotensi kuat sebagai fitur pembeda.
+
+---
+
+## 7. Korelasi Antar Variabel
+
+```python
+df.corr(numeric_only=True)
+```
+
+Untuk melihat korelasi antara petal_length dan petal_width:
+
+```python
+df["petal_length"].corr(df["petal_width"])
+```
+
+Hasil menunjukkan korelasi positif yang kuat.
+
+Interpretasi:
+
+Jika petal_length meningkat, maka petal_width juga cenderung meningkat.
+
+---
+
+## 8. Visualisasi Scatter Plot
+
+```python
+import matplotlib.pyplot as plt
+
+plt.scatter(df["petal_length"], df["petal_width"])
+plt.xlabel("Petal Length")
+plt.ylabel("Petal Width")
+plt.title("Scatter Plot Petal Length vs Petal Width")
+plt.show()
+```
+
+Interpretasi:
+
+- Terlihat pola hubungan positif antara petal_length dan petal_width.
+- Kelompok spesies dapat dipisahkan berdasarkan ukuran petal.
+- Fitur petal_length dan petal_width efektif untuk klasifikasi.
+
+---
+
+# Insight Analisis
+
+1. Petal_length dan petal_width memiliki korelasi positif yang kuat.
+2. Kedua fitur tersebut mampu membedakan spesies secara jelas.
+3. Fitur petal lebih informatif dibandingkan fitur sepal dalam klasifikasi.
+4. Dataset Iris termasuk permasalahan klasifikasi karena target berupa kategori (species).

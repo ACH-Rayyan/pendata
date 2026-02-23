@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>PERTEMUAN 2 &#8212; Penambangan Data</title>
+    <title>ANALISIS DATASET IRIS &#8212; Penambangan Data</title>
   
   
   
@@ -182,8 +182,7 @@
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pertemuan%201.html">Pertemuan 1</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">PERTEMUAN 2</a></li>
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">ANALISIS DATASET IRIS</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="pertemuan%203.html">pertemuan 3</a></li>
 </ul>
@@ -371,7 +370,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>PERTEMUAN 2</h1>
+    <h1>ANALISIS DATASET IRIS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -381,45 +380,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PERTEMUAN 2</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crisp-dm">1. CRISP-DM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2. DATA UNDERSTANDING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pentingnya-memahami-data">3. PENTINGNYA MEMAHAMI DATA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#komponen-utama-memahami-data">4. KOMPONEN UTAMA MEMAHAMI DATA</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-awal">1. Pengumpulan Data Awal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">2. Deskripsi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-eda">3. Exploratory Data Analysis (EDA)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kualitas-data">4. Kualitas Data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-data">5. TYPES DATA</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-nominal-kategorikal">A. Nominal / Kategorikal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ordinal">B. Ordinal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-biner">C. Biner</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-numerik">D. Numerik</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-dalam-data-mining">6. KOLOM DALAM DATA MINING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable">7. VARIABLE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur">8. SELEKSI FITUR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi">9. KORELASI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-object">10. DATA OBJECT</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-dataset-iris">ANALISIS DATASET IRIS</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">1. Statistik Deskriptif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-sepal-length">Statistik Deskriptif Sepal Length</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ANALISIS DATASET IRIS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-membaca-dataset">1. Import Library dan Membaca Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">2. Statistik Deskriptif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-sepal-length">3. Statistik Deskriptif Sepal Length</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi">Interpretasi</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Korelasi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">3. Scatter Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-sepal-width">4. Statistik Deskriptif Sepal Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-petal-length">5. Statistik Deskriptif Petal Length</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-petal-width">6. Statistik Deskriptif Petal Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antar-variabel">7. Korelasi Antar Variabel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">8. Visualisasi Scatter Plot</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-analisis">INSIGHT ANALISIS</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">Visualisasi Scatter Plot</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-analisis">Insight Analisis</a></li>
 </ul>
 
             </nav>
@@ -432,215 +407,36 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-2">
-<h1>PERTEMUAN 2<a class="headerlink" href="#pertemuan-2" title="Link to this heading">#</a></h1>
-<hr class="docutils" />
-<section id="crisp-dm">
-<h2>1. CRISP-DM<a class="headerlink" href="#crisp-dm" title="Link to this heading">#</a></h2>
-<p>CRISP-DM (Cross Industry Standard Process for Data Mining) adalah standar proses dalam data mining.</p>
-<p>Tahapannya:</p>
-<ol class="arabic simple">
-<li><p>Business Understanding</p></li>
-<li><p>Data Understanding</p></li>
-<li><p>Data Preparation</p></li>
-<li><p>Modeling</p></li>
-<li><p>Evaluation</p></li>
-<li><p>Deployment</p></li>
-</ol>
-<p>Pada pertemuan ini fokus pada tahap Data Understanding.</p>
-</section>
-<hr class="docutils" />
-<section id="data-understanding">
-<h2>2. DATA UNDERSTANDING<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
-<p>Data Understanding adalah proses memahami isi dan karakteristik data sebelum dilakukan analisis atau modeling.</p>
-<p>Tujuannya:</p>
-<ul class="simple">
-<li><p>Mengetahui struktur data</p></li>
-<li><p>Mengetahui tipe data</p></li>
-<li><p>Mengetahui kualitas data</p></li>
-<li><p>Mengetahui hubungan antar variabel</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="pentingnya-memahami-data">
-<h2>3. PENTINGNYA MEMAHAMI DATA<a class="headerlink" href="#pentingnya-memahami-data" title="Link to this heading">#</a></h2>
-<p>Jika tidak memahami data:</p>
-<ul class="simple">
-<li><p>Bisa salah memilih metode analisis</p></li>
-<li><p>Bisa salah interpretasi hasil</p></li>
-<li><p>Bisa salah mengambil keputusan</p></li>
-</ul>
-<p>Memahami data membantu:</p>
-<ul class="simple">
-<li><p>Menentukan apakah masalah termasuk klasifikasi atau regresi</p></li>
-<li><p>Menentukan fitur mana yang penting</p></li>
-<li><p>Mengetahui apakah data bersih atau tidak</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="komponen-utama-memahami-data">
-<h2>4. KOMPONEN UTAMA MEMAHAMI DATA<a class="headerlink" href="#komponen-utama-memahami-data" title="Link to this heading">#</a></h2>
-<section id="pengumpulan-data-awal">
-<h3>1. Pengumpulan Data Awal<a class="headerlink" href="#pengumpulan-data-awal" title="Link to this heading">#</a></h3>
-<p>Mengumpulkan dataset dari sumber tertentu.</p>
-<p>Contoh: Dataset bunga Iris.</p>
-</section>
-<hr class="docutils" />
-<section id="deskripsi-data">
-<h3>2. Deskripsi Data<a class="headerlink" href="#deskripsi-data" title="Link to this heading">#</a></h3>
-<p>Menjelaskan isi dataset:</p>
-<ul class="simple">
-<li><p>Jumlah baris (data object)</p></li>
-<li><p>Jumlah kolom (fitur)</p></li>
-<li><p>Nama kolom</p></li>
-<li><p>Tipe data</p></li>
-</ul>
-<p>Contoh kolom pada dataset Iris:</p>
-<ul class="simple">
-<li><p>sepal_length</p></li>
-<li><p>sepal_width</p></li>
-<li><p>petal_length</p></li>
-<li><p>petal_width</p></li>
-<li><p>species</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="exploratory-data-analysis-eda">
-<h3>3. Exploratory Data Analysis (EDA)<a class="headerlink" href="#exploratory-data-analysis-eda" title="Link to this heading">#</a></h3>
-<p>EDA adalah proses eksplorasi data menggunakan statistik dan visualisasi.</p>
-<p>Yang dilakukan:</p>
-<ul class="simple">
-<li><p>Menghitung mean (rata-rata)</p></li>
-<li><p>Menghitung median (nilai tengah)</p></li>
-<li><p>Melihat korelasi</p></li>
-<li><p>Membuat scatter plot</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="kualitas-data">
-<h3>4. Kualitas Data<a class="headerlink" href="#kualitas-data" title="Link to this heading">#</a></h3>
-<p>Hal yang diperiksa:</p>
-<ul class="simple">
-<li><p>Missing value</p></li>
-<li><p>Data duplikat</p></li>
-<li><p>Outlier</p></li>
-<li><p>Konsistensi data</p></li>
-</ul>
-</section>
-</section>
-<hr class="docutils" />
-<section id="types-data">
-<h2>5. TYPES DATA<a class="headerlink" href="#types-data" title="Link to this heading">#</a></h2>
-<section id="a-nominal-kategorikal">
-<h3>A. Nominal / Kategorikal<a class="headerlink" href="#a-nominal-kategorikal" title="Link to this heading">#</a></h3>
-<p>Data berupa label tanpa urutan.</p>
-<p>Contoh:</p>
-<ul class="simple">
-<li><p>species (setosa, versicolor, virginica)</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="b-ordinal">
-<h3>B. Ordinal<a class="headerlink" href="#b-ordinal" title="Link to this heading">#</a></h3>
-<p>Data kategorikal tetapi memiliki urutan.</p>
-<p>Contoh:</p>
-<ul class="simple">
-<li><p>Rendah, Sedang, Tinggi</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="c-biner">
-<h3>C. Biner<a class="headerlink" href="#c-biner" title="Link to this heading">#</a></h3>
-<p>Data dengan dua nilai.</p>
-<p>Simetris<br />
-Kedua nilai sama penting.<br />
-Contoh: Laki-laki / Perempuan</p>
-<p>Asimetris<br />
-Satu nilai lebih penting.<br />
-Contoh: Penyakit (Ya lebih penting dari Tidak)</p>
-</section>
-<hr class="docutils" />
-<section id="d-numerik">
-<h3>D. Numerik<a class="headerlink" href="#d-numerik" title="Link to this heading">#</a></h3>
-<p>Interval Scaled<br />
-Memiliki jarak yang sama tetapi tidak memiliki nol mutlak.<br />
-Contoh: Suhu Celsius.</p>
-<p>Ratio Scaled<br />
-Memiliki nol mutlak.<br />
-Contoh: Berat badan, tinggi badan.</p>
-<p>Nilai numerik:</p>
-<ul class="simple">
-<li><p>Diskrit → bilangan bulat (jumlah anak)</p></li>
-<li><p>Kontinu → bisa pecahan (tinggi badan)</p></li>
-</ul>
-</section>
-</section>
-<hr class="docutils" />
-<section id="kolom-dalam-data-mining">
-<h2>6. KOLOM DALAM DATA MINING<a class="headerlink" href="#kolom-dalam-data-mining" title="Link to this heading">#</a></h2>
-<p>Kolom disebut juga:</p>
-<ul class="simple">
-<li><p>Fitur</p></li>
-<li><p>Atribut</p></li>
-<li><p>Dimensi</p></li>
-<li><p>Variabel</p></li>
-</ul>
-<p>Jika dilakukan reduksi dimensi, jumlah kolom bisa berkurang dari kolom asli.</p>
-</section>
-<hr class="docutils" />
-<section id="variable">
-<h2>7. VARIABLE<a class="headerlink" href="#variable" title="Link to this heading">#</a></h2>
-<p>Independent Variable (X)<br />
-Variabel yang mempengaruhi.</p>
-<p>Dependent Variable (Y)<br />
-Variabel yang dipengaruhi.</p>
-<p>Contoh pada dataset Iris:</p>
-<ul class="simple">
-<li><p>X → sepal dan petal</p></li>
-<li><p>Y → species</p></li>
-</ul>
-<p>Catatan:
-Variabel dependen tidak termasuk fitur.</p>
-</section>
-<hr class="docutils" />
-<section id="seleksi-fitur">
-<h2>8. SELEKSI FITUR<a class="headerlink" href="#seleksi-fitur" title="Link to this heading">#</a></h2>
-<p>Seleksi fitur adalah proses memilih fitur yang paling berpengaruh terhadap target.</p>
-<p>Tujuannya:</p>
-<ul class="simple">
-<li><p>Mengurangi kompleksitas model</p></li>
-<li><p>Meningkatkan akurasi</p></li>
-<li><p>Mengurangi noise</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="korelasi">
-<h2>9. KORELASI<a class="headerlink" href="#korelasi" title="Link to this heading">#</a></h2>
-<p>Korelasi adalah hubungan antara dua variabel.</p>
-<p>Nilai korelasi:</p>
-<ul class="simple">
-<li><p>Mendekati +1 → hubungan positif kuat</p></li>
-<li><p>Mendekati -1 → hubungan negatif kuat</p></li>
-<li><p>Mendekati 0 → tidak ada hubungan</p></li>
-</ul>
-</section>
-<hr class="docutils" />
-<section id="data-object">
-<h2>10. DATA OBJECT<a class="headerlink" href="#data-object" title="Link to this heading">#</a></h2>
-<p>Data object adalah satu baris data yang mewakili satu entitas.</p>
-<p>Contoh:
-Satu baris pada dataset Iris mewakili satu bunga iris.</p>
-</section>
-</section>
-<hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="analisis-dataset-iris">
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-dataset-iris">
 <h1>ANALISIS DATASET IRIS<a class="headerlink" href="#analisis-dataset-iris" title="Link to this heading">#</a></h1>
-<section id="statistik-deskriptif">
-<h2>1. Statistik Deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h2>
+<section id="import-library-dan-membaca-dataset">
+<h2>1. Import Library dan Membaca Dataset<a class="headerlink" href="#import-library-dan-membaca-dataset" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Membaca dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;iris.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># Melihat 5 data pertama</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
 </section>
+<hr class="docutils" />
+<section id="statistik-deskriptif">
+<h2>2. Statistik Deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h2>
+<p>Untuk melihat statistik deskriptif seluruh kolom numerik:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Untuk menghitung statistik pada kolom tertentu:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sepal_length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
 <section id="statistik-deskriptif-sepal-length">
-<h2>Statistik Deskriptif Sepal Length<a class="headerlink" href="#statistik-deskriptif-sepal-length" title="Link to this heading">#</a></h2>
-<p>Berdasarkan hasil perhitungan menggunakan Python diperoleh:</p>
+<h2>3. Statistik Deskriptif Sepal Length<a class="headerlink" href="#statistik-deskriptif-sepal-length" title="Link to this heading">#</a></h2>
+<p>Berdasarkan hasil perhitungan diperoleh:</p>
 <ul class="simple">
 <li><p>Jumlah data: 150</p></li>
 <li><p>Rata-rata (Mean): 5.84</p></li>
@@ -653,54 +449,100 @@ Satu baris pada dataset Iris mewakili satu bunga iris.</p>
 <section id="interpretasi">
 <h3>Interpretasi<a class="headerlink" href="#interpretasi" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Rata-rata dan median hampir sama → distribusi relatif simetris.</p></li>
+<li><p>Rata-rata dan median hampir sama sehingga distribusi relatif simetris.</p></li>
 <li><p>Rentang data dari 4.3 sampai 7.9 menunjukkan variasi ukuran sepal cukup lebar.</p></li>
-<li><p>50% data berada di antara 5.1 dan 6.4.</p></li>
+<li><p>Sebanyak 50% data berada di antara 5.1 dan 6.4.</p></li>
 </ul>
-<p>Dilakukan perhitungan:</p>
-<ul class="simple">
-<li><p>Mean (rata-rata)</p></li>
-<li><p>Median (nilai tengah)</p></li>
-<li><p>Standar deviasi</p></li>
-</ul>
-<p>Tujuan:
-Untuk memahami distribusi data.</p>
 </section>
 </section>
 <hr class="docutils" />
-<section id="id1">
-<h2>2. Korelasi<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Hasil analisis menunjukkan bahwa:</p>
-<p>Petal_length dan petal_width memiliki korelasi positif yang kuat.</p>
-<p>Artinya:
-Jika petal_length meningkat, maka petal_width juga meningkat.</p>
+<section id="statistik-deskriptif-sepal-width">
+<h2>4. Statistik Deskriptif Sepal Width<a class="headerlink" href="#statistik-deskriptif-sepal-width" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;sepal_width&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ringkasan hasil:</p>
+<ul class="simple">
+<li><p>Rata-rata sekitar 3.05</p></li>
+<li><p>Nilai minimum sekitar 2.0</p></li>
+<li><p>Nilai maksimum sekitar 4.4</p></li>
+</ul>
+<p>Interpretasi:</p>
+<p>Sebaran sepal_width lebih sempit dibandingkan sepal_length dan memiliki variasi sedang.</p>
 </section>
 <hr class="docutils" />
-<section id="scatter-plot">
-<h2>3. Scatter Plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h2>
-<p>Scatter plot menunjukkan bahwa:</p>
+<section id="statistik-deskriptif-petal-length">
+<h2>5. Statistik Deskriptif Petal Length<a class="headerlink" href="#statistik-deskriptif-petal-length" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ringkasan hasil:</p>
 <ul class="simple">
-<li><p>Setosa terpisah jelas dari dua spesies lainnya.</p></li>
-<li><p>Versicolor dan Virginica sedikit berdekatan tetapi masih dapat dibedakan.</p></li>
+<li><p>Rata-rata sekitar 3.76</p></li>
+<li><p>Nilai minimum 1.0</p></li>
+<li><p>Nilai maksimum 6.9</p></li>
 </ul>
-<p>Kesimpulan:
-Petal_length dan petal_width efektif digunakan untuk membedakan spesies.</p>
+<p>Interpretasi:</p>
+<p>Petal_length memiliki rentang yang cukup lebar dan menunjukkan perbedaan signifikan antar spesies.</p>
+</section>
+<hr class="docutils" />
+<section id="statistik-deskriptif-petal-width">
+<h2>6. Statistik Deskriptif Petal Width<a class="headerlink" href="#statistik-deskriptif-petal-width" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_width&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Ringkasan hasil:</p>
+<ul class="simple">
+<li><p>Rata-rata sekitar 1.20</p></li>
+<li><p>Nilai minimum 0.1</p></li>
+<li><p>Nilai maksimum 2.5</p></li>
+</ul>
+<p>Interpretasi:</p>
+<p>Petal_width menunjukkan variasi yang jelas antar spesies dan berpotensi kuat sebagai fitur pembeda.</p>
+</section>
+<hr class="docutils" />
+<section id="korelasi-antar-variabel">
+<h2>7. Korelasi Antar Variabel<a class="headerlink" href="#korelasi-antar-variabel" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Untuk melihat korelasi antara petal_length dan petal_width:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_length&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_width&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Hasil menunjukkan korelasi positif yang kuat.</p>
+<p>Interpretasi:</p>
+<p>Jika petal_length meningkat, maka petal_width juga cenderung meningkat.</p>
+</section>
+<hr class="docutils" />
+<section id="visualisasi-scatter-plot">
+<h2>8. Visualisasi Scatter Plot<a class="headerlink" href="#visualisasi-scatter-plot" title="Link to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_length&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_width&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal Length&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal Width&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scatter Plot Petal Length vs Petal Width&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Interpretasi:</p>
+<ul class="simple">
+<li><p>Terlihat pola hubungan positif antara petal_length dan petal_width.</p></li>
+<li><p>Kelompok spesies dapat dipisahkan berdasarkan ukuran petal.</p></li>
+<li><p>Fitur petal_length dan petal_width efektif untuk klasifikasi.</p></li>
+</ul>
 </section>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="insight-analisis">
-<h1>INSIGHT ANALISIS<a class="headerlink" href="#insight-analisis" title="Link to this heading">#</a></h1>
+<h1>Insight Analisis<a class="headerlink" href="#insight-analisis" title="Link to this heading">#</a></h1>
 <ol class="arabic simple">
-<li><p>Petal_length dan petal_width memiliki hubungan positif yang kuat.</p></li>
-<li><p>Kedua fitur tersebut mampu memisahkan spesies secara jelas.</p></li>
-<li><p>Fitur sepal kurang kuat dibanding petal dalam membedakan spesies.</p></li>
-<li><p>Permasalahan pada dataset Iris termasuk masalah klasifikasi karena target berupa kategori (species).</p></li>
+<li><p>Petal_length dan petal_width memiliki korelasi positif yang kuat.</p></li>
+<li><p>Kedua fitur tersebut mampu membedakan spesies secara jelas.</p></li>
+<li><p>Fitur petal lebih informatif dibandingkan fitur sepal dalam klasifikasi.</p></li>
+<li><p>Dataset Iris termasuk permasalahan klasifikasi karena target berupa kategori (species).</p></li>
 </ol>
-<section id="visualisasi-scatter-plot">
-<h2>Visualisasi Scatter Plot<a class="headerlink" href="#visualisasi-scatter-plot" title="Link to this heading">#</a></h2>
-<p>Berikut adalah visualisasi hubungan antara petal_length dan petal_width:</p>
-<p><img alt="Scatter Plot Iris" src="_images/scatter_iris.png" /></p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -767,45 +609,21 @@ Petal_length dan petal_width efektif digunakan untuk membedakan spesies.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PERTEMUAN 2</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crisp-dm">1. CRISP-DM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2. DATA UNDERSTANDING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pentingnya-memahami-data">3. PENTINGNYA MEMAHAMI DATA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#komponen-utama-memahami-data">4. KOMPONEN UTAMA MEMAHAMI DATA</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data-awal">1. Pengumpulan Data Awal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">2. Deskripsi Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis-eda">3. Exploratory Data Analysis (EDA)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kualitas-data">4. Kualitas Data</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-data">5. TYPES DATA</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-nominal-kategorikal">A. Nominal / Kategorikal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ordinal">B. Ordinal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-biner">C. Biner</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-numerik">D. Numerik</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-dalam-data-mining">6. KOLOM DALAM DATA MINING</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable">7. VARIABLE</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur">8. SELEKSI FITUR</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi">9. KORELASI</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-object">10. DATA OBJECT</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-dataset-iris">ANALISIS DATASET IRIS</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">1. Statistik Deskriptif</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-sepal-length">Statistik Deskriptif Sepal Length</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ANALISIS DATASET IRIS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-membaca-dataset">1. Import Library dan Membaca Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">2. Statistik Deskriptif</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-sepal-length">3. Statistik Deskriptif Sepal Length</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi">Interpretasi</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Korelasi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">3. Scatter Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-sepal-width">4. Statistik Deskriptif Sepal Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-petal-length">5. Statistik Deskriptif Petal Length</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif-petal-width">6. Statistik Deskriptif Petal Width</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antar-variabel">7. Korelasi Antar Variabel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">8. Visualisasi Scatter Plot</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-analisis">INSIGHT ANALISIS</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">Visualisasi Scatter Plot</a></li>
-</ul>
-</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#insight-analisis">Insight Analisis</a></li>
 </ul>
 
   </nav></div>
