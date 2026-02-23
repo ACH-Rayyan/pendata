@@ -1,4 +1,4 @@
-# PERTEMUAN 2 – MEMAHAMI DATA
+# PERTEMUAN 2 
 
 ---
 
