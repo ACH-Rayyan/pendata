@@ -203,6 +203,24 @@ Satu baris pada dataset Iris mewakili satu bunga iris.
 
 ## 1. Statistik Deskriptif
 
+## Statistik Deskriptif Sepal Length
+
+Berdasarkan hasil perhitungan menggunakan Python diperoleh:
+
+- Jumlah data: 150
+- Rata-rata (Mean): 5.84
+- Median (Q2): 5.8
+- Kuartil 1 (Q1): 5.1
+- Kuartil 3 (Q3): 6.4
+- Nilai minimum: 4.3
+- Nilai maksimum: 7.9
+
+### Interpretasi
+
+- Rata-rata dan median hampir sama → distribusi relatif simetris.
+- Rentang data dari 4.3 sampai 7.9 menunjukkan variasi ukuran sepal cukup lebar.
+- 50% data berada di antara 5.1 dan 6.4.
+
 Dilakukan perhitungan:
 - Mean (rata-rata)
 - Median (nilai tengah)
