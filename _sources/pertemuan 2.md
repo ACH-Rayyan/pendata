@@ -196,7 +196,7 @@ Petal_length dan petal_width efektif digunakan untuk membedakan spesies.
 
 Berikut adalah visualisasi hubungan antara petal_length dan petal_width:
 
-![Scatter Plot Iris](images/scatter_iris.png)
+![Scatter Plot Iris](images/scater.png)
 
 ---
 
