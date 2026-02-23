@@ -21,3 +21,5 @@ PostgreSQL: Sistem manajemen database relasional (RDBMS) yang sangat canggih dan
 
 
 MySQL: Database relasional yang paling populer di dunia karena kecepatannya dan kemudahan penggunaannya. MySQL banyak digunakan untuk aplikasi web dan server
+ini tambbahan
+
