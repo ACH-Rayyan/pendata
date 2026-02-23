@@ -198,8 +198,8 @@ Berikut adalah visualisasi hubungan antara petal_length dan petal_width:
 
 ![Scatter Plot Iris](images/scater.png)
 
-Gambar di atas merupakan hasil visualisasi menggunakan Orange dengan pewarnaan berdasarkan spesies.
-Terlihat bahwa spesies Setosa terpisah jelas, sedangkan Versicolor dan Virginica memiliki kedekatan tetapi masih dapat dibedakan.
+    Gambar di atas merupakan hasil visualisasi menggunakan Orange dengan pewarnaan berdasarkan spesies.
+    Terlihat bahwa spesies Setosa terpisah jelas, sedangkan Versicolor dan Virginica memiliki kedekatan tetapi masih dapat dibedakan.
 
 ---
 
