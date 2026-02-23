@@ -1,4 +1,252 @@
-# pertemuan 2
+# 📘 PERTEMUAN 2 – MEMAHAMI DATA
+
+---
+
+## 1️⃣ CRISP-DM
+
+CRISP-DM (Cross Industry Standard Process for Data Mining) adalah standar proses dalam data mining.
+
+Tahapannya:
+
+1. Business Understanding  
+2. Data Understanding  
+3. Data Preparation  
+4. Modeling  
+5. Evaluation  
+6. Deployment  
+
+Pada pertemuan ini kita fokus pada tahap **Data Understanding**.
+
+---
+
+# 2️⃣ DATA UNDERSTANDING
+
+Data Understanding adalah proses memahami isi dan karakteristik data sebelum dilakukan analisis atau modeling.
+
+Tujuannya:
+- Mengetahui struktur data
+- Mengetahui tipe data
+- Mengetahui kualitas data
+- Mengetahui hubungan antar variabel
+
+---
+
+# 3️⃣ PENTINGNYA MEMAHAMI DATA
+
+Jika tidak memahami data:
+- Bisa salah memilih metode analisis
+- Bisa salah interpretasi hasil
+- Bisa salah mengambil keputusan
+
+Memahami data membantu kita:
+- Menentukan apakah masalah termasuk klasifikasi atau regresi
+- Menentukan fitur mana yang penting
+- Mengetahui apakah data bersih atau tidak
+
+---
+
+# 4️⃣ KOMPONEN UTAMA MEMAHAMI DATA
+
+## 1. Pengumpulan Data Awal
+Mengumpulkan dataset dari sumber tertentu.
+
+Contoh: Dataset bunga Iris.
+
+---
+
+## 2. Deskripsi Data
+Menjelaskan isi dataset:
+- Jumlah baris (data object)
+- Jumlah kolom (fitur)
+- Nama kolom
+- Tipe data
+
+Contoh kolom pada dataset Iris:
+- sepal_length
+- sepal_width
+- petal_length
+- petal_width
+- species
+
+---
+
+## 3. Exploratory Data Analysis (EDA)
+
+EDA adalah proses eksplorasi data menggunakan statistik dan visualisasi.
+
+Yang dilakukan:
+- Menghitung mean (rata-rata)
+- Menghitung median (nilai tengah)
+- Melihat korelasi
+- Membuat scatter plot
+
+---
+
+## 4. Kualitas Data
+
+Hal yang diperiksa:
+- Missing value
+- Data duplikat
+- Outlier
+- Konsistensi data
+
+---
+
+# 5️⃣ TYPES DATA
+
+## A. Nominal / Kategorikal
+Data berupa label tanpa urutan.
+
+Contoh:
+- species (setosa, versicolor, virginica)
+
+---
+
+## B. Ordinal
+Data kategorikal tetapi memiliki urutan.
+
+Contoh:
+- Rendah, Sedang, Tinggi
+
+---
+
+## C. Biner
+Data dengan dua nilai.
+
+### Simetris
+Kedua nilai sama penting.  
+Contoh: Laki-laki / Perempuan
+
+### Asimetris
+Satu nilai lebih penting.  
+Contoh: Penyakit (Ya lebih penting dari Tidak)
+
+---
+
+## D. Numerik
+
+### Interval Scaled
+Memiliki jarak yang sama tetapi tidak memiliki nol mutlak.  
+Contoh: Suhu Celsius.
+
+### Ratio Scaled
+Memiliki nol mutlak.  
+Contoh: Berat badan, tinggi badan.
+
+---
+
+### Nilai Numerik:
+- Diskrit → bilangan bulat (jumlah anak)
+- Kontinu → bisa pecahan (tinggi badan)
+
+---
+
+# 6️⃣ KOLOM DALAM DATA MINING
+
+Kolom disebut juga:
+- Fitur
+- Atribut
+- Dimensi
+- Variabel
+
+Jika dilakukan reduksi dimensi, jumlah kolom bisa berkurang dari kolom asli.
+
+---
+
+# 7️⃣ VARIABLE
+
+## Independent Variable (X)
+Variabel yang mempengaruhi.
+
+## Dependent Variable (Y)
+Variabel yang dipengaruhi.
+
+Contoh pada dataset Iris:
+- X → sepal & petal
+- Y → species
+
+Catatan:
+Variabel dependen tidak termasuk fitur.
+
+---
+
+# 8️⃣ SELEKSI FITUR
+
+Seleksi fitur adalah proses memilih fitur yang paling berpengaruh terhadap target.
+
+Tujuannya:
+- Mengurangi kompleksitas model
+- Meningkatkan akurasi
+- Mengurangi noise
+
+---
+
+# 9️⃣ KORELASI
+
+Korelasi adalah hubungan antara dua variabel.
+
+Nilai korelasi:
+- Mendekati +1 → hubungan positif kuat
+- Mendekati -1 → hubungan negatif kuat
+- Mendekati 0 → tidak ada hubungan
+
+---
+
+# 🔟 DATA OBJECT
+
+Data object adalah satu baris data yang mewakili satu entitas.
+
+Contoh:
+Satu baris pada dataset Iris = satu bunga iris.
+
+---
+
+# 📊 ANALISIS DATASET IRIS 
+
+## 1️⃣ Statistik Deskriptif
+
+Dilakukan perhitungan:
+- Mean (rata-rata)
+- Median (nilai tengah)
+- Standar deviasi
+
+Tujuan:
+Untuk memahami distribusi data.
+
+---
+
+## 2️⃣ Korelasi
+
+Hasil analisis menunjukkan bahwa:
+
+Petal_length dan petal_width memiliki korelasi positif yang kuat.
+
+Artinya:
+Jika petal_length meningkat, maka petal_width juga meningkat.
+
+---
+
+## 3️⃣ Scatter Plot
+
+Scatter plot menunjukkan bahwa:
+- Setosa terpisah jelas dari dua spesies lainnya.
+- Versicolor dan Virginica sedikit berdekatan tetapi masih dapat dibedakan.
+
+Kesimpulan:
+Petal_length dan petal_width efektif digunakan untuk membedakan spesies.
+
+---
+
+# 💡 INSIGHT ANALISIS
+
+1. Petal_length dan petal_width memiliki hubungan positif yang kuat.
+2. Kedua fitur tersebut mampu memisahkan spesies secara jelas.
+3. Fitur sepal kurang kuat dibanding petal dalam membedakan spesies.
+4. Permasalahan pada dataset Iris termasuk masalah klasifikasi karena target berupa kategori (species).
+
+
+
+
 ## Visualisasi Scatter Plot
 
 Berikut adalah visualisasi hubungan antara petal_length dan petal_width:
