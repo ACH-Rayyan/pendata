@@ -6,7 +6,7 @@ Penambangan Data (atau Data Mining) adalah proses teknik dan metode untuk mengga
 
 ## Pengertian Aplikasi Tools Data Mining
 
-Aplikasi-aplikasi ini digunakan untuk memproses, menganalisis, dan memodelkan data:
+Aplikasi-aplikasi ini digunakan untuk memproses, menganalisis, dan memodelkan data :
 
 KNIME (Konstanz Information Miner): Platform analisis data berbasis "drag-and-drop". Kamu bisa membuat alur kerja (workflow) data dari mulai pembersihan data, manipulasi, hingga pemodelan statistik tanpa harus mahir menulis kode pemrograman yang rumit.
 
