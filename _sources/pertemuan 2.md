@@ -1,14 +1,72 @@
-# ANALISIS DATASET IRIS 
+# Pertemuan 2
+
+---
+
+## 1. CRISP-DM
+
+CRISP-DM (Cross Industry Standard Process for Data Mining) adalah standar proses dalam data mining.
+
+Tahapannya:
+
+1. Business Understanding  
+2. Data Understanding  
+3. Data Preparation  
+4. Modeling  
+5. Evaluation  
+6. Deployment  
+
+Pada pertemuan ini fokus pada tahap **Data Understanding**.
+
+---
+
+## 2. DATA UNDERSTANDING
+
+Data Understanding adalah proses memahami isi dan karakteristik data sebelum dilakukan analisis atau modeling.
+
+Tujuannya:
+- Mengetahui struktur data
+- Mengetahui tipe data
+- Mengetahui kualitas data
+- Mengetahui hubungan antar variabel
+
+---
+
+## 3. KOMPONEN MEMAHAMI DATA
+
+### 3.1 Pengumpulan Data
+
+Dataset yang digunakan adalah dataset Iris.
+
+### 3.2 Deskripsi Data
+
+Dataset Iris memiliki kolom:
+- sepal_length
+- sepal_width
+- petal_length
+- petal_width
+- species
+
+### 3.3 Exploratory Data Analysis (EDA)
+
+EDA dilakukan untuk:
+- Menghitung statistik deskriptif
+- Melihat korelasi
+- Membuat visualisasi
+
+---
+
+# ANALISIS DATASET IRIS
 
 ## 1. Import Library dan Membaca Dataset
 
 ```python
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # Membaca dataset
 df = pd.read_csv("iris.csv")
 
-# Melihat 5 data pertama
+# Menampilkan 5 data pertama
 df.head()
 ```
 
@@ -16,33 +74,41 @@ df.head()
 
 ## 2. Statistik Deskriptif
 
-Untuk melihat statistik deskriptif seluruh kolom numerik:
+### 2.1 Statistik Umum
 
 ```python
 df.describe()
 ```
 
-Untuk menghitung statistik pada kolom tertentu:
+Digunakan untuk melihat ringkasan seluruh kolom numerik.
+
+---
+
+### 2.2 Statistik Sepal Length
 
 ```python
 df["sepal_length"].describe()
 ```
 
----
-
-## 3. Statistik Deskriptif Sepal Length
-
 Berdasarkan hasil perhitungan diperoleh:
 
 - Jumlah data: 150
-- Rata-rata (Mean): 5.84
-- Median (Q2): 5.8
-- Kuartil 1 (Q1): 5.1
-- Kuartil 3 (Q3): 6.4
 - Nilai minimum: 4.3
+- Kuartil 1 (Q1): 5.1
+- Median (Q2): 5.8
+- Kuartil 3 (Q3): 6.4
 - Nilai maksimum: 7.9
+- Rata-rata (Mean): 5.84
 
-### Interpretasi
+Dilakukan perhitungan:
+- Mean
+- Median
+- Standar deviasi
+
+Tujuan:
+Untuk memahami distribusi data.
+
+#### Interpretasi
 
 - Rata-rata dan median hampir sama sehingga distribusi relatif simetris.
 - Rentang data dari 4.3 sampai 7.9 menunjukkan variasi ukuran sepal cukup lebar.
@@ -50,67 +116,51 @@ Berdasarkan hasil perhitungan diperoleh:
 
 ---
 
-## 4. Statistik Deskriptif Sepal Width
+### 2.3 Statistik Sepal Width
 
 ```python
 df["sepal_width"].describe()
 ```
 
-Ringkasan hasil:
-
-- Rata-rata sekitar 3.05
-- Nilai minimum sekitar 2.0
-- Nilai maksimum sekitar 4.4
-
 Interpretasi:
-
-Sebaran sepal_width lebih sempit dibandingkan sepal_length dan memiliki variasi sedang.
+- Variasi lebih sempit dibanding sepal_length.
+- Tidak terlalu ekstrem dalam perbedaan antar spesies.
 
 ---
 
-## 5. Statistik Deskriptif Petal Length
+### 2.4 Statistik Petal Length
 
 ```python
 df["petal_length"].describe()
 ```
 
-Ringkasan hasil:
-
-- Rata-rata sekitar 3.76
-- Nilai minimum 1.0
-- Nilai maksimum 6.9
-
 Interpretasi:
-
-Petal_length memiliki rentang yang cukup lebar dan menunjukkan perbedaan signifikan antar spesies.
+- Memiliki perbedaan signifikan antar spesies.
+- Berpotensi kuat sebagai fitur pembeda.
 
 ---
 
-## 6. Statistik Deskriptif Petal Width
+### 2.5 Statistik Petal Width
 
 ```python
 df["petal_width"].describe()
 ```
 
-Ringkasan hasil:
-
-- Rata-rata sekitar 1.20
-- Nilai minimum 0.1
-- Nilai maksimum 2.5
-
 Interpretasi:
-
-Petal_width menunjukkan variasi yang jelas antar spesies dan berpotensi kuat sebagai fitur pembeda.
+- Variasi jelas antar spesies.
+- Sangat efektif untuk klasifikasi.
 
 ---
 
-## 7. Korelasi Antar Variabel
+## 3. Korelasi
+
+Untuk melihat korelasi antar variabel:
 
 ```python
 df.corr(numeric_only=True)
 ```
 
-Untuk melihat korelasi antara petal_length dan petal_width:
+Khusus korelasi antara petal_length dan petal_width:
 
 ```python
 df["petal_length"].corr(df["petal_width"])
@@ -119,16 +169,13 @@ df["petal_length"].corr(df["petal_width"])
 Hasil menunjukkan korelasi positif yang kuat.
 
 Interpretasi:
-
-Jika petal_length meningkat, maka petal_width juga cenderung meningkat.
+Jika petal_length meningkat maka petal_width juga meningkat.
 
 ---
 
-## 8. Visualisasi Scatter Plot
+## 4. Scatter Plot
 
 ```python
-import matplotlib.pyplot as plt
-
 plt.scatter(df["petal_length"], df["petal_width"])
 plt.xlabel("Petal Length")
 plt.ylabel("Petal Width")
@@ -136,17 +183,26 @@ plt.title("Scatter Plot Petal Length vs Petal Width")
 plt.show()
 ```
 
-Interpretasi:
+Scatter plot menunjukkan bahwa:
+- Setosa terpisah jelas dari dua spesies lainnya.
+- Versicolor dan Virginica sedikit berdekatan tetapi masih dapat dibedakan.
 
-- Terlihat pola hubungan positif antara petal_length dan petal_width.
-- Kelompok spesies dapat dipisahkan berdasarkan ukuran petal.
-- Fitur petal_length dan petal_width efektif untuk klasifikasi.
+Kesimpulan:
+Petal_length dan petal_width efektif digunakan untuk membedakan spesies.
 
 ---
 
-# Insight Analisis
+## Visualisasi Scatter Plot
 
-1. Petal_length dan petal_width memiliki korelasi positif yang kuat.
-2. Kedua fitur tersebut mampu membedakan spesies secara jelas.
-3. Fitur petal lebih informatif dibandingkan fitur sepal dalam klasifikasi.
+Berikut adalah visualisasi hubungan antara petal_length dan petal_width:
+
+![Scatter Plot Iris](images/scatter_iris.png)
+
+---
+
+# INSIGHT ANALISIS
+
+1. Petal_length dan petal_width memiliki hubungan positif yang kuat.
+2. Kedua fitur tersebut mampu memisahkan spesies secara jelas.
+3. Fitur petal lebih kuat dibandingkan fitur sepal dalam membedakan spesies.
 4. Dataset Iris termasuk permasalahan klasifikasi karena target berupa kategori (species).
