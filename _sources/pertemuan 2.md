@@ -125,7 +125,7 @@ Untuk memastikan hasil perhitungan korelasi dari Python sudah benar, dilakukan v
 
 ### Tampilan Dataset di Orange
 
-![Tabel Dataset Orange](images/orange_table.png)
+![Tabel Dataset Orange](images/dataset.png)
 
 Pada tampilan tersebut terlihat:
 
@@ -234,4 +234,3 @@ Pada tahap Data Understanding:
 - Fitur petal merupakan fitur paling informatif.
 - Visualisasi dan korelasi mendukung bahwa dataset cocok untuk pemodelan klasifikasi.
 
-Tahap selanjutnya dalam CRISP-DM adalah **Data Preparation**.
