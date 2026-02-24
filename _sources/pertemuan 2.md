@@ -1,12 +1,12 @@
-# Pertemuan 2
+# Pertemuan 2 
+
+
 
 ---
 
-## 1. CRISP-DM
+## 1. CRISP-DM Data Understanding
 
-CRISP-DM (Cross Industry Standard Process for Data Mining) adalah standar proses dalam data mining.
-
-Tahapannya:
+CRISP-DM (Cross Industry Standard Process for Data Mining) adalah metodologi standar dalam data mining yang terdiri dari 6 tahap:
 
 1. Business Understanding  
 2. Data Understanding  
@@ -15,47 +15,34 @@ Tahapannya:
 5. Evaluation  
 6. Deployment  
 
-Pada pertemuan ini fokus pada tahap **Data Understanding**.
+Pada pertemuan ini difokuskan pada tahap **Data Understanding**.
 
 ---
 
-## 2. DATA UNDERSTANDING
+## 2. Data Understanding
 
-Data Understanding adalah proses memahami isi dan karakteristik data sebelum dilakukan analisis atau modeling.
+Data Understanding bertujuan untuk memahami isi dan karakteristik dataset sebelum dilakukan analisis lanjutan atau modeling.
 
-Tujuannya:
-- Mengetahui struktur data
-- Mengetahui tipe data
-- Mengetahui kualitas data
-- Mengetahui hubungan antar variabel
+### Tujuan:
 
----
-
-## 3. KOMPONEN MEMAHAMI DATA
-
-### 3.1 Pengumpulan Data
-
-Dataset yang digunakan adalah dataset Iris.
-
-### 3.2 Deskripsi Data
-
-Dataset Iris memiliki kolom:
-- sepal_length
-- sepal_width
-- petal_length
-- petal_width
-- species
-
-### 3.3 Exploratory Data Analysis (EDA)
-
-EDA dilakukan untuk:
-- Menghitung statistik deskriptif
-- Melihat korelasi
-- Membuat visualisasi
+- Memahami struktur data  
+- Mengidentifikasi tipe data  
+- Mengetahui kualitas data  
+- Menganalisis hubungan antar variabel  
 
 ---
 
 # ANALISIS DATASET IRIS
+
+Dataset yang digunakan adalah **Iris Dataset** dengan 150 data dan 5 kolom:
+
+- `sepal_length`
+- `sepal_width`
+- `petal_length`
+- `petal_width`
+- `species`
+
+---
 
 ## 1. Import Library dan Membaca Dataset
 
@@ -63,117 +50,82 @@ EDA dilakukan untuk:
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Membaca dataset
 df = pd.read_csv("iris.csv")
-
-# Menampilkan 5 data pertama
 df.head()
 ```
 
 ---
 
-## 2. Statistik Deskriptif
+# 2. Statistik Deskriptif
 
-### 2.1 Statistik Umum
+## 2.1 Statistik Umum
 
 ```python
 df.describe()
 ```
 
-Digunakan untuk melihat ringkasan seluruh kolom numerik.
+Digunakan untuk melihat ringkasan statistik seluruh kolom numerik.
 
 ---
 
-### 2.2 Statistik Sepal Length
+## 2.2 Ringkasan Statistik per Fitur
+
+| Fitur          | Karakteristik Umum | Insight |
+|---------------|-------------------|---------|
+| Sepal Length  | Rentang 4.3 – 7.9 | Distribusi relatif simetris |
+| Sepal Width   | Variasi lebih kecil | Tidak terlalu ekstrem |
+| Petal Length  | Variasi besar antar spesies | Sangat potensial sebagai pembeda |
+| Petal Width   | Variasi sangat jelas | Fitur paling kuat untuk klasifikasi |
+
+Contoh melihat statistik satu kolom:
 
 ```python
 df["sepal_length"].describe()
 ```
 
-Berdasarkan hasil perhitungan diperoleh:
-
-- Jumlah data: 150
-- Nilai minimum: 4.3
-- Kuartil 1 (Q1): 5.1
-- Median (Q2): 5.8
-- Kuartil 3 (Q3): 6.4
-- Nilai maksimum: 7.9
-- Rata-rata (Mean): 5.84
-
-Dilakukan perhitungan:
-- Mean
-- Median
-- Standar deviasi
-
-Tujuan:
-Untuk memahami distribusi data.
-
-#### Interpretasi
-
-- Rata-rata dan median hampir sama sehingga distribusi relatif simetris.
-- Rentang data dari 4.3 sampai 7.9 menunjukkan variasi ukuran sepal cukup lebar.
-- Sebanyak 50% data berada di antara 5.1 dan 6.4.
-
 ---
 
-### 2.3 Statistik Sepal Width
+# 3. Analisis Korelasi
 
-```python
-df["sepal_width"].describe()
-```
+Korelasi digunakan untuk melihat hubungan antar variabel numerik.
 
-Interpretasi:
-- Variasi lebih sempit dibanding sepal_length.
-- Tidak terlalu ekstrem dalam perbedaan antar spesies.
-
----
-
-### 2.4 Statistik Petal Length
-
-```python
-df["petal_length"].describe()
-```
-
-Interpretasi:
-- Memiliki perbedaan signifikan antar spesies.
-- Berpotensi kuat sebagai fitur pembeda.
-
----
-
-### 2.5 Statistik Petal Width
-
-```python
-df["petal_width"].describe()
-```
-
-Interpretasi:
-- Variasi jelas antar spesies.
-- Sangat efektif untuk klasifikasi.
-
----
-
-## 3. Korelasi
-
-Untuk melihat korelasi antar variabel:
+## 3.1 Korelasi Semua Variabel
 
 ```python
 df.corr(numeric_only=True)
 ```
 
-Khusus korelasi antara petal_length dan petal_width:
+---
+
+## 3.2 Korelasi Antar Fitur
 
 ```python
 df["petal_length"].corr(df["petal_width"])
+df["sepal_length"].corr(df["sepal_width"])
 ```
-
-Hasil menunjukkan korelasi positif yang kuat.
-
-Interpretasi:
-Jika petal_length meningkat maka petal_width juga meningkat.
 
 ---
 
-## 4. Scatter Plot
+## 3.3 Tabel Korelasi dan Interpretasi
+
+| Variabel 1     | Variabel 2     | Nilai Korelasi | Kekuatan Hubungan | Interpretasi |
+|---------------|---------------|---------------|------------------|--------------|
+| petal_length | petal_width  | 0.96 | Sangat Kuat (Positif) | Jika petal_length naik, petal_width ikut naik |
+| sepal_length | sepal_width  | -0.12 | Lemah (Negatif) | Hubungan sangat lemah, hampir tidak signifikan |
+| sepal_length | petal_length | 0.87 | Kuat (Positif) | Sepal panjang cenderung memiliki petal panjang |
+| sepal_length | petal_width  | 0.82 | Kuat (Positif) | Hubungan cukup kuat |
+| sepal_width  | petal_length | -0.43 | Sedang (Negatif) | Hubungan terbalik |
+| sepal_width  | petal_width  | -0.37 | Sedang (Negatif) | Hubungan terbalik |
+
+### Kesimpulan Korelasi
+
+- Fitur **petal_length dan petal_width** memiliki korelasi paling kuat.
+- Fitur sepal memiliki hubungan yang jauh lebih lemah.
+- Fitur petal lebih efektif untuk membedakan spesies.
+
+---
+
+# 4. Visualisasi Scatter Plot
 
 ```python
 plt.scatter(df["petal_length"], df["petal_width"])
@@ -183,31 +135,37 @@ plt.title("Scatter Plot Petal Length vs Petal Width")
 plt.show()
 ```
 
-Scatter plot menunjukkan bahwa:
-- Setosa terpisah jelas dari dua spesies lainnya.
-- Versicolor dan Virginica sedikit berdekatan tetapi masih dapat dibedakan.
-
-Kesimpulan:
-Petal_length dan petal_width efektif digunakan untuk membedakan spesies.
-
 ---
 
-## Visualisasi Scatter Plot
-
-Berikut adalah visualisasi hubungan antara petal_length dan petal_width:
+## Hasil Visualisasi
 
 ![Scatter Plot Iris](images/scater.png)
 
 ![Scatter Plot Iris](images/scaterr2.png)
 
-    Gambar di atas merupakan hasil visualisasi menggunakan Orange dengan pewarnaan berdasarkan spesies.
-    Terlihat bahwa spesies Setosa terpisah jelas, sedangkan Versicolor dan Virginica memiliki kedekatan tetapi masih dapat dibedakan.
+### Interpretasi Visualisasi
+
+- Spesies **Setosa** terpisah sangat jelas.
+- **Versicolor** dan **Virginica** berdekatan tetapi masih dapat dibedakan.
+- Terlihat pola linear positif antara petal_length dan petal_width.
 
 ---
 
-# INSIGHT ANALISIS
+# Insight Analisis
 
-1. Petal_length dan petal_width memiliki hubungan positif yang kuat.
-2. Kedua fitur tersebut mampu memisahkan spesies secara jelas.
-3. Fitur petal lebih kuat dibandingkan fitur sepal dalam membedakan spesies.
-4. Dataset Iris termasuk permasalahan klasifikasi karena target berupa kategori (species).
+1. Petal_length dan petal_width memiliki hubungan positif sangat kuat.
+2. Kedua fitur tersebut efektif untuk klasifikasi spesies.
+3. Fitur sepal kurang kuat dibanding fitur petal.
+4. Dataset Iris merupakan permasalahan **klasifikasi**, karena target berupa kategori (species).
+
+---
+
+# Kesimpulan Akhir
+
+Pada tahap Data Understanding:
+
+- Dataset memiliki kualitas baik (tidak ada nilai kosong).
+- Fitur petal merupakan fitur paling informatif.
+- Visualisasi dan korelasi mendukung bahwa dataset cocok untuk pemodelan klasifikasi.
+
+Tahap selanjutnya dalam CRISP-DM adalah **Data Preparation**.
