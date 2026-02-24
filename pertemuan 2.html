@@ -186,9 +186,6 @@
 
 
 
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="pertemuan%203.html">pertemuan 3</a></li>
 </ul>
 
@@ -391,18 +388,31 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan">Tujuan:</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pentingnya-memahami-data">3. Pentingnya Memahami Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#komponen-data-understanding">4. Komponen Data Understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-data">5. Types of Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-kategorikal">5.1 Nominal (Kategorikal)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal">5.2 Ordinal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biner">5.3 Biner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerik">5.4 Numerik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-atribut-dan-variabel">6. Konsep Atribut dan Variabel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-variable">Independent Variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependent-variable-target">Dependent Variable (Target)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur">7. Seleksi Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi">8. Korelasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-object">9. Data Object</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-dataset-iris">ANALISIS DATASET IRIS</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-membaca-dataset">1. Import Library dan Membaca Dataset</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">2. Statistik Deskriptif</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">2. Statistik Deskriptif</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-umum">2.1 Statistik Umum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-statistik-per-fitur">2.2 Ringkasan Statistik per Fitur</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi">3. Analisis Korelasi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi">3. Analisis Korelasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-semua-variabel">3.1 Korelasi Semua Variabel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antar-fitur">3.2 Korelasi Antar Fitur</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-korelasi-dan-interpretasi">3.3 Tabel Korelasi dan Interpretasi</a></li>
@@ -414,9 +424,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil-python-dan-orange">3.5 Perbandingan Hasil Python dan Orange</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">3.6 Kesimpulan</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">4. Visualisasi Scatter Plot</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">4. Visualisasi Scatter Plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-visualisasi">Hasil Visualisasi</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-visualisasi">Interpretasi Visualisasi</a></li>
 </ul>
@@ -467,6 +475,112 @@ document.write(`
 </ul>
 </section>
 </section>
+<hr class="docutils" />
+<section id="pentingnya-memahami-data">
+<h2>3. Pentingnya Memahami Data<a class="headerlink" href="#pentingnya-memahami-data" title="Link to this heading">#</a></h2>
+<p>Memahami data sangat penting sebelum melakukan modeling karena:</p>
+<ul class="simple">
+<li><p>Menghindari kesalahan analisis</p></li>
+<li><p>Mengetahui karakteristik variabel</p></li>
+<li><p>Menentukan teknik yang tepat</p></li>
+<li><p>Mengidentifikasi masalah kualitas data</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="komponen-data-understanding">
+<h2>4. Komponen Data Understanding<a class="headerlink" href="#komponen-data-understanding" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Pengumpulan Data Awal</p></li>
+<li><p>Deskripsi Data</p></li>
+<li><p>Exploratory Data Analysis (EDA)</p></li>
+<li><p>Evaluasi Kualitas Data</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="types-of-data">
+<h2>5. Types of Data<a class="headerlink" href="#types-of-data" title="Link to this heading">#</a></h2>
+<section id="nominal-kategorikal">
+<h3>5.1 Nominal (Kategorikal)<a class="headerlink" href="#nominal-kategorikal" title="Link to this heading">#</a></h3>
+<p>Data tanpa urutan.
+Contoh: jenis kelamin, warna, spesies.</p>
+</section>
+<section id="ordinal">
+<h3>5.2 Ordinal<a class="headerlink" href="#ordinal" title="Link to this heading">#</a></h3>
+<p>Data memiliki tingkatan.
+Contoh: rendah, sedang, tinggi.</p>
+</section>
+<section id="biner">
+<h3>5.3 Biner<a class="headerlink" href="#biner" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Simetris → kedua nilai sama penting</p></li>
+<li><p>Asimetris → salah satu nilai lebih penting</p></li>
+</ul>
+</section>
+<section id="numerik">
+<h3>5.4 Numerik<a class="headerlink" href="#numerik" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Interval Scale → tidak memiliki nol mutlak</p></li>
+<li><p>Ratio Scale → memiliki nol mutlak</p></li>
+</ul>
+<p>Nilai numerik dapat berupa:</p>
+<ul class="simple">
+<li><p>Diskrit</p></li>
+<li><p>Kontinu</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="konsep-atribut-dan-variabel">
+<h2>6. Konsep Atribut dan Variabel<a class="headerlink" href="#konsep-atribut-dan-variabel" title="Link to this heading">#</a></h2>
+<p>Dalam data mining, kolom disebut:</p>
+<ul class="simple">
+<li><p>Fitur</p></li>
+<li><p>Atribut</p></li>
+<li><p>Dimensi</p></li>
+<li><p>Variabel</p></li>
+</ul>
+<section id="independent-variable">
+<h3>Independent Variable<a class="headerlink" href="#independent-variable" title="Link to this heading">#</a></h3>
+<p>Variabel yang mempengaruhi.</p>
+</section>
+<section id="dependent-variable-target">
+<h3>Dependent Variable (Target)<a class="headerlink" href="#dependent-variable-target" title="Link to this heading">#</a></h3>
+<p>Variabel yang dipengaruhi.</p>
+<p>Target tidak termasuk fitur dalam proses modeling.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="seleksi-fitur">
+<h2>7. Seleksi Fitur<a class="headerlink" href="#seleksi-fitur" title="Link to this heading">#</a></h2>
+<p>Seleksi fitur adalah proses menghapus fitur yang tidak berpengaruh terhadap target.</p>
+<p>Tujuan:</p>
+<ul class="simple">
+<li><p>Mengurangi dimensi</p></li>
+<li><p>Mengurangi noise</p></li>
+<li><p>Meningkatkan akurasi model</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="korelasi">
+<h2>8. Korelasi<a class="headerlink" href="#korelasi" title="Link to this heading">#</a></h2>
+<p>Korelasi digunakan untuk mengukur hubungan antar variabel numerik.</p>
+<p>Nilai korelasi:</p>
+<ul class="simple">
+<li><p>Mendekati +1 → hubungan positif kuat</p></li>
+<li><p>Mendekati -1 → hubungan negatif kuat</p></li>
+<li><p>Mendekati 0 → tidak ada hubungan</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="data-object">
+<h2>9. Data Object<a class="headerlink" href="#data-object" title="Link to this heading">#</a></h2>
+<p>Data object adalah representasi satu entitas dalam dataset.</p>
+<p>Contoh pada dataset Iris:</p>
+<ul class="simple">
+<li><p>Satu baris data = satu bunga Iris</p></li>
+<li><p>Kolom = atribut dari bunga tersebut</p></li>
+</ul>
+</section>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="analisis-dataset-iris">
@@ -490,10 +604,10 @@ document.write(`
 </pre></div>
 </div>
 </section>
-</section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="statistik-deskriptif">
-<h1>2. Statistik Deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h1>
+<section id="statistik-deskriptif">
+<h2>2. Statistik Deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h2>
+</section>
 <section id="statistik-umum">
 <h2>2.1 Statistik Umum<a class="headerlink" href="#statistik-umum" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -536,11 +650,11 @@ document.write(`
 </pre></div>
 </div>
 </section>
-</section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="analisis-korelasi">
-<h1>3. Analisis Korelasi<a class="headerlink" href="#analisis-korelasi" title="Link to this heading">#</a></h1>
+<section id="analisis-korelasi">
+<h2>3. Analisis Korelasi<a class="headerlink" href="#analisis-korelasi" title="Link to this heading">#</a></h2>
 <p>Korelasi digunakan untuk melihat hubungan antar variabel numerik.</p>
+</section>
 <section id="korelasi-semua-variabel">
 <h2>3.1 Korelasi Semua Variabel<a class="headerlink" href="#korelasi-semua-variabel" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -714,10 +828,9 @@ document.write(`
 <li><p>Dataset Iris sangat cocok digunakan untuk permasalahan <strong>klasifikasi</strong>.</p></li>
 </ul>
 </section>
-</section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="visualisasi-scatter-plot">
-<h1>4. Visualisasi Scatter Plot<a class="headerlink" href="#visualisasi-scatter-plot" title="Link to this heading">#</a></h1>
+<section id="visualisasi-scatter-plot">
+<h2>4. Visualisasi Scatter Plot<a class="headerlink" href="#visualisasi-scatter-plot" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_length&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;petal_width&quot;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal Length&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal Width&quot;</span><span class="p">)</span>
@@ -725,6 +838,7 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</section>
 <hr class="docutils" />
 <section id="hasil-visualisasi">
 <h2>Hasil Visualisasi<a class="headerlink" href="#hasil-visualisasi" title="Link to this heading">#</a></h2>
@@ -831,18 +945,31 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan">Tujuan:</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pentingnya-memahami-data">3. Pentingnya Memahami Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#komponen-data-understanding">4. Komponen Data Understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-data">5. Types of Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nominal-kategorikal">5.1 Nominal (Kategorikal)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinal">5.2 Ordinal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biner">5.3 Biner</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerik">5.4 Numerik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-atribut-dan-variabel">6. Konsep Atribut dan Variabel</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-variable">Independent Variable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dependent-variable-target">Dependent Variable (Target)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur">7. Seleksi Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi">8. Korelasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-object">9. Data Object</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-dataset-iris">ANALISIS DATASET IRIS</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-membaca-dataset">1. Import Library dan Membaca Dataset</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">2. Statistik Deskriptif</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">2. Statistik Deskriptif</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-umum">2.1 Statistik Umum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-statistik-per-fitur">2.2 Ringkasan Statistik per Fitur</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi">3. Analisis Korelasi</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi">3. Analisis Korelasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-semua-variabel">3.1 Korelasi Semua Variabel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antar-fitur">3.2 Korelasi Antar Fitur</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-korelasi-dan-interpretasi">3.3 Tabel Korelasi dan Interpretasi</a></li>
@@ -854,9 +981,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil-python-dan-orange">3.5 Perbandingan Hasil Python dan Orange</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">3.6 Kesimpulan</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">4. Visualisasi Scatter Plot</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">4. Visualisasi Scatter Plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-visualisasi">Hasil Visualisasi</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-visualisasi">Interpretasi Visualisasi</a></li>
 </ul>
