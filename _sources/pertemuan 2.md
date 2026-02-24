@@ -330,3 +330,6 @@ Pada tahap Data Understanding:
 - Fitur petal merupakan fitur paling informatif.
 - Visualisasi dan korelasi mendukung bahwa dataset cocok untuk pemodelan klasifikasi.
 
+
+Tahap Data Understanding menjadi fondasi penting sebelum memasuki tahap Data Preparation dan Modeling.
+
