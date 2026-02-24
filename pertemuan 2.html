@@ -405,10 +405,15 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi">3. Analisis Korelasi</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-semua-variabel">3.1 Korelasi Semua Variabel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antar-fitur">3.2 Korelasi Antar Fitur</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-korelasi-dan-interpretasi">3.3 Tabel Korelasi dan Interpretasi</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-korelasi">Kesimpulan Korelasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-korelasi-dan-interpretasi">3.3 Tabel Korelasi dan Interpretasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validasi-korelasi-menggunakan-orange">3.4 Validasi Korelasi Menggunakan Orange</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tampilan-dataset-di-orange">Tampilan Dataset di Orange</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-korelasi-di-orange">Hasil Korelasi di Orange</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-visual-orange">Interpretasi Visual Orange</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil-python-dan-orange">3.5 Perbandingan Hasil Python dan Orange</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">3.6 Kesimpulan</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">4. Visualisasi Scatter Plot</a><ul class="visible nav section-nav flex-column">
@@ -602,14 +607,112 @@ document.write(`
 </tbody>
 </table>
 </div>
-<section id="kesimpulan-korelasi">
-<h3>Kesimpulan Korelasi<a class="headerlink" href="#kesimpulan-korelasi" title="Link to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="validasi-korelasi-menggunakan-orange">
+<h2>3.4 Validasi Korelasi Menggunakan Orange<a class="headerlink" href="#validasi-korelasi-menggunakan-orange" title="Link to this heading">#</a></h2>
+<p>Untuk memastikan hasil perhitungan korelasi dari Python sudah benar, dilakukan validasi menggunakan software <strong>Orange Data Mining</strong>.</p>
+<section id="tampilan-dataset-di-orange">
+<h3>Tampilan Dataset di Orange<a class="headerlink" href="#tampilan-dataset-di-orange" title="Link to this heading">#</a></h3>
+<p><img alt="Tabel Dataset Orange" src="images/orange_table.png" /></p>
+<p>Pada tampilan tersebut terlihat:</p>
 <ul class="simple">
-<li><p>Fitur <strong>petal_length dan petal_width</strong> memiliki korelasi paling kuat.</p></li>
-<li><p>Fitur sepal memiliki hubungan yang jauh lebih lemah.</p></li>
-<li><p>Fitur petal lebih efektif untuk membedakan spesies.</p></li>
+<li><p>Dataset terdiri dari <strong>150 data</strong></p></li>
+<li><p>Memiliki <strong>4 fitur numerik</strong></p>
+<ul>
+<li><p>sepal_length</p></li>
+<li><p>sepal_width</p></li>
+<li><p>petal_length</p></li>
+<li><p>petal_width</p></li>
+</ul>
+</li>
+<li><p>Memiliki <strong>1 fitur kategori (class/target)</strong> yaitu <code class="docutils literal notranslate"><span class="pre">species</span></code></p></li>
+</ul>
+<p>Hal ini sesuai dengan struktur dataset yang dibaca menggunakan Python.</p>
+</section>
+<hr class="docutils" />
+<section id="hasil-korelasi-di-orange">
+<h3>Hasil Korelasi di Orange<a class="headerlink" href="#hasil-korelasi-di-orange" title="Link to this heading">#</a></h3>
+<p><img alt="Korelasi Orange" src="_images/korelasi.png" /></p>
+<p>Berdasarkan hasil korelasi pada Orange diperoleh:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Peringkat</p></th>
+<th class="head"><p>Variabel 1</p></th>
+<th class="head"><p>Variabel 2</p></th>
+<th class="head"><p>Nilai Korelasi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>petal_length</p></td>
+<td><p>petal_width</p></td>
+<td><p>+0.963</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>petal_length</p></td>
+<td><p>sepal_length</p></td>
+<td><p>+0.872</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>petal_width</p></td>
+<td><p>sepal_length</p></td>
+<td><p>+0.818</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>petal_length</p></td>
+<td><p>sepal_width</p></td>
+<td><p>-0.421</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>petal_width</p></td>
+<td><p>sepal_width</p></td>
+<td><p>-0.357</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>sepal_length</p></td>
+<td><p>sepal_width</p></td>
+<td><p>-0.109</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="interpretasi-visual-orange">
+<h3>Interpretasi Visual Orange<a class="headerlink" href="#interpretasi-visual-orange" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Warna <strong>hijau</strong> menunjukkan korelasi positif.</p></li>
+<li><p>Warna <strong>biru</strong> menunjukkan korelasi negatif.</p></li>
+<li><p>Semakin panjang batang, semakin kuat hubungan antar variabel.</p></li>
 </ul>
 </section>
+</section>
+<hr class="docutils" />
+<section id="perbandingan-hasil-python-dan-orange">
+<h2>3.5 Perbandingan Hasil Python dan Orange<a class="headerlink" href="#perbandingan-hasil-python-dan-orange" title="Link to this heading">#</a></h2>
+<p>Jika dibandingkan dengan hasil perhitungan menggunakan Python:</p>
+<ul class="simple">
+<li><p>Nilai korelasi hampir identik.</p></li>
+<li><p>Perbedaan hanya pada pembulatan angka desimal.</p></li>
+<li><p>Tidak terdapat perbedaan signifikan.</p></li>
+</ul>
+<p>Hal ini menunjukkan bahwa:</p>
+<ol class="arabic simple">
+<li><p>Perhitungan korelasi sudah benar.</p></li>
+<li><p>Dataset konsisten.</p></li>
+<li><p>Tidak terdapat kesalahan dalam proses analisis.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>3.6 Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Berdasarkan analisis menggunakan dua tools (Python dan Orange), dapat disimpulkan:</p>
+<ul class="simple">
+<li><p><strong>petal_length dan petal_width</strong> merupakan pasangan variabel dengan korelasi paling kuat.</p></li>
+<li><p>Fitur <strong>petal</strong> lebih dominan dalam membedakan spesies dibandingkan fitur <strong>sepal</strong>.</p></li>
+<li><p>Fitur <strong>sepal_width</strong> cenderung memiliki korelasi negatif terhadap fitur petal.</p></li>
+<li><p>Dataset Iris sangat cocok digunakan untuk permasalahan <strong>klasifikasi</strong>.</p></li>
+</ul>
 </section>
 </section>
 <hr class="docutils" />
@@ -743,10 +846,15 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi">3. Analisis Korelasi</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-semua-variabel">3.1 Korelasi Semua Variabel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antar-fitur">3.2 Korelasi Antar Fitur</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-korelasi-dan-interpretasi">3.3 Tabel Korelasi dan Interpretasi</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-korelasi">Kesimpulan Korelasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-korelasi-dan-interpretasi">3.3 Tabel Korelasi dan Interpretasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validasi-korelasi-menggunakan-orange">3.4 Validasi Korelasi Menggunakan Orange</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tampilan-dataset-di-orange">Tampilan Dataset di Orange</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-korelasi-di-orange">Hasil Korelasi di Orange</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-visual-orange">Interpretasi Visual Orange</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil-python-dan-orange">3.5 Perbandingan Hasil Python dan Orange</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">3.6 Kesimpulan</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-scatter-plot">4. Visualisasi Scatter Plot</a><ul class="visible nav section-nav flex-column">

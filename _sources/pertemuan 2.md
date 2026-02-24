@@ -117,11 +117,77 @@ df["sepal_length"].corr(df["sepal_width"])
 | sepal_width  | petal_length | -0.43 | Sedang (Negatif) | Hubungan terbalik |
 | sepal_width  | petal_width  | -0.37 | Sedang (Negatif) | Hubungan terbalik |
 
-### Kesimpulan Korelasi
+---
 
-- Fitur **petal_length dan petal_width** memiliki korelasi paling kuat.
-- Fitur sepal memiliki hubungan yang jauh lebih lemah.
-- Fitur petal lebih efektif untuk membedakan spesies.
+## 3.4 Validasi Korelasi Menggunakan Orange
+
+Untuk memastikan hasil perhitungan korelasi dari Python sudah benar, dilakukan validasi menggunakan software **Orange Data Mining**.
+
+### Tampilan Dataset di Orange
+
+![Tabel Dataset Orange](images/orange_table.png)
+
+Pada tampilan tersebut terlihat:
+
+- Dataset terdiri dari **150 data**
+- Memiliki **4 fitur numerik**
+  - sepal_length
+  - sepal_width
+  - petal_length
+  - petal_width
+- Memiliki **1 fitur kategori (class/target)** yaitu `species`
+
+Hal ini sesuai dengan struktur dataset yang dibaca menggunakan Python.
+
+---
+
+### Hasil Korelasi di Orange
+
+![Korelasi Orange](images/korelasi.png)
+
+Berdasarkan hasil korelasi pada Orange diperoleh:
+
+| Peringkat | Variabel 1     | Variabel 2     | Nilai Korelasi |
+|------------|---------------|---------------|---------------|
+| 1 | petal_length | petal_width  | +0.963 |
+| 2 | petal_length | sepal_length | +0.872 |
+| 3 | petal_width  | sepal_length | +0.818 |
+| 4 | petal_length | sepal_width  | -0.421 |
+| 5 | petal_width  | sepal_width  | -0.357 |
+| 6 | sepal_length | sepal_width  | -0.109 |
+
+### Interpretasi Visual Orange
+
+- Warna **hijau** menunjukkan korelasi positif.
+- Warna **biru** menunjukkan korelasi negatif.
+- Semakin panjang batang, semakin kuat hubungan antar variabel.
+
+---
+
+## 3.5 Perbandingan Hasil Python dan Orange
+
+Jika dibandingkan dengan hasil perhitungan menggunakan Python:
+
+- Nilai korelasi hampir identik.
+- Perbedaan hanya pada pembulatan angka desimal.
+- Tidak terdapat perbedaan signifikan.
+
+Hal ini menunjukkan bahwa:
+
+1. Perhitungan korelasi sudah benar.
+2. Dataset konsisten.
+3. Tidak terdapat kesalahan dalam proses analisis.
+
+---
+
+## 3.6 Kesimpulan
+
+Berdasarkan analisis menggunakan dua tools (Python dan Orange), dapat disimpulkan:
+
+- **petal_length dan petal_width** merupakan pasangan variabel dengan korelasi paling kuat.
+- Fitur **petal** lebih dominan dalam membedakan spesies dibandingkan fitur **sepal**.
+- Fitur **sepal_width** cenderung memiliki korelasi negatif terhadap fitur petal.
+- Dataset Iris sangat cocok digunakan untuk permasalahan **klasifikasi**.
 
 ---
 
