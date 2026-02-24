@@ -196,7 +196,7 @@ Petal_length dan petal_width efektif digunakan untuk membedakan spesies.
 
 Berikut adalah visualisasi hubungan antara petal_length dan petal_width:
 
-![Scatter Plot Iris](images/scater.png)
+![Scatter Plot Iris](images/scater.png)(images/scaterr2.png)
 
     Gambar di atas merupakan hasil visualisasi menggunakan Orange dengan pewarnaan berdasarkan spesies.
     Terlihat bahwa spesies Setosa terpisah jelas, sedangkan Versicolor dan Virginica memiliki kedekatan tetapi masih dapat dibedakan.
