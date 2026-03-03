@@ -409,15 +409,25 @@ document.write(`
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-dataset-iris">ANALISIS DATASET IRIS</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-membaca-dataset">1. Import Library dan Membaca Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dataset">1.1 Informasi Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kelas">1.2 Distribusi Kelas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-bersifat-seimbang-balanced-dataset-karena-setiap-kelas-memiliki-jumlah-data-yang-sama">Dataset bersifat <strong>seimbang (balanced dataset)</strong> karena setiap kelas memiliki jumlah data yang sama.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-missing-value">1.3 Pemeriksaan Missing Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dataset-df-info">1.1 Informasi Dataset (df.info)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi">Interpretasi:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kelas-value-counts">1.2 Distribusi Kelas (value_counts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Interpretasi:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-missing-value">1.3 Pemeriksaan Missing Value</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Interpretasi:</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">2. Statistik Deskriptif</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-umum">2.1 Statistik Umum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-statistik-per-fitur">2.2 Ringkasan Statistik per Fitur</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-outlier">2.3 Identifikasi Outlier</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi">3. Analisis Korelasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-outlier">2.3 Identifikasi Outlier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Interpretasi:</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-semua-variabel">3.1 Korelasi Semua Variabel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antar-fitur">3.2 Korelasi Antar Fitur</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-korelasi-dan-interpretasi">3.3 Tabel Korelasi dan Interpretasi</a></li>
@@ -608,45 +618,95 @@ Contoh: rendah, sedang, tinggi.</p>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
+<hr class="docutils" />
+<hr class="docutils" />
 </section>
 <hr class="docutils" />
-<section id="informasi-dataset">
-<h2>1.1 Informasi Dataset<a class="headerlink" href="#informasi-dataset" title="Link to this heading">#</a></h2>
+<section id="informasi-dataset-df-info">
+<h2>1.1 Informasi Dataset (<a class="reference external" href="http://df.info">df.info</a>)<a class="headerlink" href="#informasi-dataset-df-info" title="Link to this heading">#</a></h2>
+<p>Untuk melihat struktur dataset digunakan perintah berikut:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Digunakan untuk melihat:</p>
+<p>Hasil output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.DataFrame&#39;&gt;
+RangeIndex: 150 entries, 0 to 149
+Data columns (total 5 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   sepal_length  150 non-null    float64
+ 1   sepal_width   150 non-null    float64
+ 2   petal_length  150 non-null    float64
+ 3   petal_width   150 non-null    float64
+ 4   species       150 non-null    str    
+dtypes: float64(4), str(1)
+memory usage: 6.0 KB
+</pre></div>
+</div>
+<section id="interpretasi">
+<h3>Interpretasi:<a class="headerlink" href="#interpretasi" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Jumlah data (entries)</p></li>
-<li><p>Tipe data setiap kolom</p></li>
-<li><p>Apakah terdapat missing value</p></li>
+<li><p>Dataset memiliki <strong>150 data (entries)</strong>.</p></li>
+<li><p>Terdapat <strong>5 kolom</strong>.</p></li>
+<li><p>4 kolom bertipe numerik (<code class="docutils literal notranslate"><span class="pre">float64</span></code>).</p></li>
+<li><p>1 kolom bertipe kategorikal (<code class="docutils literal notranslate"><span class="pre">str</span></code>) yaitu <code class="docutils literal notranslate"><span class="pre">species</span></code>.</p></li>
+<li><p>Tidak terdapat missing value (semua 150 non-null).</p></li>
+<li><p>Ukuran memori dataset sekitar <strong>6.0 KB</strong>.</p></li>
 </ul>
-<p>Hasil menunjukkan dataset memiliki <strong>150 entries dan 5 kolom</strong> tanpa nilai kosong.</p>
+<p>Berdasarkan hasil tersebut, dataset dalam kondisi baik dan siap untuk tahap analisis lebih lanjut.</p>
 </section>
-<hr class="docutils" />
-<section id="distribusi-kelas">
-<h2>1.2 Distribusi Kelas<a class="headerlink" href="#distribusi-kelas" title="Link to this heading">#</a></h2>
+</section>
+<section id="distribusi-kelas-value-counts">
+<h2>1.2 Distribusi Kelas (value_counts)<a class="headerlink" href="#distribusi-kelas-value-counts" title="Link to this heading">#</a></h2>
+<p>Untuk melihat jumlah data pada setiap kelas digunakan perintah:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;species&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Hasil menunjukkan:</p>
+<p>Hasil output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">species</span>
+<span class="n">Iris</span><span class="o">-</span><span class="n">setosa</span>        <span class="mi">50</span>
+<span class="n">Iris</span><span class="o">-</span><span class="n">versicolor</span>    <span class="mi">50</span>
+<span class="n">Iris</span><span class="o">-</span><span class="n">virginica</span>     <span class="mi">50</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">count</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<section id="id1">
+<h3>Interpretasi:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Setosa: 50 data</p></li>
-<li><p>Versicolor: 50 data</p></li>
-<li><p>Virginica: 50 data</p></li>
+<li><p>Iris-setosa berjumlah 50 data</p></li>
+<li><p>Iris-versicolor berjumlah 50 data</p></li>
+<li><p>Iris-virginica berjumlah 50 data</p></li>
 </ul>
+<p>Dataset bersifat <strong>seimbang (balanced dataset)</strong> karena setiap kelas memiliki jumlah data yang sama.</p>
+<p>Kondisi ini sangat baik untuk permasalahan klasifikasi karena tidak menyebabkan model lebih condong ke salah satu kelas.</p>
 </section>
-<section id="dataset-bersifat-seimbang-balanced-dataset-karena-setiap-kelas-memiliki-jumlah-data-yang-sama">
-<h2>Dataset bersifat <strong>seimbang (balanced dataset)</strong> karena setiap kelas memiliki jumlah data yang sama.<a class="headerlink" href="#dataset-bersifat-seimbang-balanced-dataset-karena-setiap-kelas-memiliki-jumlah-data-yang-sama" title="Link to this heading">#</a></h2>
 </section>
+<hr class="docutils" />
 <section id="pemeriksaan-missing-value">
 <h2>1.3 Pemeriksaan Missing Value<a class="headerlink" href="#pemeriksaan-missing-value" title="Link to this heading">#</a></h2>
+<p>Untuk mengecek apakah terdapat data yang hilang digunakan perintah:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Seluruh kolom memiliki nilai 0 missing value, sehingga tidak diperlukan proses data cleaning.</p>
+<p>Hasil output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sepal_length</span>    <span class="mi">0</span>
+<span class="n">sepal_width</span>     <span class="mi">0</span>
+<span class="n">petal_length</span>    <span class="mi">0</span>
+<span class="n">petal_width</span>     <span class="mi">0</span>
+<span class="n">species</span>         <span class="mi">0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<section id="id2">
+<h3>Interpretasi:<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Seluruh kolom memiliki nilai 0 missing value.</p></li>
+<li><p>Tidak diperlukan proses data cleaning.</p></li>
+<li><p>Dataset memiliki kualitas data yang sangat baik.</p></li>
+</ul>
+<p>Dataset siap untuk tahap analisis statistik dan visualisasi.</p>
 </section>
-<hr class="docutils" />
+</section>
 <section id="statistik-deskriptif">
 <h2>2. Statistik Deskriptif<a class="headerlink" href="#statistik-deskriptif" title="Link to this heading">#</a></h2>
 </section>
@@ -692,26 +752,44 @@ Contoh: rendah, sedang, tinggi.</p>
 </pre></div>
 </div>
 <hr class="docutils" />
+<hr class="docutils" />
 </section>
 <hr class="docutils" />
 <section id="identifikasi-outlier">
 <h2>2.3 Identifikasi Outlier<a class="headerlink" href="#identifikasi-outlier" title="Link to this heading">#</a></h2>
-<p>Outlier dicek menggunakan metode IQR:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Q1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">Q3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p>Outlier dideteksi menggunakan metode <strong>IQR (Interquartile Range)</strong> dengan hanya mengambil kolom numerik.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df_numeric</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;float64&#39;</span><span class="p">])</span>
+
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">Q3</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
 <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
 
-<span class="n">outlier</span> <span class="o">=</span> <span class="p">((</span><span class="n">df</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span><span class="p">))</span> <span class="o">|</span>
-           <span class="p">(</span><span class="n">df</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span><span class="p">)))</span>
+<span class="n">outlier</span> <span class="o">=</span> <span class="p">((</span><span class="n">df_numeric</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span><span class="p">))</span> <span class="o">|</span>
+           <span class="p">(</span><span class="n">df_numeric</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span><span class="p">)))</span>
 
 <span class="n">outlier</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Hasil menunjukkan tidak terdapat outlier signifikan pada dataset.</p>
+<p>Hasil output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sepal_length</span>    <span class="mi">0</span>
+<span class="n">sepal_width</span>     <span class="mi">4</span>
+<span class="n">petal_length</span>    <span class="mi">0</span>
+<span class="n">petal_width</span>     <span class="mi">0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<section id="id3">
+<h3>Interpretasi:<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_length</span></code> → tidak terdapat outlier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_width</span></code> → terdapat 4 data yang terindikasi sebagai outlier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_length</span></code> → tidak terdapat outlier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_width</span></code> → tidak terdapat outlier</p></li>
+</ul>
+<p>Outlier hanya ditemukan pada fitur <strong>sepal_width</strong> sebanyak 4 data.</p>
+<p>Namun jumlah tersebut sangat kecil dibandingkan total 150 data, sehingga tidak memberikan dampak signifikan terhadap analisis secara keseluruhan.</p>
+<p>Dataset masih dapat dianggap stabil dan layak digunakan untuk tahap analisis lanjutan.</p>
 </section>
-<section id="analisis-korelasi">
-<h2>3. Analisis Korelasi<a class="headerlink" href="#analisis-korelasi" title="Link to this heading">#</a></h2>
-<p>Korelasi digunakan untuk melihat hubungan antar variabel numerik.</p>
 </section>
 <section id="korelasi-semua-variabel">
 <h2>3.1 Korelasi Semua Variabel<a class="headerlink" href="#korelasi-semua-variabel" title="Link to this heading">#</a></h2>
@@ -1025,15 +1103,25 @@ Contoh: rendah, sedang, tinggi.</p>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-dataset-iris">ANALISIS DATASET IRIS</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-dan-membaca-dataset">1. Import Library dan Membaca Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dataset">1.1 Informasi Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kelas">1.2 Distribusi Kelas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-bersifat-seimbang-balanced-dataset-karena-setiap-kelas-memiliki-jumlah-data-yang-sama">Dataset bersifat <strong>seimbang (balanced dataset)</strong> karena setiap kelas memiliki jumlah data yang sama.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-missing-value">1.3 Pemeriksaan Missing Value</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#informasi-dataset-df-info">1.1 Informasi Dataset (df.info)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi">Interpretasi:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribusi-kelas-value-counts">1.2 Distribusi Kelas (value_counts)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Interpretasi:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pemeriksaan-missing-value">1.3 Pemeriksaan Missing Value</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Interpretasi:</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-deskriptif">2. Statistik Deskriptif</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistik-umum">2.1 Statistik Umum</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-statistik-per-fitur">2.2 Ringkasan Statistik per Fitur</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-outlier">2.3 Identifikasi Outlier</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-korelasi">3. Analisis Korelasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-outlier">2.3 Identifikasi Outlier</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Interpretasi:</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-semua-variabel">3.1 Korelasi Semua Variabel</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#korelasi-antar-fitur">3.2 Korelasi Antar Fitur</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-korelasi-dan-interpretasi">3.3 Tabel Korelasi dan Interpretasi</a></li>

@@ -151,45 +151,101 @@ df.head()
 ```
 ---
 
-## 1.1 Informasi Dataset
+---
+---
+
+## 1.1 Informasi Dataset (df.info)
+
+Untuk melihat struktur dataset digunakan perintah berikut:
 
 ```python
 df.info()
 ```
 
-Digunakan untuk melihat:
-- Jumlah data (entries)
-- Tipe data setiap kolom
-- Apakah terdapat missing value
+Hasil output:
 
-Hasil menunjukkan dataset memiliki **150 entries dan 5 kolom** tanpa nilai kosong.
+```
+<class 'pandas.DataFrame'>
+RangeIndex: 150 entries, 0 to 149
+Data columns (total 5 columns):
+ #   Column        Non-Null Count  Dtype  
+---  ------        --------------  -----  
+ 0   sepal_length  150 non-null    float64
+ 1   sepal_width   150 non-null    float64
+ 2   petal_length  150 non-null    float64
+ 3   petal_width   150 non-null    float64
+ 4   species       150 non-null    str    
+dtypes: float64(4), str(1)
+memory usage: 6.0 KB
+```
 
----
+### Interpretasi:
 
-## 1.2 Distribusi Kelas
+- Dataset memiliki **150 data (entries)**.
+- Terdapat **5 kolom**.
+- 4 kolom bertipe numerik (`float64`).
+- 1 kolom bertipe kategorikal (`str`) yaitu `species`.
+- Tidak terdapat missing value (semua 150 non-null).
+- Ukuran memori dataset sekitar **6.0 KB**.
+
+Berdasarkan hasil tersebut, dataset dalam kondisi baik dan siap untuk tahap analisis lebih lanjut.
+
+## 1.2 Distribusi Kelas (value_counts)
+
+Untuk melihat jumlah data pada setiap kelas digunakan perintah:
 
 ```python
 df["species"].value_counts()
 ```
 
-Hasil menunjukkan:
+Hasil output:
 
-- Setosa: 50 data  
-- Versicolor: 50 data  
-- Virginica: 50 data  
+```
+species
+Iris-setosa        50
+Iris-versicolor    50
+Iris-virginica     50
+Name: count, dtype: int64
+```
+
+### Interpretasi:
+
+- Iris-setosa berjumlah 50 data  
+- Iris-versicolor berjumlah 50 data  
+- Iris-virginica berjumlah 50 data  
 
 Dataset bersifat **seimbang (balanced dataset)** karena setiap kelas memiliki jumlah data yang sama.
+
+Kondisi ini sangat baik untuk permasalahan klasifikasi karena tidak menyebabkan model lebih condong ke salah satu kelas.
+
 ---
 
 ## 1.3 Pemeriksaan Missing Value
+
+Untuk mengecek apakah terdapat data yang hilang digunakan perintah:
 
 ```python
 df.isnull().sum()
 ```
 
-Seluruh kolom memiliki nilai 0 missing value, sehingga tidak diperlukan proses data cleaning.
+Hasil output:
 
----
+```
+sepal_length    0
+sepal_width     0
+petal_length    0
+petal_width     0
+species         0
+dtype: int64
+```
+
+### Interpretasi:
+
+- Seluruh kolom memiliki nilai 0 missing value.
+- Tidak diperlukan proses data cleaning.
+- Dataset memiliki kualitas data yang sangat baik.
+
+Dataset siap untuk tahap analisis statistik dan visualisasi.
 
 ## 2. Statistik Deskriptif
 
@@ -221,26 +277,47 @@ df["sepal_length"].describe()
 ---
 ---
 
+---
+
 ## 2.3 Identifikasi Outlier
 
-Outlier dicek menggunakan metode IQR:
+Outlier dideteksi menggunakan metode **IQR (Interquartile Range)** dengan hanya mengambil kolom numerik.
 
 ```python
-Q1 = df.quantile(0.25, numeric_only=True)
-Q3 = df.quantile(0.75, numeric_only=True)
+df_numeric = df.select_dtypes(include=['float64'])
+
+Q1 = df_numeric.quantile(0.25)
+Q3 = df_numeric.quantile(0.75)
 IQR = Q3 - Q1
 
-outlier = ((df < (Q1 - 1.5 * IQR)) |
-           (df > (Q3 + 1.5 * IQR)))
+outlier = ((df_numeric < (Q1 - 1.5 * IQR)) |
+           (df_numeric > (Q3 + 1.5 * IQR)))
 
 outlier.sum()
 ```
 
-Hasil menunjukkan tidak terdapat outlier signifikan pada dataset.
+Hasil output:
 
-## 3. Analisis Korelasi
+```
+sepal_length    0
+sepal_width     4
+petal_length    0
+petal_width     0
+dtype: int64
+```
 
-Korelasi digunakan untuk melihat hubungan antar variabel numerik.
+### Interpretasi:
+
+- `sepal_length` → tidak terdapat outlier  
+- `sepal_width` → terdapat 4 data yang terindikasi sebagai outlier  
+- `petal_length` → tidak terdapat outlier  
+- `petal_width` → tidak terdapat outlier  
+
+Outlier hanya ditemukan pada fitur **sepal_width** sebanyak 4 data.  
+
+Namun jumlah tersebut sangat kecil dibandingkan total 150 data, sehingga tidak memberikan dampak signifikan terhadap analisis secara keseluruhan.
+
+Dataset masih dapat dianggap stabil dan layak digunakan untuk tahap analisis lanjutan.
 
 ## 3.1 Korelasi Semua Variabel
 
