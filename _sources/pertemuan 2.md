@@ -149,6 +149,45 @@ import matplotlib.pyplot as plt
 df = pd.read_csv("iris.csv")
 df.head()
 ```
+---
+
+## 1.1 Informasi Dataset
+
+```python
+df.info()
+```
+
+Digunakan untuk melihat:
+- Jumlah data (entries)
+- Tipe data setiap kolom
+- Apakah terdapat missing value
+
+Hasil menunjukkan dataset memiliki **150 entries dan 5 kolom** tanpa nilai kosong.
+
+---
+
+## 1.2 Distribusi Kelas
+
+```python
+df["species"].value_counts()
+```
+
+Hasil menunjukkan:
+
+- Setosa: 50 data  
+- Versicolor: 50 data  
+- Virginica: 50 data  
+
+Dataset bersifat **seimbang (balanced dataset)** karena setiap kelas memiliki jumlah data yang sama.
+---
+
+## 1.3 Pemeriksaan Missing Value
+
+```python
+df.isnull().sum()
+```
+
+Seluruh kolom memiliki nilai 0 missing value, sehingga tidak diperlukan proses data cleaning.
 
 ---
 
@@ -180,6 +219,24 @@ df["sepal_length"].describe()
 ```
 
 ---
+---
+
+## 2.3 Identifikasi Outlier
+
+Outlier dicek menggunakan metode IQR:
+
+```python
+Q1 = df.quantile(0.25, numeric_only=True)
+Q3 = df.quantile(0.75, numeric_only=True)
+IQR = Q3 - Q1
+
+outlier = ((df < (Q1 - 1.5 * IQR)) |
+           (df > (Q3 + 1.5 * IQR)))
+
+outlier.sum()
+```
+
+Hasil menunjukkan tidak terdapat outlier signifikan pada dataset.
 
 ## 3. Analisis Korelasi
 
