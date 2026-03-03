@@ -154,7 +154,7 @@ df.head()
 ---
 ---
 
-## 1.1 Informasi Dataset (df.info)
+## 1.1 Informasi Dataset
 
 Untuk melihat struktur dataset digunakan perintah berikut:
 
