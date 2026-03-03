@@ -4,6 +4,6 @@
 format: jb-book
 root: intro
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: pertemuan-1
+- file: pertemuan-2
+- file: pertemuan-3
