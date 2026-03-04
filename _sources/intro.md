@@ -1,11 +1,14 @@
-# Welcome to your Jupyter Book
+# BIODATA
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+- **Nama:** Ach Rayyan  
+- **NIM:** 240411100188  
+- **Kelas:** Penambangan Data A
+- **Email:** madfahhor@gmail.com  
+- **Program Studi:** Teknik Informatika  
 
-Check out the content pages bundled with this sample book to see more.
 
-```{tableofcontents}
-```
+## Introduction
+
+Mata kuliah Penambangan Data mempelajari teknik dan metode untuk menggali informasi serta pola tersembunyi dari sekumpulan data. Dalam era digital saat ini, data menjadi aset penting yang dapat digunakan untuk mendukung pengambilan keputusan secara lebih akurat dan efektif. 
+
+Melalui materi ini, berbagai konsep dasar, proses analisis, serta penerapan metode penambangan data akan dibahas secara sistematis.

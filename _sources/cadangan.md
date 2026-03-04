@@ -16,8 +16,10 @@ Orange: Mirip dengan KNIME, Orange adalah perangkat lunak sumber terbuka (open-s
 ## Pengertian Aplikasi Database (Penyimpanan Data)
 Aplikasi ini digunakan untuk menyimpan dan mengelola data dalam skala besar:
 
+
 PostgreSQL: Sistem manajemen database relasional (RDBMS) yang sangat canggih dan bersifat open-source. PostgreSQL dikenal karena ketangguhannya dalam menangani data yang kompleks dan besar dengan sangat stabil.
 
 
 MySQL: Database relasional yang paling populer di dunia karena kecepatannya dan kemudahan penggunaannya. MySQL banyak digunakan untuk aplikasi web dan server
 ini tambbahan
+
