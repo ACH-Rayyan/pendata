@@ -1,24 +1,13 @@
-# pertemuan 3
-# DATA PREPARATION — PERTEMUAN 3
+# PERTEMUAN 3
 ## Studi Kasus: Iris + Data Campuran (Mixed-Type)
 
-```{admonition} Identitas Mahasiswa
-:class: note
-
-| | |
-|---|---|
-| **Nama** | Ach Rayyan |
-| **NIM** | 240411100188 |
-| **Mata Kuliah** | Penambangan Data |
-| **Pertemuan** | 3 — Data Preparation |
-```
 
 Dokumen ini melanjutkan materi Data Preparation dalam kerangka **CRISP-DM** yang mencakup:
 identifikasi missing value, statistik deskriptif, encoding, scaling, **pengukuran jarak**, dan penanganan **data campuran (mixed-type)**.
 
 ---
 
-## ✅ Tugas Pertemuan 3
+## Tugas Pertemuan 3
 
 ```{admonition} Tugas yang Harus Diselesaikan
 :class: important
