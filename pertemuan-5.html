@@ -202,6 +202,7 @@
 
 
 
+
 </ul>
 
     </div>
@@ -435,6 +436,14 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-menghitung-pembilang">Tahap 5 – Menghitung Pembilang</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-perhitungan-wknn">Tabel Perhitungan WKNN</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-menghitung-estimasi-nilai">Tahap 6 – Menghitung Estimasi Nilai</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-normalisasi-dan-imputasi-missing-value-menggunakan-python-di-orange">3. Implementasi Normalisasi dan Imputasi Missing Value Menggunakan Python di Orange</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-implementasi-pada-orange-data-mining">Hasil Implementasi pada Orange Data Mining</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sebelum-diproses">Data Sebelum Diproses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-setelah-diproses">Data Setelah Diproses</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -1043,6 +1052,105 @@ JML ≈ 2.5</p>
 <p>Nilai tersebut merupakan perkiraan untuk nilai <strong>JML yang sebelumnya tidak diketahui pada baris ke-7</strong>.</p>
 <p><img alt="Perhitungan WKNN" src="_images/wknn5.png" /></p>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementasi-normalisasi-dan-imputasi-missing-value-menggunakan-python-di-orange">
+<h1>3. Implementasi Normalisasi dan Imputasi Missing Value Menggunakan Python di Orange<a class="headerlink" href="#implementasi-normalisasi-dan-imputasi-missing-value-menggunakan-python-di-orange" title="Link to this heading">#</a></h1>
+<p>Selain melakukan perhitungan secara manual menggunakan Microsoft Excel, proses pengolahan data juga dapat dilakukan secara otomatis menggunakan bahasa pemrograman Python pada aplikasi Orange Data Mining.</p>
+<p>Pada tahap ini dilakukan dua proses utama yaitu <strong>normalisasi data menggunakan metode Min-Max</strong> dan <strong>pengisian nilai yang hilang menggunakan metode Weighted K-Nearest Neighbor (WKNN)</strong>. Normalisasi Min-Max digunakan untuk mengubah skala nilai data ke dalam rentang 0 sampai 1 sehingga perbedaan skala antar atribut tidak mempengaruhi perhitungan jarak.</p>
+<p>Setelah data dinormalisasi, metode WKNN digunakan untuk memperkirakan nilai yang hilang dengan cara menghitung kemiripan antar data berdasarkan jarak antar atribut. Data yang memiliki jarak lebih dekat akan memiliki bobot yang lebih besar dalam proses estimasi nilai yang hilang.</p>
+<p>Berikut merupakan implementasi kode Python yang digunakan pada Orange Data Mining untuk melakukan proses normalisasi dan imputasi missing value secara otomatis.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Orange.data.pandas_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">table_to_frame</span><span class="p">,</span> <span class="n">table_from_frame</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="k">if</span> <span class="n">in_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+    <span class="c1"># Konversi data dari Orange menjadi DataFrame</span>
+    <span class="n">data_frame</span> <span class="o">=</span> <span class="n">table_to_frame</span><span class="p">(</span><span class="n">in_data</span><span class="p">)</span>
+
+    <span class="c1"># Ambil hanya kolom numerik</span>
+    <span class="n">num_columns</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    <span class="n">df_numeric</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="n">num_columns</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="c1"># ----------------------------</span>
+    <span class="c1"># Normalisasi Min-Max</span>
+    <span class="c1"># ----------------------------</span>
+    <span class="n">normalizer</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+    <span class="n">df_numeric</span><span class="p">[</span><span class="n">num_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">normalizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_numeric</span><span class="p">[</span><span class="n">num_columns</span><span class="p">])</span>
+
+    <span class="c1"># ----------------------------</span>
+    <span class="c1"># Proses Imputasi Missing Value (WKNN)</span>
+    <span class="c1"># ----------------------------</span>
+
+    <span class="c1"># Mencari baris yang memiliki nilai kosong</span>
+    <span class="n">missing_rows</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="n">data_frame</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span>
+
+    <span class="k">for</span> <span class="n">row_id</span> <span class="ow">in</span> <span class="n">missing_rows</span><span class="p">:</span>
+
+        <span class="c1"># Menentukan kolom mana yang kosong</span>
+        <span class="n">missing_columns</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">data_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row_id</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">missing_columns</span><span class="p">:</span>
+
+            <span class="c1"># Lewati jika bukan numerik</span>
+            <span class="k">if</span> <span class="n">target</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">num_columns</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Ambil data tetangga yang memiliki nilai pada kolom target</span>
+            <span class="n">neighbor_index</span> <span class="o">=</span> <span class="n">data_frame</span><span class="p">[</span><span class="n">data_frame</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span><span class="o">.</span><span class="n">index</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">neighbor_index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Menentukan fitur yang bisa digunakan untuk menghitung jarak</span>
+            <span class="n">available_features</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df_numeric</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row_id</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
+            <span class="n">distance_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">available_features</span> <span class="k">if</span> <span class="n">f</span> <span class="o">!=</span> <span class="n">target</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">distance_features</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Data fitur target dan tetangga</span>
+            <span class="n">target_vector</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row_id</span><span class="p">,</span> <span class="n">distance_features</span><span class="p">]</span>
+            <span class="n">neighbor_vectors</span> <span class="o">=</span> <span class="n">df_numeric</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">neighbor_index</span><span class="p">,</span> <span class="n">distance_features</span><span class="p">]</span>
+
+            <span class="c1"># Menghitung jarak Euclidean kuadrat</span>
+            <span class="n">distance_sq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">((</span><span class="n">neighbor_vectors</span> <span class="o">-</span> <span class="n">target_vector</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+            <span class="c1"># Menghitung bobot</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">distance_sq</span> <span class="o">+</span> <span class="mf">1e-10</span><span class="p">)</span>
+
+            <span class="c1"># Mengambil nilai target dari tetangga</span>
+            <span class="n">neighbor_values</span> <span class="o">=</span> <span class="n">data_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">neighbor_index</span><span class="p">,</span> <span class="n">target</span><span class="p">]</span>
+
+            <span class="c1"># Estimasi menggunakan weighted average</span>
+            <span class="n">predicted_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weights</span> <span class="o">*</span> <span class="n">neighbor_values</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+            <span class="c1"># Mengisi nilai yang hilang</span>
+            <span class="n">data_frame</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row_id</span><span class="p">,</span> <span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">predicted_value</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Estimasi baris </span><span class="si">{</span><span class="n">row_id</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">, kolom </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">predicted_value</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># ----------------------------</span>
+    <span class="c1"># Mengembalikan hasil ke Orange</span>
+    <span class="c1"># ----------------------------</span>
+    <span class="n">out_data</span> <span class="o">=</span> <span class="n">table_from_frame</span><span class="p">(</span><span class="n">data_frame</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<section id="hasil-implementasi-pada-orange-data-mining">
+<h2>Hasil Implementasi pada Orange Data Mining<a class="headerlink" href="#hasil-implementasi-pada-orange-data-mining" title="Link to this heading">#</a></h2>
+<p>Berikut merupakan tampilan dataset sebelum dilakukan proses normalisasi dan imputasi missing value pada Orange Data Mining.</p>
+<section id="data-sebelum-diproses">
+<h3>Data Sebelum Diproses<a class="headerlink" href="#data-sebelum-diproses" title="Link to this heading">#</a></h3>
+<p><img alt="Data Sebelum" src="_images/sebelum5.png" /></p>
+<p>Gambar di atas menunjukkan kondisi dataset awal yang masih memiliki nilai yang hilang pada beberapa atribut.</p>
+</section>
+<section id="data-setelah-diproses">
+<h3>Data Setelah Diproses<a class="headerlink" href="#data-setelah-diproses" title="Link to this heading">#</a></h3>
+<p><img alt="Data Sesudah" src="_images/sesudah5.png" /></p>
+<p>Setelah dilakukan proses normalisasi menggunakan metode Min-Max dan imputasi missing value menggunakan metode Weighted K-Nearest Neighbor (WKNN), nilai yang sebelumnya kosong berhasil diestimasi sehingga dataset menjadi lebih lengkap untuk proses analisis selanjutnya.</p>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1137,6 +1245,14 @@ JML ≈ 2.5</p>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-menghitung-pembilang">Tahap 5 – Menghitung Pembilang</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-perhitungan-wknn">Tabel Perhitungan WKNN</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-menghitung-estimasi-nilai">Tahap 6 – Menghitung Estimasi Nilai</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-normalisasi-dan-imputasi-missing-value-menggunakan-python-di-orange">3. Implementasi Normalisasi dan Imputasi Missing Value Menggunakan Python di Orange</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-implementasi-pada-orange-data-mining">Hasil Implementasi pada Orange Data Mining</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sebelum-diproses">Data Sebelum Diproses</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-setelah-diproses">Data Setelah Diproses</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
   </nav></div>

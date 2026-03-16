@@ -408,3 +408,110 @@ JML ≈ 2.5
 Nilai tersebut merupakan perkiraan untuk nilai **JML yang sebelumnya tidak diketahui pada baris ke-7**.
 
 ![Perhitungan WKNN](images/wknn5.png)
+
+# 3. Implementasi Normalisasi dan Imputasi Missing Value Menggunakan Python di Orange
+
+Selain melakukan perhitungan secara manual menggunakan Microsoft Excel, proses pengolahan data juga dapat dilakukan secara otomatis menggunakan bahasa pemrograman Python pada aplikasi Orange Data Mining. 
+
+Pada tahap ini dilakukan dua proses utama yaitu **normalisasi data menggunakan metode Min-Max** dan **pengisian nilai yang hilang menggunakan metode Weighted K-Nearest Neighbor (WKNN)**. Normalisasi Min-Max digunakan untuk mengubah skala nilai data ke dalam rentang 0 sampai 1 sehingga perbedaan skala antar atribut tidak mempengaruhi perhitungan jarak.
+
+Setelah data dinormalisasi, metode WKNN digunakan untuk memperkirakan nilai yang hilang dengan cara menghitung kemiripan antar data berdasarkan jarak antar atribut. Data yang memiliki jarak lebih dekat akan memiliki bobot yang lebih besar dalam proses estimasi nilai yang hilang.
+
+Berikut merupakan implementasi kode Python yang digunakan pada Orange Data Mining untuk melakukan proses normalisasi dan imputasi missing value secara otomatis.
+
+
+```python
+import numpy as np
+import pandas as pd
+from Orange.data.pandas_compat import table_to_frame, table_from_frame
+from sklearn.preprocessing import MinMaxScaler
+
+if in_data is not None:
+
+    # Konversi data dari Orange menjadi DataFrame
+    data_frame = table_to_frame(in_data)
+
+    # Ambil hanya kolom numerik
+    num_columns = data_frame.select_dtypes(include=[np.number]).columns
+    df_numeric = data_frame[num_columns].copy()
+
+    # ----------------------------
+    # Normalisasi Min-Max
+    # ----------------------------
+    normalizer = MinMaxScaler()
+    df_numeric[num_columns] = normalizer.fit_transform(df_numeric[num_columns])
+
+    # ----------------------------
+    # Proses Imputasi Missing Value (WKNN)
+    # ----------------------------
+
+    # Mencari baris yang memiliki nilai kosong
+    missing_rows = data_frame[data_frame.isnull().any(axis=1)].index
+
+    for row_id in missing_rows:
+
+        # Menentukan kolom mana yang kosong
+        missing_columns = data_frame.columns[data_frame.loc[row_id].isnull()]
+
+        for target in missing_columns:
+
+            # Lewati jika bukan numerik
+            if target not in num_columns:
+                continue
+
+            # Ambil data tetangga yang memiliki nilai pada kolom target
+            neighbor_index = data_frame[data_frame[target].notnull()].index
+            if len(neighbor_index) == 0:
+                continue
+
+            # Menentukan fitur yang bisa digunakan untuk menghitung jarak
+            available_features = df_numeric.columns[df_numeric.loc[row_id].notnull()]
+            distance_features = [f for f in available_features if f != target]
+
+            if len(distance_features) == 0:
+                continue
+
+            # Data fitur target dan tetangga
+            target_vector = df_numeric.loc[row_id, distance_features]
+            neighbor_vectors = df_numeric.loc[neighbor_index, distance_features]
+
+            # Menghitung jarak Euclidean kuadrat
+            distance_sq = np.nansum((neighbor_vectors - target_vector) ** 2, axis=1)
+
+            # Menghitung bobot
+            weights = 1 / (distance_sq + 1e-10)
+
+            # Mengambil nilai target dari tetangga
+            neighbor_values = data_frame.loc[neighbor_index, target]
+
+            # Estimasi menggunakan weighted average
+            predicted_value = np.sum(weights * neighbor_values) / np.sum(weights)
+
+            # Mengisi nilai yang hilang
+            data_frame.loc[row_id, target] = round(predicted_value, 2)
+
+            print(f"Estimasi baris {row_id+1}, kolom {target}: {round(predicted_value,2)}")
+
+    # ----------------------------
+    # Mengembalikan hasil ke Orange
+    # ----------------------------
+    out_data = table_from_frame(data_frame)
+
+ ```
+   
+
+## Hasil Implementasi pada Orange Data Mining
+
+Berikut merupakan tampilan dataset sebelum dilakukan proses normalisasi dan imputasi missing value pada Orange Data Mining.
+
+### Data Sebelum Diproses
+
+![Data Sebelum](images/sebelum5.png)
+
+Gambar di atas menunjukkan kondisi dataset awal yang masih memiliki nilai yang hilang pada beberapa atribut.
+
+### Data Setelah Diproses
+
+![Data Sesudah](images/sesudah5.png)
+
+Setelah dilakukan proses normalisasi menggunakan metode Min-Max dan imputasi missing value menggunakan metode Weighted K-Nearest Neighbor (WKNN), nilai yang sebelumnya kosong berhasil diestimasi sehingga dataset menjadi lebih lengkap untuk proses analisis selanjutnya.
