@@ -58,6 +58,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan-5';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -187,6 +189,16 @@
 
 <li class="toctree-l1"><a class="reference internal" href="pertemuan-3.html">Pertemuan 3</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 5</a></li>
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -410,6 +422,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-decimal-scaling">Hasil Normalisasi Decimal Scaling</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value-imputation-menggunakan-weighted-k-nearest-neighbor-wknn">Missing Value Imputation Menggunakan Weighted K-Nearest Neighbor (WKNN)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-missing-value">Pengertian Missing Value</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-weighted-k-nearest-neighbor-wknn">Konsep Weighted K-Nearest Neighbor (WKNN)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-1-normalisasi-data">Tahap 1 – Normalisasi Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-2-menghitung-selisih-nilai">Tahap 2 – Menghitung Selisih Nilai</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-3-menghitung-kuadrat-selisih">Tahap 3 – Menghitung Kuadrat Selisih</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-4-menghitung-bobot">Tahap 4 – Menghitung Bobot</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-menghitung-pembilang">Tahap 5 – Menghitung Pembilang</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-perhitungan-wknn">Tabel Perhitungan WKNN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-menghitung-estimasi-nilai">Tahap 6 – Menghitung Estimasi Nilai</a></li>
 </ul>
 
             </nav>
@@ -769,6 +794,254 @@ x’ = x / 10^j</p>
 </div>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="missing-value-imputation-menggunakan-weighted-k-nearest-neighbor-wknn">
+<h1>Missing Value Imputation Menggunakan Weighted K-Nearest Neighbor (WKNN)<a class="headerlink" href="#missing-value-imputation-menggunakan-weighted-k-nearest-neighbor-wknn" title="Link to this heading">#</a></h1>
+<section id="pengertian-missing-value">
+<h2>Pengertian Missing Value<a class="headerlink" href="#pengertian-missing-value" title="Link to this heading">#</a></h2>
+<p>Dalam proses pengolahan data sering ditemukan kondisi dimana beberapa atribut tidak memiliki nilai atau nilainya tidak tersedia. Kondisi ini disebut <strong>missing value</strong>. Missing value dapat terjadi karena berbagai faktor seperti kesalahan saat pencatatan data, data yang tidak dikumpulkan, atau data yang hilang selama proses penyimpanan.</p>
+<p>Apabila missing value tidak ditangani dengan baik, maka proses analisis data dapat menghasilkan informasi yang kurang akurat. Oleh karena itu diperlukan teknik untuk memperkirakan atau mengisi nilai yang hilang tersebut.</p>
+<p>Salah satu metode yang dapat digunakan adalah <strong>Weighted K-Nearest Neighbor (WKNN)</strong>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="konsep-weighted-k-nearest-neighbor-wknn">
+<h1>Konsep Weighted K-Nearest Neighbor (WKNN)<a class="headerlink" href="#konsep-weighted-k-nearest-neighbor-wknn" title="Link to this heading">#</a></h1>
+<p>Metode <strong>WKNN</strong> merupakan pengembangan dari algoritma <strong>K-Nearest Neighbor (KNN)</strong>. Pada metode ini, nilai yang hilang diperkirakan dengan melihat data lain yang memiliki kemiripan paling tinggi dengan data target.</p>
+<p>Perbedaan utama antara KNN biasa dan WKNN terletak pada penggunaan <strong>bobot</strong>. Pada WKNN, setiap tetangga tidak memiliki pengaruh yang sama. Data yang jaraknya lebih dekat dengan data target akan memiliki bobot yang lebih besar dibandingkan data yang jaraknya lebih jauh.</p>
+<p>Secara umum langkah-langkah metode WKNN adalah sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Melakukan normalisasi data agar skala setiap atribut menjadi sebanding.</p></li>
+<li><p>Menghitung jarak antara data target dan data lain.</p></li>
+<li><p>Menghitung bobot berdasarkan jarak yang diperoleh.</p></li>
+<li><p>Menghitung estimasi nilai yang hilang menggunakan rata-rata tertimbang.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="dataset">
+<h1>Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h1>
+<p>Dataset yang digunakan terdiri dari tiga atribut yaitu <strong>IPK</strong>, <strong>PO</strong>, dan <strong>JML</strong>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>2000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>3000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>2000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>2000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>3000000</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>4</p></td>
+<td><p>4000000</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>3000000</p></td>
+<td><p>?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Pada baris ke-7 terdapat nilai <strong>JML</strong> yang belum diketahui. Nilai tersebut akan diperkirakan menggunakan metode <strong>WKNN</strong>.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tahap-1-normalisasi-data">
+<h1>Tahap 1 – Normalisasi Data<a class="headerlink" href="#tahap-1-normalisasi-data" title="Link to this heading">#</a></h1>
+<p>Karena nilai atribut <strong>IPK</strong> dan <strong>PO</strong> memiliki skala yang berbeda, maka data perlu dinormalisasi terlebih dahulu menggunakan metode <strong>Min-Max Normalization</strong>.</p>
+<p>Rumus yang digunakan:
+x’ = (x - min) / (max - min)</p>
+<p>Contoh rumus Excel untuk normalisasi <strong>IPK</strong>:
+=(A2-MIN(<span class="math notranslate nohighlight">\(A\)</span>2:<span class="math notranslate nohighlight">\(A\)</span>8))/(MAX(<span class="math notranslate nohighlight">\(A\)</span>2:<span class="math notranslate nohighlight">\(A\)</span>8)-MIN(<span class="math notranslate nohighlight">\(A\)</span>2:<span class="math notranslate nohighlight">\(A\)</span>8))</p>
+<p>Contoh rumus Excel untuk normalisasi <strong>PO</strong>:
+=(B2-MIN(<span class="math notranslate nohighlight">\(B\)</span>2:<span class="math notranslate nohighlight">\(B\)</span>8))/(MAX(<span class="math notranslate nohighlight">\(B\)</span>2:<span class="math notranslate nohighlight">\(B\)</span>8)-MIN(<span class="math notranslate nohighlight">\(B\)</span>2:<span class="math notranslate nohighlight">\(B\)</span>8))</p>
+<p>Hasil normalisasi data ditunjukkan pada tabel berikut.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>IPK</p></th>
+<th class="head"><p>PO</p></th>
+<th class="head"><p>JML</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.5</p></td>
+<td><p>0.5</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0.5</p></td>
+<td><p>0.5</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>0</p></td>
+<td><p>0.5</p></td>
+<td><p>?</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Baris ke-7 merupakan <strong>data target</strong> yang nilai JML-nya akan diprediksi.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tahap-2-menghitung-selisih-nilai">
+<h1>Tahap 2 – Menghitung Selisih Nilai<a class="headerlink" href="#tahap-2-menghitung-selisih-nilai" title="Link to this heading">#</a></h1>
+<p>Langkah berikutnya adalah menghitung selisih antara nilai normalisasi setiap data dengan nilai data target.</p>
+<p>Contoh rumus Excel untuk selisih <strong>IPK</strong>:
+=F2-<span class="math notranslate nohighlight">\(F\)</span>8</p>
+<p>Contoh rumus Excel untuk selisih <strong>PO</strong>:
+=G2-<span class="math notranslate nohighlight">\(G\)</span>8</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tahap-3-menghitung-kuadrat-selisih">
+<h1>Tahap 3 – Menghitung Kuadrat Selisih<a class="headerlink" href="#tahap-3-menghitung-kuadrat-selisih" title="Link to this heading">#</a></h1>
+<p>Selisih yang diperoleh kemudian dikuadratkan untuk mendapatkan komponen jarak.</p>
+<p>Contoh rumus Excel:
+=K2^2</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tahap-4-menghitung-bobot">
+<h1>Tahap 4 – Menghitung Bobot<a class="headerlink" href="#tahap-4-menghitung-bobot" title="Link to this heading">#</a></h1>
+<p>Setelah jarak diperoleh, langkah berikutnya adalah menentukan bobot setiap tetangga menggunakan rumus:
+w = 1 / (jarak²)</p>
+<p>Rumus Excel:
+=1/(L2+N2)</p>
+<p>Semakin kecil jarak antara data dengan data target, maka bobotnya akan semakin besar.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tahap-5-menghitung-pembilang">
+<h1>Tahap 5 – Menghitung Pembilang<a class="headerlink" href="#tahap-5-menghitung-pembilang" title="Link to this heading">#</a></h1>
+<p>Pembilang dihitung dengan mengalikan bobot dengan nilai <strong>JML</strong> dari setiap data tetangga.</p>
+<p>Rumus Excel:
+=P2*C2</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tabel-perhitungan-wknn">
+<h1>Tabel Perhitungan WKNN<a class="headerlink" href="#tabel-perhitungan-wknn" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Selisih IPK</p></th>
+<th class="head"><p>Kuadrat IPK</p></th>
+<th class="head"><p>Selisih PO</p></th>
+<th class="head"><p>Kuadrat PO</p></th>
+<th class="head"><p>Bobot</p></th>
+<th class="head"><p>Pembilang</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-0.5</p></td>
+<td><p>0.25</p></td>
+<td><p>4</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0.5</p></td>
+<td><p>0.25</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>4</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>-0.5</p></td>
+<td><p>0.25</p></td>
+<td><p>0.8</p></td>
+<td><p>1.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>-0.5</p></td>
+<td><p>0.25</p></td>
+<td><p>4</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0.5</p></td>
+<td><p>0.25</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>4</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0.5</p></td>
+<td><p>0.25</p></td>
+<td><p>0.8</p></td>
+<td><p>2.4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tahap-6-menghitung-estimasi-nilai">
+<h1>Tahap 6 – Menghitung Estimasi Nilai<a class="headerlink" href="#tahap-6-menghitung-estimasi-nilai" title="Link to this heading">#</a></h1>
+<p>Setelah semua nilai diperoleh, langkah terakhir adalah menghitung estimasi nilai menggunakan <strong>weighted average</strong>.</p>
+<p>Total pembilang:
+=SUM(Q2:Q7)</p>
+<p>Total bobot:
+=SUM(P2:P7)</p>
+<p>Perkiraan nilai <strong>JML</strong> dihitung dengan rumus:
+=Total Pembilang / Total Bobot</p>
+<p>Hasil estimasi yang diperoleh adalah:
+JML ≈ 2.5</p>
+<p>Nilai tersebut merupakan perkiraan untuk nilai <strong>JML yang sebelumnya tidak diketahui pada baris ke-7</strong>.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -850,6 +1123,19 @@ x’ = x / 10^j</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-decimal-scaling">Hasil Normalisasi Decimal Scaling</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-value-imputation-menggunakan-weighted-k-nearest-neighbor-wknn">Missing Value Imputation Menggunakan Weighted K-Nearest Neighbor (WKNN)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-missing-value">Pengertian Missing Value</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-weighted-k-nearest-neighbor-wknn">Konsep Weighted K-Nearest Neighbor (WKNN)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-1-normalisasi-data">Tahap 1 – Normalisasi Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-2-menghitung-selisih-nilai">Tahap 2 – Menghitung Selisih Nilai</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-3-menghitung-kuadrat-selisih">Tahap 3 – Menghitung Kuadrat Selisih</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-4-menghitung-bobot">Tahap 4 – Menghitung Bobot</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-5-menghitung-pembilang">Tahap 5 – Menghitung Pembilang</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tabel-perhitungan-wknn">Tabel Perhitungan WKNN</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tahap-6-menghitung-estimasi-nilai">Tahap 6 – Menghitung Estimasi Nilai</a></li>
 </ul>
 
   </nav></div>

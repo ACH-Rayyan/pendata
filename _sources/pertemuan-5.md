@@ -250,4 +250,159 @@ print(df)
 | 5 | 95 | 0.95 |
 
 
+# Missing Value Imputation Menggunakan Weighted K-Nearest Neighbor (WKNN)
 
+## Pengertian Missing Value
+
+Dalam proses pengolahan data sering ditemukan kondisi dimana beberapa atribut tidak memiliki nilai atau nilainya tidak tersedia. Kondisi ini disebut **missing value**. Missing value dapat terjadi karena berbagai faktor seperti kesalahan saat pencatatan data, data yang tidak dikumpulkan, atau data yang hilang selama proses penyimpanan.
+
+Apabila missing value tidak ditangani dengan baik, maka proses analisis data dapat menghasilkan informasi yang kurang akurat. Oleh karena itu diperlukan teknik untuk memperkirakan atau mengisi nilai yang hilang tersebut.
+
+Salah satu metode yang dapat digunakan adalah **Weighted K-Nearest Neighbor (WKNN)**.
+
+---
+
+# Konsep Weighted K-Nearest Neighbor (WKNN)
+
+Metode **WKNN** merupakan pengembangan dari algoritma **K-Nearest Neighbor (KNN)**. Pada metode ini, nilai yang hilang diperkirakan dengan melihat data lain yang memiliki kemiripan paling tinggi dengan data target.
+
+Perbedaan utama antara KNN biasa dan WKNN terletak pada penggunaan **bobot**. Pada WKNN, setiap tetangga tidak memiliki pengaruh yang sama. Data yang jaraknya lebih dekat dengan data target akan memiliki bobot yang lebih besar dibandingkan data yang jaraknya lebih jauh.
+
+Secara umum langkah-langkah metode WKNN adalah sebagai berikut:
+
+1. Melakukan normalisasi data agar skala setiap atribut menjadi sebanding.
+2. Menghitung jarak antara data target dan data lain.
+3. Menghitung bobot berdasarkan jarak yang diperoleh.
+4. Menghitung estimasi nilai yang hilang menggunakan rata-rata tertimbang.
+
+---
+
+# Dataset
+
+Dataset yang digunakan terdiri dari tiga atribut yaitu **IPK**, **PO**, dan **JML**.
+
+| No | IPK | PO | JML |
+|----|----|---------|----|
+| 1 | 2 | 2000000 | 2 |
+| 2 | 3 | 3000000 | 3 |
+| 3 | 4 | 2000000 | 2 |
+| 4 | 2 | 2000000 | 3 |
+| 5 | 3 | 3000000 | 2 |
+| 6 | 4 | 4000000 | 3 |
+| 7 | 2 | 3000000 | ? |
+
+Pada baris ke-7 terdapat nilai **JML** yang belum diketahui. Nilai tersebut akan diperkirakan menggunakan metode **WKNN**.
+
+---
+
+# Tahap 1 – Normalisasi Data
+
+Karena nilai atribut **IPK** dan **PO** memiliki skala yang berbeda, maka data perlu dinormalisasi terlebih dahulu menggunakan metode **Min-Max Normalization**.
+
+Rumus yang digunakan:
+x' = (x - min) / (max - min)
+
+
+Contoh rumus Excel untuk normalisasi **IPK**:
+=(A2-MIN($A$2:$A$8))/(MAX($A$2:$A$8)-MIN($A$2:$A$8))
+
+
+Contoh rumus Excel untuk normalisasi **PO**:
+=(B2-MIN($B$2:$B$8))/(MAX($B$2:$B$8)-MIN($B$2:$B$8))
+
+
+Hasil normalisasi data ditunjukkan pada tabel berikut.
+
+| No | IPK | PO | JML |
+|----|----|----|----|
+| 1 | 0 | 0 | 0 |
+| 2 | 0.5 | 0.5 | 1 |
+| 3 | 1 | 0 | 0 |
+| 4 | 0 | 0 | 1 |
+| 5 | 0.5 | 0.5 | 0 |
+| 6 | 1 | 1 | 1 |
+| 7 | 0 | 0.5 | ? |
+
+Baris ke-7 merupakan **data target** yang nilai JML-nya akan diprediksi.
+
+---
+
+# Tahap 2 – Menghitung Selisih Nilai
+
+Langkah berikutnya adalah menghitung selisih antara nilai normalisasi setiap data dengan nilai data target.
+
+Contoh rumus Excel untuk selisih **IPK**:
+=F2-$F$8
+
+Contoh rumus Excel untuk selisih **PO**:
+=G2-$G$8
+
+
+---
+
+# Tahap 3 – Menghitung Kuadrat Selisih
+
+Selisih yang diperoleh kemudian dikuadratkan untuk mendapatkan komponen jarak.
+
+Contoh rumus Excel:
+=K2^2
+
+---
+
+# Tahap 4 – Menghitung Bobot
+
+Setelah jarak diperoleh, langkah berikutnya adalah menentukan bobot setiap tetangga menggunakan rumus:
+w = 1 / (jarak²)
+
+
+Rumus Excel:
+=1/(L2+N2)
+
+
+Semakin kecil jarak antara data dengan data target, maka bobotnya akan semakin besar.
+
+---
+
+# Tahap 5 – Menghitung Pembilang
+
+Pembilang dihitung dengan mengalikan bobot dengan nilai **JML** dari setiap data tetangga.
+
+Rumus Excel:
+=P2*C2
+
+
+---
+
+# Tabel Perhitungan WKNN
+
+| No | Selisih IPK | Kuadrat IPK | Selisih PO | Kuadrat PO | Bobot | Pembilang |
+|----|-------------|-------------|------------|------------|-------|-----------|
+| 1 | 0 | 0 | -0.5 | 0.25 | 4 | 8 |
+| 2 | 0.5 | 0.25 | 0 | 0 | 4 | 12 |
+| 3 | 1 | 1 | -0.5 | 0.25 | 0.8 | 1.6 |
+| 4 | 0 | 0 | -0.5 | 0.25 | 4 | 12 |
+| 5 | 0.5 | 0.25 | 0 | 0 | 4 | 8 |
+| 6 | 1 | 1 | 0.5 | 0.25 | 0.8 | 2.4 |
+
+---
+
+# Tahap 6 – Menghitung Estimasi Nilai
+
+Setelah semua nilai diperoleh, langkah terakhir adalah menghitung estimasi nilai menggunakan **weighted average**.
+
+Total pembilang:
+=SUM(Q2:Q7)
+
+Total bobot:
+=SUM(P2:P7)
+
+
+Perkiraan nilai **JML** dihitung dengan rumus:
+=Total Pembilang / Total Bobot
+
+
+Hasil estimasi yang diperoleh adalah:
+JML ≈ 2.5
+
+
+Nilai tersebut merupakan perkiraan untuk nilai **JML yang sebelumnya tidak diketahui pada baris ke-7**.
