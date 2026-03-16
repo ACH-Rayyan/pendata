@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
@@ -58,8 +58,6 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Pertemuan 5';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -394,8 +392,20 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-z-score">3. Contoh Perhitungan Z-Score</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rata-rata-mean">Menghitung Rata-Rata (Mean)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-standar-deviasi">Menghitung Standar Deviasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-z-score">Menghitung Nilai Z-Score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi">Interpretasi</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-z-score-menggunakan-python">4. Implementasi Z-Score Menggunakan Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-z-score-di-orange-data-mining">5. Implementasi Z-Score di Orange Data Mining</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah">Langkah-langkah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-python-untuk-orange">Script Python untuk Orange</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi">6. Hasil Normalisasi</a></li>
 </ul>
             </nav>
         </div>
@@ -415,7 +425,7 @@ document.write(`
 <section id="pengertian-z-score-normalization">
 <h2>1. Pengertian Z-Score Normalization<a class="headerlink" href="#pengertian-z-score-normalization" title="Link to this heading">#</a></h2>
 <p>Z-Score Normalization atau sering disebut <strong>standardization</strong> adalah salah satu teknik normalisasi data yang digunakan pada tahap <strong>data preprocessing</strong> dalam proses Data Mining maupun Machine Learning.</p>
-<p>Dalam banyak kasus, dataset yang digunakan memiliki atribut dengan <strong>skala nilai yang sangat berbeda</strong>. Misalnya satu atribut memiliki rentang nilai kecil seperti <strong>1–5</strong>, sedangkan atribut lainnya memiliki nilai yang jauh lebih besar seperti <strong>ribuan atau bahkan jutaan</strong>. Perbedaan skala ini dapat mempengaruhi proses analisis data, terutama pada algoritma yang menggunakan <strong>perhitungan jarak</strong>.</p>
+<p>Dalam banyak kasus, dataset yang digunakan memiliki atribut dengan <strong>skala nilai yang sangat berbeda</strong>. Misalnya satu atribut memiliki rentang nilai kecil seperti 1–5, sedangkan atribut lainnya memiliki nilai yang jauh lebih besar seperti ribuan atau bahkan jutaan. Perbedaan skala ini dapat mempengaruhi proses analisis data, terutama pada algoritma yang menggunakan <strong>perhitungan jarak</strong>.</p>
 <p>Z-Score Normalization bertujuan untuk mengubah distribusi data sehingga memiliki:</p>
 <ul class="simple">
 <li><p><strong>Rata-rata (mean) sebesar 0</strong></p></li>
@@ -435,10 +445,9 @@ document.write(`
 <section id="rumus-z-score-normalization">
 <h2>2. Rumus Z-Score Normalization<a class="headerlink" href="#rumus-z-score-normalization" title="Link to this heading">#</a></h2>
 <p>Rumus yang digunakan dalam Z-Score Normalization adalah sebagai berikut:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>[
 z = \frac{x - \mu}{\sigma}
-\]</div>
+]</p>
 <section id="keterangan">
 <h3>Keterangan<a class="headerlink" href="#keterangan" title="Link to this heading">#</a></h3>
 <ul class="simple">
@@ -461,17 +470,149 @@ z = \frac{x - \mu}{\sigma}
 <hr class="docutils" />
 <section id="contoh-perhitungan-z-score">
 <h2>3. Contoh Perhitungan Z-Score<a class="headerlink" href="#contoh-perhitungan-z-score" title="Link to this heading">#</a></h2>
-<p>Misalkan terdapat dataset sederhana sebagai berikut: [10, 20, 30, 40, 100]</p>
+<p>Misalkan terdapat dataset sederhana sebagai berikut:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
 <section id="menghitung-rata-rata-mean">
 <h3>Menghitung Rata-Rata (Mean)<a class="headerlink" href="#menghitung-rata-rata-mean" title="Link to this heading">#</a></h3>
 <p>Rata-rata dihitung dengan rumus:</p>
-<p>Mean = (10 + 20 + 30 + 40 + 100) / 5
-Mean = 40</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mean</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">30</span> <span class="o">+</span> <span class="mi">40</span> <span class="o">+</span> <span class="mi">100</span><span class="p">)</span> <span class="o">/</span> <span class="mi">5</span>
+<span class="n">Mean</span> <span class="o">=</span> <span class="mi">40</span>
+</pre></div>
+</div>
 </section>
 <section id="menghitung-standar-deviasi">
 <h3>Menghitung Standar Deviasi<a class="headerlink" href="#menghitung-standar-deviasi" title="Link to this heading">#</a></h3>
-<p>Standar deviasi dari dataset tersebut adalah: σ ≈ 31.62</p>
+<p>Standar deviasi dari dataset tersebut adalah:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>σ ≈ 31.62
+</pre></div>
+</div>
 </section>
+<section id="menghitung-nilai-z-score">
+<h3>Menghitung Nilai Z-Score<a class="headerlink" href="#menghitung-nilai-z-score" title="Link to this heading">#</a></h3>
+<p>Setelah nilai rata-rata dan standar deviasi diketahui, setiap nilai dapat dinormalisasi menggunakan rumus Z-Score.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Nilai Asli</p></th>
+<th class="head"><p>Z-Score</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>10</p></td>
+<td><p>-0.94</p></td>
+</tr>
+<tr class="row-odd"><td><p>20</p></td>
+<td><p>-0.63</p></td>
+</tr>
+<tr class="row-even"><td><p>30</p></td>
+<td><p>-0.32</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>100</p></td>
+<td><p>1.89</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="interpretasi">
+<h3>Interpretasi<a class="headerlink" href="#interpretasi" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Nilai <strong>40 memiliki Z-Score = 0</strong>, yang berarti nilai tersebut tepat berada pada rata-rata dataset.</p></li>
+<li><p>Nilai <strong>10 memiliki Z-Score negatif</strong>, yang menunjukkan bahwa nilai tersebut berada di bawah rata-rata.</p></li>
+<li><p>Nilai <strong>100 memiliki Z-Score terbesar</strong>, yang berarti nilai tersebut paling jauh dari rata-rata dataset.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="implementasi-z-score-menggunakan-python">
+<h2>4. Implementasi Z-Score Menggunakan Python<a class="headerlink" href="#implementasi-z-score-menggunakan-python" title="Link to this heading">#</a></h2>
+<p>Normalisasi Z-Score dapat dilakukan dengan mudah menggunakan Python dan library <strong>scikit-learn</strong>, khususnya dengan menggunakan kelas <strong>StandardScaler</strong>.</p>
+<p>Berikut contoh implementasi sederhana menggunakan Python.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Data contoh</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;nilai&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Membuat objek scaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="c1"># Melakukan normalisasi</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;z_score&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;nilai&#39;</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="output">
+<h3>Output<a class="headerlink" href="#output" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="n">nilai</span>  <span class="n">z_score</span>
+<span class="mi">0</span>     <span class="mi">10</span>   <span class="o">-</span><span class="mf">0.94</span>
+<span class="mi">1</span>     <span class="mi">20</span>   <span class="o">-</span><span class="mf">0.63</span>
+<span class="mi">2</span>     <span class="mi">30</span>   <span class="o">-</span><span class="mf">0.32</span>
+<span class="mi">3</span>     <span class="mi">40</span>    <span class="mf">0.00</span>
+<span class="mi">4</span>    <span class="mi">100</span>    <span class="mf">1.89</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="implementasi-z-score-di-orange-data-mining">
+<h2>5. Implementasi Z-Score di Orange Data Mining<a class="headerlink" href="#implementasi-z-score-di-orange-data-mining" title="Link to this heading">#</a></h2>
+<p>Pada aplikasi <strong>Orange Data Mining</strong>, normalisasi Z-Score dapat dilakukan menggunakan <strong>Python Script Widget</strong>.</p>
+<section id="langkah-langkah">
+<h3>Langkah-langkah<a class="headerlink" href="#langkah-langkah" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Menambahkan widget <strong>File</strong> untuk memasukkan dataset</p></li>
+<li><p>Menghubungkan widget <strong>File</strong> ke <strong>Data Table</strong> untuk melihat data</p></li>
+<li><p>Menambahkan widget <strong>Python Script</strong> untuk menjalankan kode Python</p></li>
+<li><p>Menghubungkan output Python Script ke <strong>Data Table</strong> untuk melihat hasil normalisasi</p></li>
+</ol>
+</section>
+<section id="script-python-untuk-orange">
+<h3>Script Python untuk Orange<a class="headerlink" href="#script-python-untuk-orange" title="Link to this heading">#</a></h3>
+<p>Masukkan kode berikut pada widget <strong>Python Script</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Orange.data.pandas_compat</span><span class="w"> </span><span class="kn">import</span> <span class="n">table_to_frame</span><span class="p">,</span> <span class="n">table_from_frame</span>
+
+<span class="k">if</span> <span class="n">in_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    
+    <span class="c1"># Mengubah data Orange menjadi DataFrame</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">table_to_frame</span><span class="p">(</span><span class="n">in_data</span><span class="p">)</span>
+    
+    <span class="c1"># Mendeteksi kolom numerik</span>
+    <span class="n">numeric_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;number&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+    
+    <span class="c1"># Membuat objek StandardScaler</span>
+    <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    
+    <span class="c1"># Melakukan normalisasi Z-Score</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">col</span> <span class="o">+</span> <span class="s2">&quot;_zscore&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">col</span><span class="p">]])</span>
+    
+    <span class="c1"># Mengembalikan data ke format Orange</span>
+    <span class="n">out_data</span> <span class="o">=</span> <span class="n">table_from_frame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="hasil-normalisasi">
+<h2>6. Hasil Normalisasi<a class="headerlink" href="#hasil-normalisasi" title="Link to this heading">#</a></h2>
+<p>Setelah script dijalankan, dataset akan memiliki beberapa kolom tambahan seperti:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IPK_zscore</span>
+<span class="n">PO_zscore</span>
+<span class="n">JML_zscore</span>
+</pre></div>
+</div>
+<p>Kolom-kolom tersebut merupakan hasil dari proses <strong>Z-Score Normalization</strong> yang telah dilakukan terhadap setiap atribut numerik dalam dataset.</p>
+<p>Dengan normalisasi ini, semua atribut memiliki skala yang lebih seimbang sehingga proses analisis data dan penerapan algoritma Machine Learning dapat berjalan dengan lebih optimal.</p>
 </section>
 </section>
 
@@ -531,8 +672,20 @@ Mean = 40</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-z-score">3. Contoh Perhitungan Z-Score</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rata-rata-mean">Menghitung Rata-Rata (Mean)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-standar-deviasi">Menghitung Standar Deviasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-nilai-z-score">Menghitung Nilai Z-Score</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi">Interpretasi</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-z-score-menggunakan-python">4. Implementasi Z-Score Menggunakan Python</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output">Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-z-score-di-orange-data-mining">5. Implementasi Z-Score di Orange Data Mining</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah">Langkah-langkah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-python-untuk-orange">Script Python untuk Orange</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi">6. Hasil Normalisasi</a></li>
 </ul>
   </nav></div>
 

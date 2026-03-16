@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Z-Score Normalization &#8212; Penambangan Data</title>
+    <title>&lt;no title&gt; &#8212; Penambangan Data</title>
   
   
   
@@ -58,8 +58,6 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Pertemuan 4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -374,7 +372,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Z-Score Normalization</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -383,19 +381,9 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-z-score-normalization">1. Pengertian Z-Score Normalization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-z-score-normalization">2. Rumus Z-Score Normalization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keterangan">Keterangan</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-nilai-z-score">Interpretasi Nilai Z-Score</a></li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-z-score">3. Contoh Perhitungan Z-Score</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rata-rata-mean">Menghitung Rata-Rata (Mean)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-standar-deviasi">Menghitung Standar Deviasi</a></li>
-</ul>
-</li>
-</ul>
+
             </nav>
         </div>
     </div>
@@ -406,71 +394,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="z-score-normalization">
-<h1>Z-Score Normalization<a class="headerlink" href="#z-score-normalization" title="Link to this heading">#</a></h1>
-<section id="pengertian-z-score-normalization">
-<h2>1. Pengertian Z-Score Normalization<a class="headerlink" href="#pengertian-z-score-normalization" title="Link to this heading">#</a></h2>
-<p>Z-Score Normalization atau sering disebut <strong>standardization</strong> adalah salah satu teknik normalisasi data yang digunakan pada tahap <strong>data preprocessing</strong> dalam proses Data Mining maupun Machine Learning.</p>
-<p>Dalam banyak kasus, dataset yang digunakan memiliki atribut dengan <strong>skala nilai yang sangat berbeda</strong>. Misalnya satu atribut memiliki rentang nilai kecil seperti <strong>1–5</strong>, sedangkan atribut lainnya memiliki nilai yang jauh lebih besar seperti <strong>ribuan atau bahkan jutaan</strong>. Perbedaan skala ini dapat mempengaruhi proses analisis data, terutama pada algoritma yang menggunakan <strong>perhitungan jarak</strong>.</p>
-<p>Z-Score Normalization bertujuan untuk mengubah distribusi data sehingga memiliki:</p>
-<ul class="simple">
-<li><p><strong>Rata-rata (mean) sebesar 0</strong></p></li>
-<li><p><strong>Standar deviasi sebesar 1</strong></p></li>
-</ul>
-<p>Dengan menggunakan metode ini, setiap nilai akan dinyatakan dalam bentuk <strong>berapa standar deviasi jaraknya dari rata-rata data</strong>. Hal ini membuat data menjadi lebih mudah dibandingkan antar atribut karena berada dalam skala yang seragam.</p>
-<p>Metode Z-Score banyak digunakan pada berbagai algoritma Machine Learning seperti:</p>
-<ul class="simple">
-<li><p>Logistic Regression</p></li>
-<li><p>Support Vector Machine (SVM)</p></li>
-<li><p>Principal Component Analysis (PCA)</p></li>
-<li><p>Neural Network</p></li>
-</ul>
-<p>Keuntungan utama dari Z-Score adalah metode ini <strong>tidak membatasi nilai pada rentang tertentu</strong>, melainkan hanya menyesuaikan distribusi data agar lebih standar.</p>
-</section>
-<hr class="docutils" />
-<section id="rumus-z-score-normalization">
-<h2>2. Rumus Z-Score Normalization<a class="headerlink" href="#rumus-z-score-normalization" title="Link to this heading">#</a></h2>
-<p>Rumus yang digunakan dalam Z-Score Normalization adalah sebagai berikut:</p>
-<div class="math notranslate nohighlight">
-\[
-z = \frac{x - \mu}{\sigma}
-\]</div>
-<section id="keterangan">
-<h3>Keterangan<a class="headerlink" href="#keterangan" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>x</strong> = nilai asli dari data</p></li>
-<li><p><strong>μ (mu)</strong> = rata-rata dari seluruh data</p></li>
-<li><p><strong>σ (sigma)</strong> = standar deviasi data</p></li>
-<li><p><strong>z</strong> = nilai hasil normalisasi</p></li>
-</ul>
-</section>
-<section id="interpretasi-nilai-z-score">
-<h3>Interpretasi Nilai Z-Score<a class="headerlink" href="#interpretasi-nilai-z-score" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>z = 0</strong> → data berada tepat pada rata-rata</p></li>
-<li><p><strong>z &gt; 0</strong> → data berada di atas rata-rata</p></li>
-<li><p><strong>z &lt; 0</strong> → data berada di bawah rata-rata</p></li>
-</ul>
-<p>Semakin besar nilai absolut Z-Score, maka semakin jauh nilai tersebut dari rata-rata data.</p>
-</section>
-</section>
-<hr class="docutils" />
-<section id="contoh-perhitungan-z-score">
-<h2>3. Contoh Perhitungan Z-Score<a class="headerlink" href="#contoh-perhitungan-z-score" title="Link to this heading">#</a></h2>
-<p>Misalkan terdapat dataset sederhana sebagai berikut: [10, 20, 30, 40, 100]</p>
-<section id="menghitung-rata-rata-mean">
-<h3>Menghitung Rata-Rata (Mean)<a class="headerlink" href="#menghitung-rata-rata-mean" title="Link to this heading">#</a></h3>
-<p>Rata-rata dihitung dengan rumus:</p>
-<p>Mean = (10 + 20 + 30 + 40 + 100) / 5
-Mean = 40</p>
-</section>
-<section id="menghitung-standar-deviasi">
-<h3>Menghitung Standar Deviasi<a class="headerlink" href="#menghitung-standar-deviasi" title="Link to this heading">#</a></h3>
-<p>Standar deviasi dari dataset tersebut adalah: σ ≈ 31.62</p>
-</section>
-</section>
-</section>
-
+  
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -516,19 +440,9 @@ Mean = 40</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-z-score-normalization">1. Pengertian Z-Score Normalization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-z-score-normalization">2. Rumus Z-Score Normalization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keterangan">Keterangan</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretasi-nilai-z-score">Interpretasi Nilai Z-Score</a></li>
+    <ul class="simple visible nav section-nav flex-column">
 </ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-z-score">3. Contoh Perhitungan Z-Score</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-rata-rata-mean">Menghitung Rata-Rata (Mean)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-standar-deviasi">Menghitung Standar Deviasi</a></li>
-</ul>
-</li>
-</ul>
+
   </nav></div>
 
 </div></div>
