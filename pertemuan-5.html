@@ -188,6 +188,8 @@
 <li class="toctree-l1"><a class="reference internal" href="pertemuan-3.html">Pertemuan 3</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 5</a></li>
 
+
+
 </ul>
 
     </div>
@@ -392,6 +394,22 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-z-score">Hasil Normalisasi Z-Score</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">Min-Max Normalization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Pengertian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-min-max-normalization">Rumus Min-Max Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Dataset Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Implementasi Menggunakan Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-min-max">Hasil Normalisasi Min-Max</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scaling">Decimal Scaling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Pengertian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-decimal-scaling">Rumus Decimal Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Dataset Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Implementasi Menggunakan Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-decimal-scaling">Hasil Normalisasi Decimal Scaling</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -524,6 +542,233 @@ z = (x - μ) / σ</p>
 </div>
 </section>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="min-max-normalization">
+<h1>Min-Max Normalization<a class="headerlink" href="#min-max-normalization" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>Pengertian<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Min-Max Normalization adalah salah satu teknik normalisasi data yang digunakan untuk mengubah nilai suatu atribut ke dalam rentang tertentu. Rentang yang paling sering digunakan adalah <strong>0 sampai 1</strong>, tetapi sebenarnya dapat juga menggunakan rentang lain seperti <strong>-1 sampai 1</strong>.</p>
+<p>Metode ini bekerja dengan cara menggeser dan menskalakan nilai data berdasarkan nilai minimum dan maksimum yang terdapat dalam dataset. Dengan demikian, nilai terkecil dalam dataset akan berubah menjadi <strong>0</strong>, sedangkan nilai terbesar akan berubah menjadi <strong>1</strong> jika menggunakan rentang standar 0–1.</p>
+<p>Teknik ini banyak digunakan pada algoritma machine learning yang sensitif terhadap skala data, seperti <strong>K-Nearest Neighbor (KNN)</strong>, <strong>Neural Network</strong>, dan beberapa algoritma clustering. Dengan melakukan normalisasi Min-Max, setiap atribut akan berada pada skala yang sama sehingga tidak ada atribut yang mendominasi perhitungan.</p>
+</section>
+<hr class="docutils" />
+<section id="rumus-min-max-normalization">
+<h2>Rumus Min-Max Normalization<a class="headerlink" href="#rumus-min-max-normalization" title="Link to this heading">#</a></h2>
+<p>Secara matematis, Min-Max Normalization dapat dihitung menggunakan rumus berikut:
+x’ = (x - min) / (max - min)</p>
+<p>Keterangan:</p>
+<ul class="simple">
+<li><p><strong>x</strong> = nilai asli data</p></li>
+<li><p><strong>min</strong> = nilai minimum dalam dataset</p></li>
+<li><p><strong>max</strong> = nilai maksimum dalam dataset</p></li>
+<li><p><strong>x’</strong> = nilai hasil normalisasi</p></li>
+</ul>
+<p>Hasil normalisasi akan menghasilkan nilai dalam rentang <strong>0 sampai 1</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="id2">
+<h2>Dataset Contoh<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Dataset yang digunakan sama seperti sebelumnya:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mahasiswa</p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>55</p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p>60</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>65</p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>70</p></td>
+</tr>
+<tr class="row-even"><td><p>E</p></td>
+<td><p>95</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Pada dataset tersebut:</p>
+<ul class="simple">
+<li><p>nilai minimum = <strong>55</strong></p></li>
+<li><p>nilai maksimum = <strong>95</strong></p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id3">
+<h2>Implementasi Menggunakan Python<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>Berikut contoh implementasi Min-Max Normalization menggunakan Python dengan library <strong>scikit-learn</strong>. Kode ini dapat dijalankan di <strong>Google Colab</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="c1"># dataset contoh</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nilai&#39;</span><span class="p">:[</span><span class="mi">55</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">95</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># membuat objek scaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+<span class="c1"># melakukan normalisasi min-max</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;minmax&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;nilai&#39;</span><span class="p">]])</span>
+
+<span class="c1"># menampilkan hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="hasil-normalisasi-min-max">
+<h2>Hasil Normalisasi Min-Max<a class="headerlink" href="#hasil-normalisasi-min-max" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Nilai</p></th>
+<th class="head"><p>Min-Max</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>55</p></td>
+<td><p>0.000</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>60</p></td>
+<td><p>0.125</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>65</p></td>
+<td><p>0.250</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>70</p></td>
+<td><p>0.375</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>95</p></td>
+<td><p>1.000</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="decimal-scaling">
+<h1>Decimal Scaling<a class="headerlink" href="#decimal-scaling" title="Link to this heading">#</a></h1>
+<section id="id4">
+<h2>Pengertian<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>Decimal Scaling merupakan salah satu teknik normalisasi data yang dilakukan dengan cara menggeser posisi titik desimal pada setiap nilai numerik. Metode ini dilakukan dengan membagi setiap nilai dalam dataset menggunakan pangkat 10 tertentu sehingga nilai absolut maksimum dalam dataset menjadi lebih kecil dari 1.</p>
+<p>Teknik ini tergolong metode normalisasi yang sederhana karena hanya melakukan pembagian berdasarkan jumlah digit dari nilai terbesar dalam dataset. Dengan cara ini, seluruh data akan memiliki skala yang lebih kecil tanpa mengubah perbandingan antar nilai.</p>
+<p>Decimal Scaling sering digunakan ketika tujuan utama normalisasi adalah <strong>mengecilkan skala nilai data</strong> tanpa mengubah distribusi atau jarak relatif antar data.</p>
+<p>Langkah utama dalam metode ini adalah menentukan nilai <strong>j</strong>, yaitu jumlah digit dari nilai absolut terbesar pada dataset. Setelah nilai tersebut diketahui, seluruh nilai pada dataset dibagi dengan <strong>10 pangkat j</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="rumus-decimal-scaling">
+<h2>Rumus Decimal Scaling<a class="headerlink" href="#rumus-decimal-scaling" title="Link to this heading">#</a></h2>
+<p>Secara matematis, Decimal Scaling dapat dituliskan sebagai berikut:
+x’ = x / 10^j</p>
+<p>Keterangan:</p>
+<ul class="simple">
+<li><p><strong>x</strong> = nilai asli data</p></li>
+<li><p><strong>j</strong> = jumlah digit dari nilai maksimum dalam dataset</p></li>
+<li><p><strong>x’</strong> = nilai hasil normalisasi</p></li>
+</ul>
+<p>Jika nilai maksimum pada dataset adalah <strong>95</strong>, maka jumlah digitnya adalah <strong>2</strong>, sehingga seluruh data akan dibagi dengan <strong>10² = 100</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="id5">
+<h2>Dataset Contoh<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>Dataset yang digunakan masih sama seperti pada contoh sebelumnya:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mahasiswa</p></th>
+<th class="head"><p>Nilai</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>A</p></td>
+<td><p>55</p></td>
+</tr>
+<tr class="row-odd"><td><p>B</p></td>
+<td><p>60</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>65</p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>70</p></td>
+</tr>
+<tr class="row-even"><td><p>E</p></td>
+<td><p>95</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Pada dataset tersebut, nilai terbesar adalah <strong>95</strong> sehingga jumlah digitnya adalah <strong>2</strong>. Oleh karena itu seluruh nilai akan dibagi dengan <strong>100</strong>.</p>
+</section>
+<hr class="docutils" />
+<section id="id6">
+<h2>Implementasi Menggunakan Python<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Berikut contoh implementasi Decimal Scaling menggunakan Python. Kode ini dapat dijalankan menggunakan <strong>Google Colab</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># dataset contoh</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nilai&#39;</span><span class="p">:[</span><span class="mi">55</span><span class="p">,</span><span class="mi">60</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">95</span><span class="p">]}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># fungsi decimal scaling</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">decimal_scaling</span><span class="p">(</span><span class="n">column</span><span class="p">):</span>
+    <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">column</span><span class="p">))</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">max_val</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">column</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="n">j</span><span class="p">)</span>
+
+<span class="c1"># menerapkan normalisasi</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;decimal_scaling&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">decimal_scaling</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;nilai&#39;</span><span class="p">])</span>
+
+<span class="c1"># menampilkan hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="hasil-normalisasi-decimal-scaling">
+<h2>Hasil Normalisasi Decimal Scaling<a class="headerlink" href="#hasil-normalisasi-decimal-scaling" title="Link to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>No</p></th>
+<th class="head"><p>Nilai</p></th>
+<th class="head"><p>Decimal Scaling</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>55</p></td>
+<td><p>0.55</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>60</p></td>
+<td><p>0.60</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>65</p></td>
+<td><p>0.65</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>70</p></td>
+<td><p>0.70</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>95</p></td>
+<td><p>0.95</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -587,6 +832,22 @@ z = (x - μ) / σ</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-contoh">Dataset Contoh</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-python">Implementasi Menggunakan Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-z-score">Hasil Normalisasi Z-Score</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#min-max-normalization">Min-Max Normalization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Pengertian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-min-max-normalization">Rumus Min-Max Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Dataset Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Implementasi Menggunakan Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-min-max">Hasil Normalisasi Min-Max</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-scaling">Decimal Scaling</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Pengertian</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-decimal-scaling">Rumus Decimal Scaling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Dataset Contoh</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Implementasi Menggunakan Python</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-normalisasi-decimal-scaling">Hasil Normalisasi Decimal Scaling</a></li>
 </ul>
 </li>
 </ul>
