@@ -1,4 +1,4 @@
-# PERTEMUAN 3
+# Pertemuan 3
 ## Studi Kasus: Iris + Data Campuran (Mixed-Type)
 
 
