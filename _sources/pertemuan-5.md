@@ -407,4 +407,4 @@ JML ≈ 2.5
 
 Nilai tersebut merupakan perkiraan untuk nilai **JML yang sebelumnya tidak diketahui pada baris ke-7**.
 
-![Perhitungan WKNN](images/wknn.png)
+![Perhitungan WKNN](images/wknn5.png)
