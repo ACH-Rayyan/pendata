@@ -399,13 +399,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-orange">Workflow Orange</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">2. Import Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data">Contoh Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-atribut-select-columns">3. Seleksi Atribut (Select Columns)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">4. Eksplorasi Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">4.1 Distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plot">4.2 Box Plot</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Eksplorasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">5. Preprocessing Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impute-menangani-missing-value">5.1 Impute (Menangani Missing Value)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuize-mengubah-data-kategorikal">5.2 Continuize (Mengubah Data Kategorikal)</a></li>
@@ -417,13 +420,16 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fold-cross-validation">10-Fold Cross Validation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-evaluasi-model">Hasil Evaluasi Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi">8. Metrik Evaluasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">9. Confusion Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Confusion Matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">10. Visualisasi Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-principal-component-analysis">10.1 PCA (Principal Component Analysis)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">10.2 Scatter Plot</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">11. Kesimpulan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-orange">File orange</a></li>
 </ul>
@@ -444,6 +450,10 @@ document.write(`
 <p>Pada tugas ini dilakukan analisis klasifikasi untuk menentukan tingkat kesuburan tanah menggunakan algoritma <strong>k-Nearest Neighbor (kNN)</strong> pada perangkat lunak Orange. Workflow yang dibangun mencakup tahapan mulai dari input data, preprocessing, pemodelan, hingga evaluasi hasil.</p>
 </section>
 <hr class="docutils" />
+<section id="workflow-orange">
+<h2>Workflow Orange<a class="headerlink" href="#workflow-orange" title="Link to this heading">#</a></h2>
+<p><img alt="Workflow" src="workflow.png" /></p>
+</section>
 <section id="import-data">
 <h2>2. Import Data<a class="headerlink" href="#import-data" title="Link to this heading">#</a></h2>
 <p>Dataset dimasukkan menggunakan widget <strong>CSV File Import</strong>, kemudian ditampilkan melalui <strong>Data Table</strong> untuk memastikan bahwa:</p>
@@ -453,6 +463,10 @@ document.write(`
 <li><p>Terdapat atau tidaknya missing value</p></li>
 </ul>
 <p>Langkah ini penting untuk memastikan data siap diproses ke tahap berikutnya.</p>
+</section>
+<section id="contoh-data">
+<h2>Contoh Data<a class="headerlink" href="#contoh-data" title="Link to this heading">#</a></h2>
+<p><img alt="Data" src="data.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="seleksi-atribut-select-columns">
@@ -472,6 +486,7 @@ document.write(`
 <section id="distributions">
 <h3>4.1 Distributions<a class="headerlink" href="#distributions" title="Link to this heading">#</a></h3>
 <p>Digunakan untuk melihat distribusi setiap fitur.</p>
+<p><img alt="Distribusi" src="dist.png" /></p>
 </section>
 <section id="box-plot">
 <h3>4.2 Box Plot<a class="headerlink" href="#box-plot" title="Link to this heading">#</a></h3>
@@ -483,6 +498,10 @@ document.write(`
 </ul>
 <p>Tahap ini membantu memahami karakteristik data sebelum dilakukan preprocessing.</p>
 </section>
+</section>
+<section id="id1">
+<h2>Eksplorasi Data<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p><img alt="BOXPLOT" src="boxplot.png" /></p>
 </section>
 <hr class="docutils" />
 <section id="preprocessing-data">
@@ -547,6 +566,10 @@ document.write(`
 <p>Metode ini digunakan agar hasil evaluasi lebih stabil.</p>
 </section>
 </section>
+<section id="hasil-evaluasi-model">
+<h2>Hasil Evaluasi Model<a class="headerlink" href="#hasil-evaluasi-model" title="Link to this heading">#</a></h2>
+<p><img alt="Test &amp; Score" src="test_score.png" /></p>
+</section>
 <hr class="docutils" />
 <section id="metrik-evaluasi">
 <h2>8. Metrik Evaluasi<a class="headerlink" href="#metrik-evaluasi" title="Link to this heading">#</a></h2>
@@ -568,12 +591,17 @@ document.write(`
 </ul>
 <p>Sehingga dapat diketahui pola kesalahan model.</p>
 </section>
+<section id="id2">
+<h2>Confusion Matrix<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><img alt="Confusion Matrix" src="cm.png" /></p>
+</section>
 <hr class="docutils" />
 <section id="visualisasi-data">
 <h2>10. Visualisasi Data<a class="headerlink" href="#visualisasi-data" title="Link to this heading">#</a></h2>
 <section id="pca-principal-component-analysis">
 <h3>10.1 PCA (Principal Component Analysis)<a class="headerlink" href="#pca-principal-component-analysis" title="Link to this heading">#</a></h3>
 <p>Digunakan untuk mereduksi dimensi data menjadi dua dimensi.</p>
+<p><img alt="PCA" src="pca.png" /></p>
 </section>
 <section id="scatter-plot">
 <h3>10.2 Scatter Plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h3>
@@ -584,7 +612,9 @@ document.write(`
 </ul>
 </section>
 </section>
-<hr class="docutils" />
+<section id="id3">
+<h2><img alt="SCATER" src="sca.png" /><a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+</section>
 <section id="kesimpulan">
 <h2>11. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
 <p>Workflow yang dibangun telah mencakup seluruh tahapan utama dalam proses data mining, yaitu:</p>
@@ -671,13 +701,16 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pendahuluan">1. Pendahuluan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow-orange">Workflow Orange</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-data">2. Import Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-data">Contoh Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-atribut-select-columns">3. Seleksi Atribut (Select Columns)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">4. Eksplorasi Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distributions">4.1 Distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#box-plot">4.2 Box Plot</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Eksplorasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">5. Preprocessing Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impute-menangani-missing-value">5.1 Impute (Menangani Missing Value)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuize-mengubah-data-kategorikal">5.2 Continuize (Mengubah Data Kategorikal)</a></li>
@@ -689,13 +722,16 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fold-cross-validation">10-Fold Cross Validation</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-evaluasi-model">Hasil Evaluasi Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi">8. Metrik Evaluasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">9. Confusion Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Confusion Matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">10. Visualisasi Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pca-principal-component-analysis">10.1 PCA (Principal Component Analysis)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">10.2 Scatter Plot</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">11. Kesimpulan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-orange">File orange</a></li>
 </ul>
