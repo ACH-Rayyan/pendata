@@ -1,4 +1,4 @@
-# Penjelasan Workflow Klasifikasi Kesuburan Tanah Menggunakan kNN di Orange
+# Analisis Data Kesuburan Tanah
 
 ## 1. Pendahuluan
 Pada tugas ini dilakukan analisis klasifikasi untuk menentukan tingkat kesuburan tanah menggunakan algoritma **k-Nearest Neighbor (kNN)** pada perangkat lunak Orange. Workflow yang dibangun mencakup tahapan mulai dari input data, preprocessing, pemodelan, hingga evaluasi hasil.
