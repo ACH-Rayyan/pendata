@@ -147,3 +147,6 @@ Model kNN yang digunakan mampu melakukan klasifikasi tingkat kesuburan tanah ber
 ---
 
 ## File orange
+<a href="../UTS_PENDAT_24-188.ows" download>
+    <button>📥 Download Workflow Orange</button>
+</a>
