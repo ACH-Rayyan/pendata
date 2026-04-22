@@ -8,7 +8,7 @@ Pada tugas ini dilakukan analisis klasifikasi untuk menentukan tingkat kesuburan
 
 ## Workflow Orange
 
-![Workflow](workflow.png)
+![Workflow](images/workflow.png)
 
 ## 2. Import Data
 Dataset dimasukkan menggunakan widget **CSV File Import**, kemudian ditampilkan melalui **Data Table** untuk memastikan bahwa:
@@ -21,7 +21,7 @@ Langkah ini penting untuk memastikan data siap diproses ke tahap berikutnya.
 
 ## Contoh Data
 
-![Data](data.png)
+![Data](images/data.png)
 
 ---
 
@@ -43,7 +43,7 @@ Sebelum masuk ke tahap pemodelan, dilakukan eksplorasi data menggunakan:
 Digunakan untuk melihat distribusi setiap fitur.
 
 
-![Distribusi](dist.png)
+![Distribusi](images/dist.png)
 
 ### 4.2 Box Plot
 Digunakan untuk:
@@ -55,7 +55,7 @@ Tahap ini membantu memahami karakteristik data sebelum dilakukan preprocessing.
 
 ## Eksplorasi Data
 
-![BOXPLOT](boxplot.png)
+![BOXPLOT](images/boxplot.png)
 
 ---
 
@@ -116,7 +116,7 @@ Metode ini digunakan agar hasil evaluasi lebih stabil.
 
 ## Hasil Evaluasi Model
 
-![Test & Score](test_score.png)
+![Test & Score](images/test_score.png)
 
 ---
 
@@ -140,7 +140,7 @@ Sehingga dapat diketahui pola kesalahan model.
 
 ## Confusion Matrix
 
-![Confusion Matrix](cm.png)
+![Confusion Matrix](images/cm.png)
 
 ---
 
@@ -150,7 +150,7 @@ Sehingga dapat diketahui pola kesalahan model.
 Digunakan untuk mereduksi dimensi data menjadi dua dimensi.
 
 
-![PCA](pca.png)
+![PCA](images/pca.png)
 
 ### 10.2 Scatter Plot
 Digunakan untuk memvisualisasikan hasil PCA sehingga dapat terlihat:
@@ -159,7 +159,7 @@ Digunakan untuk memvisualisasikan hasil PCA sehingga dapat terlihat:
 - pemisahan antar kelas
 
 
-![SCATER](sca.png)
+![SCATER](images/sca.png)
 ---
 
 ## 11. Kesimpulan
