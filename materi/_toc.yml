@@ -4,8 +4,15 @@
 format: jb-book
 root: intro
 chapters:
-- file: pertemuan 1
-- file: pertemuan 2
-- file: pertemuan 3
-- file: pertemuan 4
-- file: pertemuan 5
+- file: pertemuan-1
+- file: pertemuan-2
+- file: pertemuan-3
+- file: pertemuan-4
+- file: pertemuan-uts
+- file: pertemuan-5
+- file: pertemuan-6
+- file: pertemuan-7
+- file: pertemuan-8
+- file: pertemuan-9
+- file: pertemuan-10
+- file: pertemuan-11

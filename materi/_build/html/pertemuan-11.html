@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pertemuan 11 &#8212; Penambangan Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan-11';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Pertemuan 10" href="pertemuan-10.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Penambangan Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Penambangan Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    BIODATA
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-1.html">Pertemuan 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-2.html">Pertemuan 2</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-3.html">Pertemuan 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-uts.html">Analisis Data Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-5.html">Pertemuan 5</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-10.html">Pertemuan 10</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 11</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpertemuan-11.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pertemuan-11.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pertemuan 11</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 11</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-decision-tree">1. Pengertian Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-decision-tree">2. Konsep Dasar Decision Tree</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-gain-ratio">Rumus Gain Ratio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-decision-tree">3. Struktur Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-decision-tree">4. Kelebihan Decision Tree</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laporan-proyek-klasifikasi-decision-tree-menggunakan-knime">Laporan Proyek: Klasifikasi Decision Tree Menggunakan KNIME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-proyek">5. Deskripsi Proyek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-workflow">6. Visualisasi Workflow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-pembuatan-workflow">Langkah-Langkah Pembuatan Workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-menggunakan-csv-reader">7. Membaca Data Menggunakan CSV Reader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data-menggunakan-table-partitioner">8. Membagi Data Menggunakan Table Partitioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-model-menggunakan-decision-tree-learner">9. Membuat Model Menggunakan Decision Tree Learner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-menggunakan-model-writer">10. Menyimpan Model Menggunakan Model Writer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengatur-tampilan-decision-tree-menggunakan-decision-tree-view">11. Mengatur Tampilan Decision Tree Menggunakan Decision Tree View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-visualisasi-decision-tree">12. Hasil Visualisasi Decision Tree</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-dan-pembahasan">13. Hasil dan Pembahasan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">14. Kesimpulan</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-11">
+<h1>Pertemuan 11<a class="headerlink" href="#pertemuan-11" title="Link to this heading">#</a></h1>
+<section id="decision-tree">
+<h2>Decision Tree<a class="headerlink" href="#decision-tree" title="Link to this heading">#</a></h2>
+</section>
+<section id="pengertian-decision-tree">
+<h2>1. Pengertian Decision Tree<a class="headerlink" href="#pengertian-decision-tree" title="Link to this heading">#</a></h2>
+<p>Decision Tree atau pohon keputusan merupakan salah satu metode klasifikasi yang digunakan untuk menentukan keputusan dengan cara memecah data berdasarkan atribut-atribut tertentu sampai diperoleh hasil akhir. Model ini memiliki bentuk seperti pohon yang tersusun dari node akar, cabang, serta node daun.</p>
+<p>Dalam Decision Tree, setiap node berfungsi untuk menguji suatu atribut. Cabang menunjukkan kemungkinan hasil dari pengujian atribut tersebut, sedangkan leaf node atau daun menunjukkan keputusan akhir atau kelas yang diprediksi. Algoritma ini termasuk mudah dipahami karena alur pengambilan keputusannya dapat digambarkan secara visual.</p>
+<p>Pada proyek ini, algoritma Decision Tree diterapkan untuk mengklasifikasikan dataset <strong>Play Tennis</strong>. Kolom yang menjadi target adalah <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code>, yaitu kolom yang menunjukkan apakah permainan tenis dapat dilakukan atau tidak berdasarkan kondisi cuaca yang tersedia.</p>
+</section>
+<section id="konsep-dasar-decision-tree">
+<h2>2. Konsep Dasar Decision Tree<a class="headerlink" href="#konsep-dasar-decision-tree" title="Link to this heading">#</a></h2>
+<p>Decision Tree bekerja dengan membagi data menjadi beberapa kelompok berdasarkan atribut yang paling berpengaruh terhadap kelas target. Penentuan atribut terbaik dilakukan menggunakan ukuran kualitas tertentu, misalnya <strong>Gini Index</strong> atau <strong>Gain Ratio</strong>.</p>
+<p>Dalam proyek ini, ukuran kualitas yang digunakan adalah <strong>Gain Ratio</strong>. Gain Ratio dipakai untuk memilih atribut paling tepat yang akan dijadikan pemisah utama atau root pada pohon keputusan.</p>
+<section id="rumus-gain-ratio">
+<h3>Rumus Gain Ratio<a class="headerlink" href="#rumus-gain-ratio" title="Link to this heading">#</a></h3>
+<p>Gain Ratio diperoleh dengan membandingkan nilai <strong>Information Gain</strong> dengan <strong>Split Information</strong>. Rumusnya dapat dituliskan sebagai berikut:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Gain Ratio(S, A) = Gain(S, A) / SplitInfo(S, A)
+</pre></div>
+</div>
+<p>Sebelum menghitung Gain Ratio, perlu dihitung terlebih dahulu nilai <strong>Entropy</strong> dan <strong>Information Gain</strong>.</p>
+<p>Rumus Entropy:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Entropy(S) = - Σ pi log2(pi)
+</pre></div>
+</div>
+<p>Rumus Information Gain:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Gain(S, A) = Entropy(S) - Σ (|Sv| / |S|) x Entropy(Sv)
+</pre></div>
+</div>
+<p>Rumus Split Information:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>SplitInfo(S, A) = - Σ (|Sv| / |S|) log2(|Sv| / |S|)
+</pre></div>
+</div>
+<p>Keterangan:</p>
+<ul class="simple">
+<li><p><strong>S</strong>: keseluruhan data yang digunakan.</p></li>
+<li><p><strong>A</strong>: atribut yang diuji untuk memisahkan data.</p></li>
+<li><p><strong>Sv</strong>: bagian data yang terbentuk berdasarkan nilai tertentu dari atribut A.</p></li>
+<li><p><strong>pi</strong>: proporsi data pada kelas ke-i.</p></li>
+<li><p><strong>|Sv| / |S|</strong>: rasio jumlah data pada subset terhadap jumlah seluruh data.</p></li>
+</ul>
+<p>Atribut dengan nilai <strong>Gain Ratio</strong> paling tinggi akan dipilih sebagai atribut terbaik untuk membentuk percabangan pada Decision Tree.</p>
+</section>
+</section>
+<section id="struktur-decision-tree">
+<h2>3. Struktur Decision Tree<a class="headerlink" href="#struktur-decision-tree" title="Link to this heading">#</a></h2>
+<p>Komponen utama pada Decision Tree terdiri dari:</p>
+<ol class="arabic simple">
+<li><p><strong>Root Node</strong><br />
+Node awal atau akar dari pohon keputusan. Root node berisi atribut pertama yang digunakan untuk memisahkan data.</p></li>
+<li><p><strong>Internal Node</strong><br />
+Node yang berada di bagian tengah pohon dan berfungsi untuk menguji atribut berikutnya.</p></li>
+<li><p><strong>Branch</strong><br />
+Cabang yang menggambarkan hasil dari pengujian suatu atribut.</p></li>
+<li><p><strong>Leaf Node</strong><br />
+Node terakhir yang menampilkan keputusan akhir atau kelas hasil prediksi.</p></li>
+</ol>
+</section>
+<section id="kelebihan-decision-tree">
+<h2>4. Kelebihan Decision Tree<a class="headerlink" href="#kelebihan-decision-tree" title="Link to this heading">#</a></h2>
+<p>Beberapa keunggulan algoritma Decision Tree yaitu:</p>
+<ul class="simple">
+<li><p>Mudah dipahami serta mudah divisualisasikan.</p></li>
+<li><p>Dapat diterapkan pada data numerik maupun data kategorikal.</p></li>
+<li><p>Alur pengambilan keputusan dapat diamati dengan jelas.</p></li>
+<li><p>Tidak memerlukan proses normalisasi data.</p></li>
+<li><p>Sesuai digunakan untuk menjelaskan pola keputusan dari suatu dataset.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tugas">
+<h1>TUGAS<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h1>
+<section id="laporan-proyek-klasifikasi-decision-tree-menggunakan-knime">
+<h2>Laporan Proyek: Klasifikasi Decision Tree Menggunakan KNIME<a class="headerlink" href="#laporan-proyek-klasifikasi-decision-tree-menggunakan-knime" title="Link to this heading">#</a></h2>
+</section>
+<section id="deskripsi-proyek">
+<h2>5. Deskripsi Proyek<a class="headerlink" href="#deskripsi-proyek" title="Link to this heading">#</a></h2>
+<p>Proyek ini bertujuan membuat model klasifikasi dengan algoritma <strong>Decision Tree</strong> menggunakan platform <strong>KNIME</strong>. Dataset yang digunakan adalah dataset <strong>Play Tennis</strong>, yaitu dataset yang memuat beberapa kondisi cuaca untuk menentukan apakah seseorang dapat bermain tenis atau tidak.</p>
+<p>Kolom target pada proyek ini adalah:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code></p></li>
+</ul>
+<p>Kolom <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code> memiliki kelas keputusan, yaitu:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Yes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">No</span></code></p></li>
+</ul>
+<p>Tujuan dari proyek ini adalah membangun model Decision Tree yang dapat menghasilkan aturan keputusan berdasarkan data yang tersedia. Model tersebut kemudian ditampilkan dalam bentuk pohon agar proses pengambilan keputusan dapat diamati secara jelas.</p>
+</section>
+<section id="visualisasi-workflow">
+<h2>6. Visualisasi Workflow<a class="headerlink" href="#visualisasi-workflow" title="Link to this heading">#</a></h2>
+<p><img alt="Workflow Decision Tree" src="_images/01-workflow-decision-tree.png" /></p>
+<p>Gambar 1. Workflow klasifikasi Decision Tree menggunakan KNIME.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="langkah-langkah-pembuatan-workflow">
+<h1>Langkah-Langkah Pembuatan Workflow<a class="headerlink" href="#langkah-langkah-pembuatan-workflow" title="Link to this heading">#</a></h1>
+<section id="membaca-data-menggunakan-csv-reader">
+<h2>7. Membaca Data Menggunakan CSV Reader<a class="headerlink" href="#membaca-data-menggunakan-csv-reader" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> CSV Reader</p>
+<p><strong>Fungsi:</strong><br />
+Node CSV Reader berfungsi untuk memasukkan dataset dari file CSV ke dalam workspace KNIME. Dataset yang digunakan berisi data kondisi cuaca serta kolom target <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code>.</p>
+<p><strong>Konfigurasi:</strong><br />
+File dataset dipilih dari penyimpanan lokal komputer. Setelah proses pembacaan berhasil, data akan masuk ke KNIME dan siap digunakan pada tahap berikutnya.</p>
+</section>
+<hr class="docutils" />
+<section id="membagi-data-menggunakan-table-partitioner">
+<h2>8. Membagi Data Menggunakan Table Partitioner<a class="headerlink" href="#membagi-data-menggunakan-table-partitioner" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Table Partitioner</p>
+<p><strong>Fungsi:</strong><br />
+Node Table Partitioner digunakan untuk membagi dataset menjadi dua bagian. Pada workflow ini, pembagian data dilakukan sebelum data diteruskan ke node Decision Tree Learner.</p>
+<p><strong>Konfigurasi:</strong></p>
+<ul class="simple">
+<li><p>First partition type: <strong>Relative (%)</strong></p></li>
+<li><p>Relative size: <strong>90</strong></p></li>
+<li><p>Sampling strategy: <strong>Stratified</strong></p></li>
+<li><p>Group column: <strong>Play Tennis</strong></p></li>
+<li><p>Fixed random seed: <strong>0</strong></p></li>
+</ul>
+<p>Dengan konfigurasi tersebut, <strong>90% data</strong> ditempatkan pada partisi pertama. Strategi sampling yang digunakan adalah <strong>Stratified</strong> dengan kolom <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code> sebagai group column. Strategi ini membuat pembagian data tetap mempertahankan proporsi kelas pada kolom target.</p>
+<p>Penggunaan <strong>Fixed random seed</strong> bernilai 0 bertujuan agar hasil pembagian data tetap sama ketika workflow dijalankan kembali.</p>
+<p><img alt="Konfigurasi Table Partitioner" src="_images/02-table-partitioner1.png" /></p>
+<p>Gambar 2. Konfigurasi Table Partitioner dengan pembagian data 90% dan sampling Stratified berdasarkan kolom <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="membuat-model-menggunakan-decision-tree-learner">
+<h2>9. Membuat Model Menggunakan Decision Tree Learner<a class="headerlink" href="#membuat-model-menggunakan-decision-tree-learner" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Decision Tree Learner</p>
+<p><strong>Fungsi:</strong><br />
+Node Decision Tree Learner digunakan untuk membentuk model klasifikasi Decision Tree dari data hasil Table Partitioner. Node ini mempelajari pola pada atribut-atribut dataset untuk memprediksi kelas pada kolom target.</p>
+<p><strong>Konfigurasi:</strong></p>
+<ul class="simple">
+<li><p>Class column: <strong>Play Tennis</strong></p></li>
+<li><p>Quality measure: <strong>Gain ratio</strong></p></li>
+<li><p>Pruning method: <strong>No pruning</strong></p></li>
+<li><p>Reduced error pruning: <strong>Aktif</strong></p></li>
+<li><p>Minimum number of records per node: <strong>2</strong></p></li>
+<li><p>Number of records to store for view: <strong>10000</strong></p></li>
+<li><p>Average split point: <strong>Aktif</strong></p></li>
+<li><p>Number threads: <strong>12</strong></p></li>
+<li><p>Skip nominal columns without domain information: <strong>Aktif</strong></p></li>
+</ul>
+<p>Kolom <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code> dipilih sebagai class column karena kolom tersebut merupakan target prediksi. Quality measure yang digunakan adalah <strong>Gain ratio</strong>, sehingga atribut pada pohon keputusan dipilih berdasarkan nilai gain ratio terbaik.</p>
+<p>Minimum number of records per node diatur menjadi 2. Artinya, sebuah node setidaknya harus memiliki 2 data agar dapat diproses. Pengaturan ini membantu menghasilkan pohon keputusan yang sederhana dan mudah dibaca.</p>
+<p><img alt="Konfigurasi Decision Tree Learner" src="_images/03-decision-tree-learner.png" /></p>
+<p>Gambar 3. Konfigurasi Decision Tree Learner dengan class column <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="menyimpan-model-menggunakan-model-writer">
+<h2>10. Menyimpan Model Menggunakan Model Writer<a class="headerlink" href="#menyimpan-model-menggunakan-model-writer" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Model Writer</p>
+<p><strong>Fungsi:</strong><br />
+Node Model Writer berfungsi untuk menyimpan model Decision Tree yang telah dibuat oleh node Decision Tree Learner. Melalui node ini, model dapat disimpan sehingga bisa digunakan kembali pada proses lain tanpa perlu melakukan pelatihan ulang.</p>
+<p><strong>Konfigurasi:</strong><br />
+Model Writer menerima input model dari output node Decision Tree Learner. Pada workflow ini, node tersebut digunakan sebagai media penyimpanan model hasil pelatihan.</p>
+</section>
+<hr class="docutils" />
+<section id="mengatur-tampilan-decision-tree-menggunakan-decision-tree-view">
+<h2>11. Mengatur Tampilan Decision Tree Menggunakan Decision Tree View<a class="headerlink" href="#mengatur-tampilan-decision-tree-menggunakan-decision-tree-view" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Decision Tree View</p>
+<p><strong>Fungsi:</strong><br />
+Node Decision Tree View digunakan untuk menampilkan model Decision Tree dalam bentuk visual pohon. Melalui tampilan ini, struktur keputusan yang dibentuk oleh model dapat dilihat secara langsung.</p>
+<p><strong>Konfigurasi:</strong></p>
+<ul class="simple">
+<li><p>Title: <strong>Decision Tree</strong></p></li>
+<li><p>Initial expanded levels: <strong>2</strong></p></li>
+<li><p>Generate image: <strong>Tidak aktif</strong></p></li>
+</ul>
+<p>Judul visualisasi pohon diatur menjadi <strong>Decision Tree</strong>. Nilai Initial expanded levels diatur menjadi 2, sehingga dua level awal pada pohon keputusan akan terbuka saat ditampilkan.</p>
+<p><img alt="Konfigurasi Decision Tree View" src="_images/04-decision-tree-view-config.png" /></p>
+<p>Gambar 4. Konfigurasi Decision Tree View untuk menampilkan pohon keputusan.</p>
+</section>
+<hr class="docutils" />
+<section id="hasil-visualisasi-decision-tree">
+<h2>12. Hasil Visualisasi Decision Tree<a class="headerlink" href="#hasil-visualisasi-decision-tree" title="Link to this heading">#</a></h2>
+<p>Output dari node Decision Tree View memperlihatkan bentuk pohon keputusan yang dihasilkan dari dataset Play Tennis. Pada hasil visualisasi tersebut, atribut <strong>Outlook</strong> menjadi node utama atau root node.</p>
+<p>Dari root node <strong>Outlook</strong>, data dipisahkan ke dalam beberapa cabang, yaitu:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Sunny</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Overcast</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Rain</span></code></p></li>
+</ul>
+<p>Pada cabang <code class="docutils literal notranslate"><span class="pre">Sunny</span></code>, keputusan masih dilanjutkan dengan melihat atribut <strong>Humidity</strong>. Jika nilai Humidity adalah <code class="docutils literal notranslate"><span class="pre">High</span></code>, maka keputusan akhirnya adalah <code class="docutils literal notranslate"><span class="pre">No</span></code>. Jika nilai Humidity adalah <code class="docutils literal notranslate"><span class="pre">Normal</span></code>, maka keputusan akhirnya adalah <code class="docutils literal notranslate"><span class="pre">Yes</span></code>.</p>
+<p>Pada cabang <code class="docutils literal notranslate"><span class="pre">Overcast</span></code>, hasil keputusan yang diperoleh adalah <code class="docutils literal notranslate"><span class="pre">Yes</span></code>. Sementara itu, pada cabang <code class="docutils literal notranslate"><span class="pre">Rain</span></code>, keputusan yang paling dominan juga mengarah ke <code class="docutils literal notranslate"><span class="pre">Yes</span></code>.</p>
+<p><img alt="Hasil Decision Tree" src="_images/05-decision-tree-result.png" /></p>
+<p>Gambar 5. Hasil visualisasi pohon keputusan pada dataset Play Tennis.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="hasil-dan-pembahasan">
+<h1>13. Hasil dan Pembahasan<a class="headerlink" href="#hasil-dan-pembahasan" title="Link to this heading">#</a></h1>
+<p>Berdasarkan workflow yang telah dibuat, proses klasifikasi dengan algoritma Decision Tree berhasil dijalankan pada KNIME. Tahapan dimulai dari membaca dataset menggunakan node CSV Reader, kemudian data dibagi menggunakan node Table Partitioner.</p>
+<p>Pada proyek ini, Table Partitioner menerapkan pembagian data sebesar <strong>90%</strong> dengan strategi <strong>Stratified</strong> berdasarkan kolom <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code>. Strategi tersebut membuat distribusi kelas <code class="docutils literal notranslate"><span class="pre">Yes</span></code> dan <code class="docutils literal notranslate"><span class="pre">No</span></code> tetap diperhatikan dalam proses pembagian data.</p>
+<p>Model Decision Tree dibangun menggunakan node Decision Tree Learner. Kolom <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code> digunakan sebagai class column karena kolom tersebut menjadi target klasifikasi. Quality measure yang digunakan adalah <strong>Gain ratio</strong>, sehingga pemilihan atribut sebagai pemisah dilakukan berdasarkan nilai gain ratio.</p>
+<p>Hasil visualisasi Decision Tree menunjukkan bahwa atribut <strong>Outlook</strong> menjadi root node atau node utama. Atribut ini menjadi dasar awal dalam proses pengambilan keputusan. Jika Outlook bernilai <code class="docutils literal notranslate"><span class="pre">Sunny</span></code>, model akan memeriksa atribut <strong>Humidity</strong> untuk menentukan hasil akhir. Jika Outlook bernilai <code class="docutils literal notranslate"><span class="pre">Overcast</span></code>, keputusan langsung menuju <code class="docutils literal notranslate"><span class="pre">Yes</span></code>. Jika Outlook bernilai <code class="docutils literal notranslate"><span class="pre">Rain</span></code>, keputusan mayoritas juga menuju <code class="docutils literal notranslate"><span class="pre">Yes</span></code>.</p>
+<p>Berdasarkan hasil tersebut, dapat disimpulkan bahwa model Decision Tree mampu membentuk aturan keputusan yang mudah dipahami. Visualisasi pohon membantu pengguna memahami cara model menghasilkan klasifikasi berdasarkan atribut yang tersedia.</p>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="kesimpulan">
+<h1>14. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h1>
+<p>Berdasarkan proyek yang telah dilakukan, algoritma <strong>Decision Tree</strong> dapat digunakan untuk melakukan klasifikasi pada dataset <strong>Play Tennis</strong> melalui platform <strong>KNIME</strong>. Workflow yang dibuat mencakup beberapa tahap, yaitu membaca data, membagi data, membangun model Decision Tree, menyimpan model, serta menampilkan hasil pohon keputusan.</p>
+<p>Node Decision Tree Learner berhasil menghasilkan model dengan kolom target <code class="docutils literal notranslate"><span class="pre">Play</span> <span class="pre">Tennis</span></code>. Hasil pohon keputusan menunjukkan bahwa atribut <code class="docutils literal notranslate"><span class="pre">Outlook</span></code> menjadi faktor utama dalam proses klasifikasi. Selanjutnya, atribut lain seperti <code class="docutils literal notranslate"><span class="pre">Humidity</span></code> digunakan untuk memperjelas keputusan pada cabang tertentu.</p>
+<p>Secara keseluruhan, Decision Tree merupakan algoritma yang mudah dipahami karena model yang dihasilkan dapat divisualisasikan dalam bentuk pohon keputusan. Dengan demikian, pengguna dapat melihat aturan klasifikasi yang terbentuk dari data secara lebih jelas.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pertemuan-10.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pertemuan 10</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 11</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-decision-tree">1. Pengertian Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-decision-tree">2. Konsep Dasar Decision Tree</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-gain-ratio">Rumus Gain Ratio</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-decision-tree">3. Struktur Decision Tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-decision-tree">4. Kelebihan Decision Tree</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laporan-proyek-klasifikasi-decision-tree-menggunakan-knime">Laporan Proyek: Klasifikasi Decision Tree Menggunakan KNIME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-proyek">5. Deskripsi Proyek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-workflow">6. Visualisasi Workflow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-pembuatan-workflow">Langkah-Langkah Pembuatan Workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-menggunakan-csv-reader">7. Membaca Data Menggunakan CSV Reader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data-menggunakan-table-partitioner">8. Membagi Data Menggunakan Table Partitioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-model-menggunakan-decision-tree-learner">9. Membuat Model Menggunakan Decision Tree Learner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-menggunakan-model-writer">10. Menyimpan Model Menggunakan Model Writer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengatur-tampilan-decision-tree-menggunakan-decision-tree-view">11. Mengatur Tampilan Decision Tree Menggunakan Decision Tree View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-visualisasi-decision-tree">12. Hasil Visualisasi Decision Tree</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-dan-pembahasan">13. Hasil dan Pembahasan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">14. Kesimpulan</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ach Rayyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

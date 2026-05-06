@@ -1,0 +1,871 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pertemuan 10 &#8212; Penambangan Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan-10';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Pertemuan 11" href="pertemuan-11.html" />
+    <link rel="prev" title="Pertemuan 5" href="pertemuan-5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Penambangan Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Penambangan Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    BIODATA
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-1.html">Pertemuan 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-2.html">Pertemuan 2</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-3.html">Pertemuan 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-uts.html">Analisis Data Kesuburan Tanah</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-5.html">Pertemuan 5</a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 10</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="pertemuan-11.html">Pertemuan 11</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpertemuan-10.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pertemuan-10.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pertemuan 10</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 10</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-naive-bayes">1. Pengertian Naive Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-teorema-bayes">2. Rumus Teorema Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-naive-bayes">3. Jenis-Jenis Naive Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-naive-bayes">4. Kelebihan Naive Bayes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laporan-proyek-klasifikasi-naive-bayes-menggunakan-knime-dan-python-sklearn">Laporan Proyek: Klasifikasi Naive Bayes Menggunakan KNIME dan Python (Sklearn)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-proyek">5. Deskripsi Proyek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-workflow">6. Visualisasi Workflow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-pembuatan-workflow">Langkah-Langkah Pembuatan Workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-menggunakan-csv-reader">7. Membaca Data Menggunakan CSV Reader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data-latih-dan-data-uji-menggunakan-table-partitioner">8. Membagi Data Latih dan Data Uji Menggunakan Table Partitioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-latih-menggunakan-normalizer">9. Normalisasi Data Latih Menggunakan Normalizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menerapkan-normalisasi-ke-data-uji-menggunakan-normalizer-apply">10. Menerapkan Normalisasi ke Data Uji Menggunakan Normalizer Apply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes-menggunakan-python-script">11. Implementasi Naive Bayes Menggunakan Python Script</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-yang-digunakan">Script yang Digunakan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-script">Penjelasan Script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-hasil-prediksi-menggunakan-table-view">12. Menampilkan Hasil Prediksi Menggunakan Table View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model-menggunakan-scorer">13. Evaluasi Model Menggunakan Scorer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-evaluasi-scorer">Hasil Evaluasi Scorer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">14. Kesimpulan</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-10">
+<h1>Pertemuan 10<a class="headerlink" href="#pertemuan-10" title="Link to this heading">#</a></h1>
+<section id="pengertian-naive-bayes">
+<h2>1. Pengertian Naive Bayes<a class="headerlink" href="#pengertian-naive-bayes" title="Link to this heading">#</a></h2>
+<p>Naive Bayes merupakan metode klasifikasi yang bekerja berdasarkan konsep probabilitas dengan memanfaatkan Teorema Bayes. Algoritma ini disebut “Naive” karena menganggap setiap fitur atau atribut pada data berdiri sendiri dan tidak saling bergantung. Meskipun pada kenyataannya antarfitur dalam sebuah dataset bisa saja memiliki keterkaitan, Naive Bayes tetap sering digunakan karena cara kerjanya sederhana, prosesnya cepat, dan mampu memberikan hasil yang cukup baik untuk berbagai permasalahan klasifikasi.</p>
+<p>Pada proyek ini digunakan jenis <strong>Gaussian Naive Bayes</strong>. Metode ini sesuai untuk dataset IRIS karena atribut yang digunakan berupa data numerik kontinu, seperti panjang sepal, lebar sepal, panjang petal, dan lebar petal.</p>
+</section>
+<section id="rumus-teorema-bayes">
+<h2>2. Rumus Teorema Bayes<a class="headerlink" href="#rumus-teorema-bayes" title="Link to this heading">#</a></h2>
+<p>Rumus dasar Teorema Bayes adalah sebagai berikut:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>P(C|X) = (P(X|C) x P(C)) / P(X)
+</pre></div>
+</div>
+<p>Keterangan:</p>
+<ul class="simple">
+<li><p><strong>P(C|X)</strong>: peluang data termasuk ke kelas C berdasarkan atribut X.</p></li>
+<li><p><strong>P(X|C)</strong>: peluang atribut X muncul apabila kelasnya diketahui sebagai C.</p></li>
+<li><p><strong>P(C)</strong>: peluang awal dari kemunculan kelas C.</p></li>
+<li><p><strong>P(X)</strong>: peluang munculnya atribut X.</p></li>
+</ul>
+</section>
+<section id="jenis-jenis-naive-bayes">
+<h2>3. Jenis-Jenis Naive Bayes<a class="headerlink" href="#jenis-jenis-naive-bayes" title="Link to this heading">#</a></h2>
+<p>Beberapa jenis Naive Bayes yang umum digunakan adalah sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p><strong>Gaussian Naive Bayes</strong><br />
+Digunakan pada data numerik yang bersifat kontinu. Contohnya terdapat pada dataset IRIS yang memiliki atribut <code class="docutils literal notranslate"><span class="pre">sepal_length</span></code>, <code class="docutils literal notranslate"><span class="pre">sepal_width</span></code>, <code class="docutils literal notranslate"><span class="pre">petal_length</span></code>, dan <code class="docutils literal notranslate"><span class="pre">petal_width</span></code>.</p></li>
+<li><p><strong>Multinomial Naive Bayes</strong><br />
+Digunakan untuk data yang berbentuk jumlah atau frekuensi, misalnya pada klasifikasi teks berdasarkan banyaknya kemunculan kata.</p></li>
+<li><p><strong>Bernoulli Naive Bayes</strong><br />
+Digunakan untuk data biner, yaitu data yang hanya memiliki dua kemungkinan nilai, seperti ya/tidak atau 0/1.</p></li>
+</ol>
+</section>
+<section id="kelebihan-naive-bayes">
+<h2>4. Kelebihan Naive Bayes<a class="headerlink" href="#kelebihan-naive-bayes" title="Link to this heading">#</a></h2>
+<p>Beberapa kelebihan dari algoritma Naive Bayes adalah:</p>
+<ul class="simple">
+<li><p>Memiliki proses komputasi yang cepat dan efisien.</p></li>
+<li><p>Mudah diterapkan untuk proses klasifikasi data.</p></li>
+<li><p>Dapat digunakan pada dataset sederhana maupun dataset dengan jumlah atribut yang cukup banyak.</p></li>
+<li><p>Tidak memerlukan data latih dalam jumlah yang sangat besar untuk memperoleh hasil yang cukup baik.</p></li>
+<li><p>Mudah diimplementasikan menggunakan library Python, salah satunya scikit-learn.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tugas">
+<h1>TUGAS<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h1>
+<section id="laporan-proyek-klasifikasi-naive-bayes-menggunakan-knime-dan-python-sklearn">
+<h2>Laporan Proyek: Klasifikasi Naive Bayes Menggunakan KNIME dan Python (Sklearn)<a class="headerlink" href="#laporan-proyek-klasifikasi-naive-bayes-menggunakan-knime-dan-python-sklearn" title="Link to this heading">#</a></h2>
+</section>
+<section id="deskripsi-proyek">
+<h2>5. Deskripsi Proyek<a class="headerlink" href="#deskripsi-proyek" title="Link to this heading">#</a></h2>
+<p>Proyek ini dibuat untuk membangun model klasifikasi menggunakan algoritma <strong>Gaussian Naive Bayes</strong> dari library <strong>scikit-learn Python</strong> yang dijalankan melalui platform <strong>KNIME</strong>. Dataset yang digunakan adalah dataset <strong>IRIS</strong>, yaitu dataset yang berisi data ukuran bunga Iris.</p>
+<p>Dataset IRIS memiliki beberapa atribut numerik, yaitu:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_width</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_width</span></code></p></li>
+</ul>
+<p>Selain atribut tersebut, dataset ini juga memiliki kolom target atau label, yaitu:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">species</span></code></p></li>
+</ul>
+<p>Kolom <code class="docutils literal notranslate"><span class="pre">species</span></code> berisi jenis bunga Iris, antara lain:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Iris-setosa</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Iris-versicolor</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Iris-virginica</span></code></p></li>
+</ul>
+<p>Tujuan dari proyek ini adalah membuat model klasifikasi yang dapat memprediksi jenis bunga Iris berdasarkan nilai atribut sepal dan petal. Pembuatan model dilakukan dengan menggabungkan workflow visual pada KNIME dan pemrograman Python melalui node <strong>Python Script</strong>.</p>
+</section>
+<section id="visualisasi-workflow">
+<h2>6. Visualisasi Workflow<a class="headerlink" href="#visualisasi-workflow" title="Link to this heading">#</a></h2>
+<p><img alt="Workflow KNIME" src="_images/01-workflow-knime.png" /></p>
+<blockquote>
+<div><p>Gambar 1. Workflow klasifikasi Naive Bayes menggunakan KNIME dan Python Script.</p>
+</div></blockquote>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="langkah-langkah-pembuatan-workflow">
+<h1>Langkah-Langkah Pembuatan Workflow<a class="headerlink" href="#langkah-langkah-pembuatan-workflow" title="Link to this heading">#</a></h1>
+<section id="membaca-data-menggunakan-csv-reader">
+<h2>7. Membaca Data Menggunakan CSV Reader<a class="headerlink" href="#membaca-data-menggunakan-csv-reader" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> CSV Reader</p>
+<p><strong>Fungsi:</strong><br />
+Node CSV Reader digunakan untuk memasukkan dataset IRIS dari file CSV ke dalam lingkungan kerja KNIME. File tersebut berisi data bunga Iris yang terdiri dari beberapa fitur numerik dan satu kolom target.</p>
+<p><strong>Konfigurasi:</strong><br />
+Pada node CSV Reader, file dataset dipilih dari penyimpanan lokal komputer. Setelah file berhasil dibaca, data akan tersedia di KNIME dan dapat digunakan untuk tahapan berikutnya.</p>
+</section>
+<hr class="docutils" />
+<section id="membagi-data-latih-dan-data-uji-menggunakan-table-partitioner">
+<h2>8. Membagi Data Latih dan Data Uji Menggunakan Table Partitioner<a class="headerlink" href="#membagi-data-latih-dan-data-uji-menggunakan-table-partitioner" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Table Partitioner</p>
+<p><strong>Fungsi:</strong><br />
+Node Table Partitioner digunakan untuk membagi dataset menjadi dua bagian, yaitu data latih dan data uji. Data latih digunakan dalam proses pelatihan model, sedangkan data uji digunakan untuk mengetahui kemampuan model dalam melakukan prediksi.</p>
+<p><strong>Konfigurasi:</strong></p>
+<ul class="simple">
+<li><p>Partition type: <strong>Relative (%)</strong></p></li>
+<li><p>Relative size: <strong>60</strong></p></li>
+<li><p>Sampling strategy: <strong>Random</strong></p></li>
+</ul>
+<p>Dengan konfigurasi tersebut, <strong>60% data</strong> digunakan sebagai data latih, sedangkan <strong>40% data</strong> digunakan sebagai data uji. Strategi <strong>Random</strong> membuat pembagian data dilakukan secara acak.</p>
+<p>Pembagian data ini diperlukan agar model tidak hanya mengingat data latih, tetapi juga dapat diuji menggunakan data lain yang belum digunakan saat proses pelatihan.</p>
+<p><img alt="Konfigurasi Table Partitioner" src="_images/02-table-partitioner.png" /></p>
+<blockquote>
+<div><p>Gambar 2. Konfigurasi Table Partitioner dengan pembagian 60% data latih dan 40% data uji.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="normalisasi-data-latih-menggunakan-normalizer">
+<h2>9. Normalisasi Data Latih Menggunakan Normalizer<a class="headerlink" href="#normalisasi-data-latih-menggunakan-normalizer" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Normalizer</p>
+<p><strong>Fungsi:</strong><br />
+Node Normalizer digunakan untuk menyamakan skala nilai pada fitur numerik agar berada pada rentang yang seragam. Proses ini dilakukan supaya fitur yang memiliki nilai lebih besar tidak terlalu memengaruhi proses pembelajaran model.</p>
+<p><strong>Kolom yang dinormalisasi:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_width</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_width</span></code></p></li>
+</ul>
+<p><strong>Konfigurasi:</strong><br />
+Pada proyek ini, kolom numerik dipilih secara manual pada bagian <strong>Includes</strong>. Normalisasi dilakukan ke dalam rentang nilai <strong>0 sampai 1</strong>. Output dari node ini berupa data latih yang telah dinormalisasi serta model normalisasi yang menyimpan informasi skala dari data latih.</p>
+<p><img alt="Konfigurasi Normalizer" src="_images/03-normalizer.png" /></p>
+<blockquote>
+<div><p>Gambar 3. Konfigurasi Normalizer pada kolom numerik dataset IRIS.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="menerapkan-normalisasi-ke-data-uji-menggunakan-normalizer-apply">
+<h2>10. Menerapkan Normalisasi ke Data Uji Menggunakan Normalizer Apply<a class="headerlink" href="#menerapkan-normalisasi-ke-data-uji-menggunakan-normalizer-apply" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Normalizer (Apply)</p>
+<p><strong>Fungsi:</strong><br />
+Node Normalizer Apply digunakan untuk menerapkan aturan normalisasi dari data latih ke data uji. Dengan proses ini, data uji akan memiliki skala nilai yang sama dengan data latih.</p>
+<p><strong>Konfigurasi:</strong><br />
+Node ini menerima dua input, yaitu:</p>
+<ol class="arabic simple">
+<li><p>Model normalisasi dari node <strong>Normalizer</strong>.</p></li>
+<li><p>Data uji dari hasil pembagian node <strong>Table Partitioner</strong>.</p></li>
+</ol>
+<p>Penggunaan Normalizer Apply penting karena dapat menghindari terjadinya <strong>data leakage</strong>. Data leakage terjadi ketika informasi dari data uji ikut memengaruhi proses pelatihan model. Dengan menggunakan model normalisasi yang berasal dari data latih, proses evaluasi menjadi lebih tepat.</p>
+</section>
+<hr class="docutils" />
+<section id="implementasi-naive-bayes-menggunakan-python-script">
+<h2>11. Implementasi Naive Bayes Menggunakan Python Script<a class="headerlink" href="#implementasi-naive-bayes-menggunakan-python-script" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Python Script</p>
+<p><strong>Fungsi:</strong><br />
+Node Python Script digunakan untuk menjalankan kode Python di dalam KNIME. Pada bagian ini, algoritma <strong>Gaussian Naive Bayes</strong> digunakan untuk melatih model dan menghasilkan prediksi pada data uji.</p>
+<p><strong>Proses yang dilakukan:</strong></p>
+<ol class="arabic simple">
+<li><p>Membaca data training dan testing dari input KNIME.</p></li>
+<li><p>Memisahkan kolom fitur dan kolom label/target.</p></li>
+<li><p>Membuat model Gaussian Naive Bayes.</p></li>
+<li><p>Melatih model menggunakan data latih.</p></li>
+<li><p>Melakukan prediksi terhadap data uji.</p></li>
+<li><p>Menambahkan hasil prediksi ke dalam kolom baru bernama <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code>.</p></li>
+<li><p>Mengirim hasil akhir kembali ke KNIME.</p></li>
+<li><p>Menampilkan laporan evaluasi klasifikasi menggunakan <code class="docutils literal notranslate"><span class="pre">classification_report</span></code>.</p></li>
+</ol>
+<section id="script-yang-digunakan">
+<h3>Script yang Digunakan<a class="headerlink" href="#script-yang-digunakan" title="Link to this heading">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">knime.scripting.io</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">knio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span>
+
+<span class="c1"># Membaca data training dan testing dari input KNIME</span>
+<span class="n">data_latih</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+<span class="n">data_uji</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">input_tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
+
+<span class="c1"># Memisahkan kolom fitur dan kolom label/target</span>
+<span class="n">fitur_latih</span> <span class="o">=</span> <span class="n">data_latih</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">label_latih</span> <span class="o">=</span> <span class="n">data_latih</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">fitur_uji</span> <span class="o">=</span> <span class="n">data_uji</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">label_uji</span> <span class="o">=</span> <span class="n">data_uji</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Membuat dan melatih model Naive Bayes Gaussian</span>
+<span class="n">model_nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">model_nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">fitur_latih</span><span class="p">,</span> <span class="n">label_latih</span><span class="p">)</span>
+
+<span class="c1"># Melakukan prediksi terhadap data uji</span>
+<span class="n">hasil_prediksi</span> <span class="o">=</span> <span class="n">model_nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">fitur_uji</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan hasil prediksi ke dalam data uji</span>
+<span class="n">hasil_akhir</span> <span class="o">=</span> <span class="n">data_uji</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">hasil_akhir</span><span class="p">[</span><span class="s2">&quot;hasil_prediksi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hasil_prediksi</span>
+
+<span class="c1"># Mengirim hasil akhir kembali ke KNIME</span>
+<span class="n">knio</span><span class="o">.</span><span class="n">output_tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">knio</span><span class="o">.</span><span class="n">Table</span><span class="o">.</span><span class="n">from_pandas</span><span class="p">(</span><span class="n">hasil_akhir</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan laporan evaluasi klasifikasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">label_uji</span><span class="p">,</span> <span class="n">hasil_prediksi</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="penjelasan-script">
+<h3>Penjelasan Script<a class="headerlink" href="#penjelasan-script" title="Link to this heading">#</a></h3>
+<p>Pada script tersebut, data latih dan data uji diambil dari input node Python Script menggunakan <code class="docutils literal notranslate"><span class="pre">knio.input_tables</span></code>. Setelah itu, data diubah menjadi dataframe pandas agar dapat diproses menggunakan library Python.</p>
+<p>Tahap berikutnya adalah memisahkan data menjadi fitur dan label. Fitur diambil dari seluruh kolom kecuali kolom terakhir, sedangkan label diambil dari kolom terakhir. Pada dataset ini, kolom label yang digunakan adalah <code class="docutils literal notranslate"><span class="pre">species</span></code>.</p>
+<p>Model dibuat menggunakan <code class="docutils literal notranslate"><span class="pre">GaussianNB()</span></code> dari library <code class="docutils literal notranslate"><span class="pre">sklearn.naive_bayes</span></code>. Setelah model selesai dilatih menggunakan data latih, model tersebut digunakan untuk memprediksi data uji. Hasil prediksi kemudian ditambahkan ke dataframe data uji sebagai kolom baru bernama <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code>.</p>
+<p>Output dari Python Script dikirim kembali ke KNIME dalam bentuk tabel menggunakan <code class="docutils literal notranslate"><span class="pre">knio.Table.from_pandas()</span></code>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="menampilkan-hasil-prediksi-menggunakan-table-view">
+<h2>12. Menampilkan Hasil Prediksi Menggunakan Table View<a class="headerlink" href="#menampilkan-hasil-prediksi-menggunakan-table-view" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Table View</p>
+<p><strong>Fungsi:</strong><br />
+Node Table View digunakan untuk menampilkan hasil akhir dari proses klasifikasi. Pada tabel ini, data uji ditampilkan bersama label sebenarnya dan hasil prediksi dari model.</p>
+<p><strong>Kolom yang ditampilkan:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sepal_width</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_length</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">petal_width</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">species</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code></p></li>
+</ul>
+<p>Kolom <code class="docutils literal notranslate"><span class="pre">species</span></code> menunjukkan label asli dari dataset, sedangkan kolom <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code> menunjukkan label yang diprediksi oleh model Gaussian Naive Bayes.</p>
+<p><img alt="Hasil Table View" src="_images/04-table-view-result.png" /></p>
+<blockquote>
+<div><p>Gambar 4. Hasil prediksi model pada Table View dengan kolom <code class="docutils literal notranslate"><span class="pre">species</span></code> dan <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code>.</p>
+</div></blockquote>
+</section>
+<hr class="docutils" />
+<section id="evaluasi-model-menggunakan-scorer">
+<h2>13. Evaluasi Model Menggunakan Scorer<a class="headerlink" href="#evaluasi-model-menggunakan-scorer" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Scorer</p>
+<p><strong>Fungsi:</strong><br />
+Node Scorer digunakan untuk menilai performa model klasifikasi. Proses evaluasi dilakukan dengan membandingkan label asli dan label hasil prediksi.</p>
+<p><strong>Konfigurasi:</strong></p>
+<ul class="simple">
+<li><p>First column: <code class="docutils literal notranslate"><span class="pre">species</span></code></p></li>
+<li><p>Second column: <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code></p></li>
+<li><p>Sorting strategy: <strong>Insertion order</strong></p></li>
+<li><p>Missing values: <strong>Ignore</strong></p></li>
+</ul>
+<p>Kolom <code class="docutils literal notranslate"><span class="pre">species</span></code> digunakan sebagai label asli, sedangkan kolom <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code> digunakan sebagai label hasil prediksi dari model.</p>
+<p><img alt="Konfigurasi Scorer" src="_images/05-scorer-config.png" /></p>
+<blockquote>
+<div><p>Gambar 5. Konfigurasi Scorer untuk membandingkan kolom <code class="docutils literal notranslate"><span class="pre">species</span></code> dan <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code>.</p>
+</div></blockquote>
+<section id="hasil-evaluasi-scorer">
+<h3>Hasil Evaluasi Scorer<a class="headerlink" href="#hasil-evaluasi-scorer" title="Link to this heading">#</a></h3>
+<p><img alt="Hasil Scorer" src="_images/06-scorer-result.png" /></p>
+<blockquote>
+<div><p>Gambar 6. Hasil evaluasi model menggunakan Scorer.</p>
+</div></blockquote>
+<p>Apabila hasil Scorer menunjukkan nilai akurasi yang tinggi, maka model dapat dianggap mampu mengklasifikasikan data IRIS dengan baik. Jika terdapat kesalahan prediksi, biasanya kesalahan tersebut terjadi pada kelas <code class="docutils literal notranslate"><span class="pre">Iris-versicolor</span></code> dan <code class="docutils literal notranslate"><span class="pre">Iris-virginica</span></code> karena kedua jenis bunga tersebut memiliki karakteristik fitur yang cukup mirip.</p>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="kesimpulan">
+<h1>14. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h1>
+<p>Berdasarkan workflow yang telah dibuat, klasifikasi dataset IRIS menggunakan algoritma Gaussian Naive Bayes berhasil dijalankan di dalam KNIME. Proses diawali dengan pembacaan dataset melalui node CSV Reader, kemudian data dibagi menjadi data latih dan data uji menggunakan node Table Partitioner.</p>
+<p>Pada proyek ini, pembagian data menggunakan rasio <strong>60% data latih</strong> dan <strong>40% data uji</strong> dengan strategi <strong>Random</strong>. Setelah itu, data latih dinormalisasi menggunakan node Normalizer pada kolom numerik, yaitu <code class="docutils literal notranslate"><span class="pre">sepal_length</span></code>, <code class="docutils literal notranslate"><span class="pre">sepal_width</span></code>, <code class="docutils literal notranslate"><span class="pre">petal_length</span></code>, dan <code class="docutils literal notranslate"><span class="pre">petal_width</span></code>.</p>
+<p>Data uji selanjutnya dinormalisasi menggunakan node Normalizer Apply. Tahap ini dilakukan agar data uji mempunyai skala yang sama dengan data latih, sehingga proses prediksi menjadi lebih konsisten dan tidak terjadi data leakage.</p>
+<p>Model Gaussian Naive Bayes dibuat dan dijalankan menggunakan node Python Script. Model dilatih menggunakan data latih, kemudian digunakan untuk memprediksi data uji. Hasil prediksi ditambahkan ke dalam tabel dengan nama kolom <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code>.</p>
+<p>Hasil akhir ditampilkan melalui node Table View. Pada Table View, terdapat kolom <code class="docutils literal notranslate"><span class="pre">species</span></code> sebagai label asli dan kolom <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code> sebagai hasil prediksi model. Setelah itu, evaluasi dilakukan menggunakan node Scorer dengan membandingkan kolom <code class="docutils literal notranslate"><span class="pre">species</span></code> dan <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code>.</p>
+<p>Melalui proses tersebut, dapat diketahui apakah model berhasil melakukan klasifikasi dengan baik. Jika sebagian besar nilai pada kolom <code class="docutils literal notranslate"><span class="pre">hasil_prediksi</span></code> sama dengan nilai pada kolom <code class="docutils literal notranslate"><span class="pre">species</span></code>, maka model memiliki performa klasifikasi yang baik.</p>
+<hr class="docutils" />
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pertemuan-5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pertemuan 5</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pertemuan-11.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pertemuan 11</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pertemuan 10</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-naive-bayes">1. Pengertian Naive Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rumus-teorema-bayes">2. Rumus Teorema Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jenis-jenis-naive-bayes">3. Jenis-Jenis Naive Bayes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kelebihan-naive-bayes">4. Kelebihan Naive Bayes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laporan-proyek-klasifikasi-naive-bayes-menggunakan-knime-dan-python-sklearn">Laporan Proyek: Klasifikasi Naive Bayes Menggunakan KNIME dan Python (Sklearn)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-proyek">5. Deskripsi Proyek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-workflow">6. Visualisasi Workflow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-pembuatan-workflow">Langkah-Langkah Pembuatan Workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-menggunakan-csv-reader">7. Membaca Data Menggunakan CSV Reader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data-latih-dan-data-uji-menggunakan-table-partitioner">8. Membagi Data Latih dan Data Uji Menggunakan Table Partitioner</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-latih-menggunakan-normalizer">9. Normalisasi Data Latih Menggunakan Normalizer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menerapkan-normalisasi-ke-data-uji-menggunakan-normalizer-apply">10. Menerapkan Normalisasi ke Data Uji Menggunakan Normalizer Apply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-naive-bayes-menggunakan-python-script">11. Implementasi Naive Bayes Menggunakan Python Script</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#script-yang-digunakan">Script yang Digunakan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-script">Penjelasan Script</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-hasil-prediksi-menggunakan-table-view">12. Menampilkan Hasil Prediksi Menggunakan Table View</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model-menggunakan-scorer">13. Evaluasi Model Menggunakan Scorer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-evaluasi-scorer">Hasil Evaluasi Scorer</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">14. Kesimpulan</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ach Rayyan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
