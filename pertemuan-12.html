@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>BIODATA &#8212; Penambangan Data</title>
+    <title>Laporan Proyek: Analisis Data Menggunakan Random Forest &#8212; Penambangan Data</title>
   
   
   
@@ -58,12 +58,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pertemuan-12';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Pertemuan 1" href="pertemuan-1.html" />
+    <link rel="prev" title="Pertemuan 11" href="pertemuan-11.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -126,8 +124,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -146,7 +142,7 @@
     
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="intro.html">
   
   
   
@@ -177,13 +173,13 @@
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
                     BIODATA
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pertemuan-1.html">Pertemuan 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pertemuan-2.html">Pertemuan 2</a></li>
 
@@ -215,7 +211,7 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="pertemuan-12.html">Laporan Proyek: Analisis Data Menggunakan Random Forest</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Laporan Proyek: Analisis Data Menggunakan Random Forest</a></li>
 
 
 </ul>
@@ -289,7 +285,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpertemuan-12.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +315,7 @@
       
       
       
-      <li><a href="_sources/intro.md" target="_blank"
+      <li><a href="_sources/pertemuan-12.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -403,7 +399,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>BIODATA</h1>
+    <h1>Laporan Proyek: Analisis Data Menggunakan Random Forest</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -413,8 +409,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Laporan Proyek: Analisis Data Menggunakan Random Forest</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-ensemble-learning">1. Pengertian Ensemble Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-menggunakan-ensemble">Mengapa Menggunakan Ensemble?</a></li>
 </ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-random-forest">2. Pengertian Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-random-forest">3. Konsep Dasar Random Forest</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laporan-proyek-klasifikasi-random-forest-menggunakan-knime">Laporan Proyek: Klasifikasi Random Forest Menggunakan KNIME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-proyek">4. Deskripsi Proyek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-workflow">5. Visualisasi Workflow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-pembuatan-workflow">Langkah-Langkah Pembuatan Workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-csv-reader">6. Membaca Data (CSV Reader)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data-table-partitioner">7. Membagi Data (Table Partitioner)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pelatihan-model-random-forest-learner">8. Pelatihan Model (Random Forest Learner)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-random-forest-predictor">9. Prediksi (Random Forest Predictor)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-scorer">10. Evaluasi (Scorer)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">11. Kesimpulan</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -425,22 +445,96 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="biodata">
-<h1>BIODATA<a class="headerlink" href="#biodata" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="laporan-proyek-analisis-data-menggunakan-random-forest">
+<h1>Laporan Proyek: Analisis Data Menggunakan Random Forest<a class="headerlink" href="#laporan-proyek-analisis-data-menggunakan-random-forest" title="Link to this heading">#</a></h1>
+<section id="pengertian-ensemble-learning">
+<h2>1. Pengertian Ensemble Learning<a class="headerlink" href="#pengertian-ensemble-learning" title="Link to this heading">#</a></h2>
+<p><strong>Ensemble Learning</strong> adalah paradigma dalam machine learning di mana beberapa model (sering disebut sebagai “base learners”) dilatih untuk memecahkan masalah yang sama dan dikombinasikan untuk mendapatkan hasil prediksi yang lebih baik. Prinsip utamanya adalah “kekuatan dalam jumlah”; sekumpulan model lemah (weak learners) yang bekerja bersama seringkali dapat mengungguli satu model kuat (strong learner).</p>
+<p>Dua teknik ensemble yang paling populer adalah:</p>
+<ol class="arabic simple">
+<li><p><strong>Bagging (Bootstrap Aggregating):</strong> Melatih beberapa model secara paralel pada subset data yang berbeda. Contoh utamanya adalah <strong>Random Forest</strong>.</p></li>
+<li><p><strong>Boosting:</strong> Melatih model secara berurutan, di mana setiap model baru mencoba memperbaiki kesalahan model sebelumnya.</p></li>
+</ol>
+<section id="mengapa-menggunakan-ensemble">
+<h3>Mengapa Menggunakan Ensemble?<a class="headerlink" href="#mengapa-menggunakan-ensemble" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><strong>Nama:</strong> Ach Rayyan</p></li>
-<li><p><strong>NIM:</strong> 240411100188</p></li>
-<li><p><strong>Kelas:</strong> Penambangan Data A</p></li>
-<li><p><strong>Email:</strong> <a class="reference external" href="mailto:madfahhor&#37;&#52;&#48;gmail&#46;com">madfahhor<span>&#64;</span>gmail<span>&#46;</span>com</a></p></li>
-<li><p><strong>Program Studi:</strong> Teknik Informatika</p></li>
+<li><p><strong>Meningkatkan Akurasi:</strong> Menggabungkan prediksi mengurangi kemungkinan kesalahan tunggal.</p></li>
+<li><p><strong>Mengurangi Overfitting:</strong> Teknik seperti Bagging membantu menstabilkan model sehingga tidak terlalu sensitif terhadap noise pada data latihan.</p></li>
+<li><p><strong>Robustness:</strong> Model menjadi lebih tangguh terhadap variasi data.</p></li>
 </ul>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>Mata kuliah Penambangan Data mempelajari teknik dan metode untuk menggali informasi serta pola tersembunyi dari sekumpulan data. Dalam era digital saat ini, data menjadi aset penting yang dapat digunakan untuk mendukung pengambilan keputusan secara lebih akurat dan efektif.</p>
-<p>Melalui materi ini, berbagai konsep dasar, proses analisis, serta penerapan metode penambangan data akan dibahas secara sistematis.</p>
 </section>
-<div class="toctree-wrapper compound">
-</div>
+</section>
+<hr class="docutils" />
+<section id="pengertian-random-forest">
+<h2>2. Pengertian Random Forest<a class="headerlink" href="#pengertian-random-forest" title="Link to this heading">#</a></h2>
+<p><strong>Random Forest</strong> adalah algoritma pembelajaran mesin yang menggunakan teknik <em>Bagging</em>. Algoritma ini membangun banyak pohon keputusan (Decision Trees) secara independen. Saat melakukan prediksi, Random Forest akan mengambil hasil dari setiap pohon dan menentukan hasil akhir melalui voting (untuk klasifikasi) atau rata-rata (untuk regresi).</p>
+<p>Dalam proyek ini, Random Forest digunakan untuk mengklasifikasikan dataset <strong>Iris</strong>. Model ini memecah data berdasarkan fitur sepal dan petal untuk menentukan spesies bunga dengan tingkat akurasi yang tinggi.</p>
+</section>
+<section id="konsep-dasar-random-forest">
+<h2>3. Konsep Dasar Random Forest<a class="headerlink" href="#konsep-dasar-random-forest" title="Link to this heading">#</a></h2>
+<p>Berbeda dengan Decision Tree tunggal yang mencari atribut terbaik di seluruh dataset, Random Forest:</p>
+<ol class="arabic simple">
+<li><p>Mengambil sampel acak dari data (Bootstrap).</p></li>
+<li><p>Memilih subset fitur secara acak pada setiap percabangan pohon.</p></li>
+<li><p>Menggabungkan hasil dari ratusan hingga ribuan pohon untuk mencapai keputusan final.</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="tugas">
+<h1>TUGAS<a class="headerlink" href="#tugas" title="Link to this heading">#</a></h1>
+<section id="laporan-proyek-klasifikasi-random-forest-menggunakan-knime">
+<h2>Laporan Proyek: Klasifikasi Random Forest Menggunakan KNIME<a class="headerlink" href="#laporan-proyek-klasifikasi-random-forest-menggunakan-knime" title="Link to this heading">#</a></h2>
+</section>
+<section id="deskripsi-proyek">
+<h2>4. Deskripsi Proyek<a class="headerlink" href="#deskripsi-proyek" title="Link to this heading">#</a></h2>
+<p>Proyek ini bertujuan untuk membangun model klasifikasi spesies bunga menggunakan algoritma <strong>Random Forest</strong> di platform <strong>KNIME</strong>.</p>
+<p><strong>Dataset:</strong> Iris Dataset
+<strong>Kolom Target:</strong> <code class="docutils literal notranslate"><span class="pre">species</span></code> (Iris-setosa, Iris-versicolor, Iris-virginica)
+<strong>Fitur:</strong> <code class="docutils literal notranslate"><span class="pre">sepal_length</span></code>, <code class="docutils literal notranslate"><span class="pre">sepal_width</span></code>, <code class="docutils literal notranslate"><span class="pre">petal_length</span></code>, <code class="docutils literal notranslate"><span class="pre">petal_width</span></code>.</p>
+</section>
+<section id="visualisasi-workflow">
+<h2>5. Visualisasi Workflow<a class="headerlink" href="#visualisasi-workflow" title="Link to this heading">#</a></h2>
+<p>Workflow ini mencakup perbandingan antara model Decision Tree dan Random Forest untuk melihat efektivitas masing-masing algoritma.
+<img alt="Workflow" src="_images/flow.png" /></p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="langkah-langkah-pembuatan-workflow">
+<h1>Langkah-Langkah Pembuatan Workflow<a class="headerlink" href="#langkah-langkah-pembuatan-workflow" title="Link to this heading">#</a></h1>
+<section id="membaca-data-csv-reader">
+<h2>6. Membaca Data (CSV Reader)<a class="headerlink" href="#membaca-data-csv-reader" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> CSV Reader<br />
+Memasukkan file dataset Iris yang berisi data numerik dimensi bunga dan label spesies.</p>
+</section>
+<section id="membagi-data-table-partitioner">
+<h2>7. Membagi Data (Table Partitioner)<a class="headerlink" href="#membagi-data-table-partitioner" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Table Partitioner<br />
+Membagi data menjadi data latih dan data uji. Berdasarkan konfigurasi, data latih yang digunakan sebanyak 105 baris untuk memastikan model memiliki cukup referensi pola.</p>
+<p><img alt="Table" src="_images/table.png" /></p>
+</section>
+<section id="pelatihan-model-random-forest-learner">
+<h2>8. Pelatihan Model (Random Forest Learner)<a class="headerlink" href="#pelatihan-model-random-forest-learner" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Random Forest Learner<br />
+Membangun “hutan” keputusan. Di sini, parameter seperti jumlah pohon dan kedalaman pohon ditentukan untuk mengoptimalkan klasifikasi spesies Iris.</p>
+</section>
+<section id="prediksi-random-forest-predictor">
+<h2>9. Prediksi (Random Forest Predictor)<a class="headerlink" href="#prediksi-random-forest-predictor" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Random Forest Predictor<br />
+Menerapkan model hutan yang telah dilatih ke data sisa (data uji) untuk melihat seberapa baik model memprediksi spesies yang belum pernah dilihat sebelumnya.
+![Prediksi](images/pertemuan12/prediction forest.png)</p>
+</section>
+<section id="evaluasi-scorer">
+<h2>10. Evaluasi (Scorer)<a class="headerlink" href="#evaluasi-scorer" title="Link to this heading">#</a></h2>
+<p><strong>Node:</strong> Scorer<br />
+Menampilkan <strong>Confusion Matrix</strong>. Hasil menunjukkan bahwa Random Forest berhasil memprediksi seluruh data uji dengan akurasi 100%, membedakan Setosa, Versicolor, dan Virginica tanpa kesalahan.</p>
+<p><img alt="Scorer" src="_images/scorer.png" /></p>
+</section>
+<hr class="docutils" />
+<section id="kesimpulan">
+<h2>11. Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h2>
+<p>Random Forest merupakan metode <strong>Ensemble Learning</strong> yang sangat kuat. Melalui proyek ini, terlihat bahwa dengan menggabungkan banyak pohon keputusan, variansi model berkurang dan akurasi meningkat. Visualisasi melalui KNIME memudahkan pemahaman alur data dari pembacaan hingga evaluasi hasil akhir yang menunjukkan performa sempurna pada dataset Iris.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -473,14 +567,14 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="right-next"
-       href="pertemuan-1.html"
-       title="next page">
+    <a class="left-prev"
+       href="pertemuan-11.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pertemuan 1</p>
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pertemuan 11</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -498,8 +592,32 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Laporan Proyek: Analisis Data Menggunakan Random Forest</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-ensemble-learning">1. Pengertian Ensemble Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-menggunakan-ensemble">Mengapa Menggunakan Ensemble?</a></li>
 </ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengertian-random-forest">2. Pengertian Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-random-forest">3. Konsep Dasar Random Forest</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tugas">TUGAS</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laporan-proyek-klasifikasi-random-forest-menggunakan-knime">Laporan Proyek: Klasifikasi Random Forest Menggunakan KNIME</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-proyek">4. Deskripsi Proyek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-workflow">5. Visualisasi Workflow</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-langkah-pembuatan-workflow">Langkah-Langkah Pembuatan Workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-csv-reader">6. Membaca Data (CSV Reader)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data-table-partitioner">7. Membagi Data (Table Partitioner)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pelatihan-model-random-forest-learner">8. Pelatihan Model (Random Forest Learner)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-random-forest-predictor">9. Prediksi (Random Forest Predictor)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-scorer">10. Evaluasi (Scorer)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">11. Kesimpulan</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
