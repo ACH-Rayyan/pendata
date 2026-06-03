@@ -424,12 +424,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-openeo">5. Koneksi ke openEO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#area-penelitian-sampang">6. Area Penelitian (Sampang)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengambilan-data-satelit">7. Pengambilan Data Satelit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agregasi-data">⏱8. Agregasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agregasi-data">8. Agregasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksekusi-dan-penyimpanan-data">9. Eksekusi dan Penyimpanan Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-netcdf">10. Membaca Data NetCDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-data">11 Struktur Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">Preprocessing Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.1 Membaca Data NetCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1 Membaca Data NetCDF</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-struktur-data">11.2 Melihat Struktur Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghapus-missing-value">11.3 Menghapus Missing Value</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-format-waktu">11.4 Konversi Format Waktu</a></li>
@@ -442,7 +443,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">12. Visualisasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-data-ke-csv">13. Export Data ke CSV</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-web">14. Visualisasi Web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">14. Visualisasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis">15. Analisis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">16. Kesimpulan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saran-pengembangan">17. Saran Pengembangan</a></li>
@@ -530,7 +531,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="agregasi-data">
-<h2>⏱8. Agregasi Data<a class="headerlink" href="#agregasi-data" title="Link to this heading">#</a></h2>
+<h2>8. Agregasi Data<a class="headerlink" href="#agregasi-data" title="Link to this heading">#</a></h2>
 <p>Dilakukan agregasi temporal untuk mendapatkan rata-rata harian:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cube</span> <span class="o">=</span> <span class="n">cube</span><span class="o">.</span><span class="n">aggregate_temporal_period</span><span class="p">(</span>
     <span class="n">period</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
@@ -548,8 +549,9 @@ document.write(`
 <span class="p">)</span>
 </pre></div>
 </div>
-</section>
 <hr class="docutils" />
+<p><img alt="job" src="_images/job.png" /></p>
+</section>
 <section id="membaca-data-netcdf">
 <h2>10. Membaca Data NetCDF<a class="headerlink" href="#membaca-data-netcdf" title="Link to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
@@ -563,7 +565,9 @@ document.write(`
 </pre></div>
 </div>
 </section>
-<hr class="docutils" />
+<section id="id1">
+<h2><img alt="baca data" src="_images/cekk.png" /><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+</section>
 <section id="struktur-data">
 <h2>11 Struktur Data<a class="headerlink" href="#struktur-data" title="Link to this heading">#</a></h2>
 <p>Data yang diperoleh memiliki struktur:</p>
@@ -593,8 +597,8 @@ document.write(`
 <section id="preprocessing-data">
 <h2>Preprocessing Data<a class="headerlink" href="#preprocessing-data" title="Link to this heading">#</a></h2>
 <p>Tahap preprocessing dilakukan untuk membersihkan dan menyiapkan data sebelum analisis lebih lanjut.</p>
-<section id="id1">
-<h3>11.1 Membaca Data NetCDF<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="id2">
+<h3>11.1 Membaca Data NetCDF<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
@@ -734,55 +738,10 @@ document.write(`
 </div>
 </section>
 <hr class="docutils" />
-<section id="visualisasi-web">
-<h2>14. Visualisasi Web<a class="headerlink" href="#visualisasi-web" title="Link to this heading">#</a></h2>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>NO2 Sampang<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/chart.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Grafik NO2 Sampang<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;chart&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
-
-<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;no2_sampang.csv&#39;</span><span class="p">)</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">())</span>
-<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-
-<span class="w">    </span><span class="nx">rows</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">row</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">row</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="nx">col</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">1</span><span class="p">){</span>
-<span class="w">            </span><span class="nx">labels</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">col</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
-<span class="w">            </span><span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nb">parseFloat</span><span class="p">(</span><span class="nx">col</span><span class="p">[</span><span class="mf">1</span><span class="p">]));</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
-
-<span class="w">    </span><span class="ow">new</span><span class="w"> </span><span class="nx">Chart</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;chart&quot;</span><span class="p">),</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;line&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">labels</span><span class="o">:</span><span class="w"> </span><span class="nx">labels</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">datasets</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
-<span class="w">                </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;NO2&#39;</span><span class="p">,</span>
-<span class="w">                </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">values</span>
-<span class="w">            </span><span class="p">}]</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">});</span>
-<span class="p">});</span>
-<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</pre></div>
-</div>
+<section id="visualisasi">
+<h2>14. Visualisasi<a class="headerlink" href="#visualisasi" title="Link to this heading">#</a></h2>
+<p><img alt="visualisai" src="_images/p14.png" /></p>
 </section>
-<hr class="docutils" />
 <section id="analisis">
 <h2>15. Analisis<a class="headerlink" href="#analisis" title="Link to this heading">#</a></h2>
 <p>Dari grafik yang dihasilkan:</p>
@@ -875,12 +834,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-openeo">5. Koneksi ke openEO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#area-penelitian-sampang">6. Area Penelitian (Sampang)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pengambilan-data-satelit">7. Pengambilan Data Satelit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agregasi-data">⏱8. Agregasi Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agregasi-data">8. Agregasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksekusi-dan-penyimpanan-data">9. Eksekusi dan Penyimpanan Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-data-netcdf">10. Membaca Data NetCDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#struktur-data">11 Struktur Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">Preprocessing Data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">11.1 Membaca Data NetCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">11.1 Membaca Data NetCDF</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-struktur-data">11.2 Melihat Struktur Data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghapus-missing-value">11.3 Menghapus Missing Value</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konversi-format-waktu">11.4 Konversi Format Waktu</a></li>
@@ -893,7 +853,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data">12. Visualisasi Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#export-data-ke-csv">13. Export Data ke CSV</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-web">14. Visualisasi Web</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">14. Visualisasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis">15. Analisis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">16. Kesimpulan</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saran-pengembangan">17. Saran Pengembangan</a></li>

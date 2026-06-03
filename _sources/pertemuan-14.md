@@ -77,7 +77,7 @@ cube = conn.load_collection(
 
 ---
 
-## ⏱8. Agregasi Data
+## 8. Agregasi Data
 
 Dilakukan agregasi temporal untuk mendapatkan rata-rata harian:
 
@@ -100,6 +100,7 @@ job = cube.execute_batch(
 ```
 
 ---
+![job](images/job.png)
 
 ## 10. Membaca Data NetCDF
 
@@ -113,7 +114,7 @@ df = df.dropna()
 
 df.head()
 ```
-
+![baca data](images/cekk.png)
 ---
 
 ##  11 Struktur Data
@@ -283,55 +284,9 @@ df_grouped.to_csv("no2_sampang.csv", index=False)
 
 ---
 
-##  14. Visualisasi Web
+##  14. Visualisasi 
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>NO2 Sampang</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-
-<h2>Grafik NO2 Sampang</h2>
-<canvas id="chart"></canvas>
-
-<script>
-fetch('no2_sampang.csv')
-.then(response => response.text())
-.then(data => {
-    const rows = data.split('\n').slice(1);
-
-    let labels = [];
-    let values = [];
-
-    rows.forEach(row => {
-        let col = row.split(',');
-        if(col.length > 1){
-            labels.push(col[0]);
-            values.push(parseFloat(col[1]));
-        }
-    });
-
-    new Chart(document.getElementById("chart"), {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'NO2',
-                data: values
-            }]
-        }
-    });
-});
-</script>
-
-</body>
-</html>
-```
-
----
+![visualisai](images/p14.png)
 
 ## 15. Analisis
 
