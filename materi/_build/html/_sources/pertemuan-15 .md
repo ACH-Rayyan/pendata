@@ -1,4 +1,6 @@
-# pertemuan 15 
+# Pertemuan 15
+
+----------
 Langkah pertama adalah menyiapkan seluruh kebutuhan kode. Kita menggunakan pandas untuk pengolahan data, matplotlib untuk visualisasi grafik, skforecast untuk pemodelan deret waktu, lightgbm sebagai algoritma utama, serta shap dan sklearn untuk analisis interpretasi model.
 # Libraries
 # ==============================================================================

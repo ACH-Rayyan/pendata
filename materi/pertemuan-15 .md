@@ -1,4 +1,6 @@
-# pertemuan 15 
+# Pertemuan 15
+
+----------
 Langkah pertama adalah menyiapkan seluruh kebutuhan kode. Kita menggunakan pandas untuk pengolahan data, matplotlib untuk visualisasi grafik, skforecast untuk pemodelan deret waktu, lightgbm sebagai algoritma utama, serta shap dan sklearn untuk analisis interpretasi model.
 # Libraries
 # ==============================================================================
@@ -10,6 +12,7 @@ from sklearn.inspection import PartialDependenceDisplay
 from lightgbm import LGBMRegressor
 from skforecast.datasets import fetch_dataset
 from skforecast.recursive import ForecasterRecursive
+
 ### Mengunduh Dataset Mentah
 Dataset historis `vic_electricity` diunduh langsung menggunakan fitur dari `skforecast`. Data ini mencakup catatan konsumsi listrik harian dan suhu udara di wilayah Victoria, Australia. Perintah `data.head(3)` digunakan untuk menampilkan 3 baris pertama sebagai contoh isi data..
 
