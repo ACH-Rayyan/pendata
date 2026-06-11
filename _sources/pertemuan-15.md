@@ -2,8 +2,8 @@
 
 ----------
 Langkah pertama adalah menyiapkan seluruh kebutuhan kode. Kita menggunakan pandas untuk pengolahan data, matplotlib untuk visualisasi grafik, skforecast untuk pemodelan deret waktu, lightgbm sebagai algoritma utama, serta shap dan sklearn untuk analisis interpretasi model.
-# Libraries
-# ==============================================================================
+## Libraries
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import shap
@@ -16,26 +16,26 @@ from skforecast.recursive import ForecasterRecursive
 ### Mengunduh Dataset Mentah
 Dataset historis `vic_electricity` diunduh langsung menggunakan fitur dari `skforecast`. Data ini mencakup catatan konsumsi listrik harian dan suhu udara di wilayah Victoria, Australia. Perintah `data.head(3)` digunakan untuk menampilkan 3 baris pertama sebagai contoh isi data..
 
-# Download data
-# ==============================================================================
+## Download data
+
 data = fetch_dataset(name="vic_electricity")
 data.head(3)
 ### Mengonversi Data ke Skala Harian (Resampling)
 Data awal yang dicatat setiap 30 menit diubah menjadi data harian (`'D'`). Total konsumsi listrik per hari dihitung dengan metode penjumlahan(`'sum'`), sementara suhu harian dihitung rata-ratanya (`'mean'`) agar lebih sesuai untuk analisis peramalan jangka panjang.
-# Aggregation to daily frequency
-# ==============================================================================
+## Aggregation to daily frequency
+
 data = data.resample('D').agg({'Demand': 'sum', 'Temperature': 'mean'})
 data.head(3)
 ### Membagi Data Latih dan Data Uji (Split Train-Test)
 Dataset dipisahkan menjadi dua bagian: data hingga 21 Desember 2014 digunakan sebagai data latih (`data_train`) untuk membangun model, sedangkan data setelah tanggal tersebut dijadikan data uji (`data_test`) untuk mengevaluasi performa model.
-# Split train-test
-# ==============================================================================
+## Split train-test
+
 data_train = data.loc[: '2014-12-21']
 data_test = data.loc['2014-12-22':]
 ### Inisialisasi dan Pelatihan Model Peramalan
 Membuat objek peramalan menggunakan `ForecasterRecursive` dengan algoritma `LGBMRegressor`. Model ini dikonfigurasi untuk melihat data 7 hari ke belakang (`lags=7`) dan memanfaatkan suhu (`exog`) untuk menebak total konsumsi listrik di masa depan.
-# Create a recursive multi-step forecaster (ForecasterRecursive)
-# ==============================================================================
+## Create a recursive multi-step forecaster (ForecasterRecursive)
+
 forecaster = ForecasterRecursive(
                  estimator = LGBMRegressor(random_state=123, verbose=-1),
                  lags      = 7
@@ -48,13 +48,13 @@ forecaster.fit(
 forecaster
 ### Melihat Tingkat Kepentingan Fitur secara Global
 Menjalankan perintah `forecaster.get_feature_importances()` untuk mengintip fitur atau variabel mana yang paling sering digunakan dan dianggap paling krusial oleh model dalam menentukan keputusan peramalan secara umum.
-# Predictors importances
-# ==============================================================================
+## Predictors importances
+
 forecaster.get_feature_importances()
 ### Mengekstrak Matriks Data Latih Internal
 Menggunakan fungsi `create_train_X_y` untuk membedah bentuk tabel data ($X$ dan $y$) yang dibuat secara otomatis oleh `skforecast` di latar belakang sebelum dimasukkan ke dalam algoritma pelatihan *machine learning*.
-# Training matrices used by the forecaster to fit the internal regressor
-# ==============================================================================
+## Training matrices used by the forecaster to fit the internal regressor
+
 X_train, y_train = forecaster.create_train_X_y(
                        y    = data_train['Demand'],
                        exog = data_train['Temperature']
@@ -86,32 +86,32 @@ shap.initjs()  # Tambahkan ini di sel yang sama
 shap.force_plot(explainer.expected_value, shap_values[0, :], X_train.iloc[0, :])
 ### Visualisasi Kolektif Force Plot (200 Data Pertama)
 Menggabungkan visualisasi *Force Plot* untuk 200 baris data pertama sekaligus. Grafik interaktif ini sangat berguna untuk melihat perubahan tren keputusan model seiring berjalannya waktu atau perubahan pola data.
-# Force plot for the first 200 observations in the training set
-# ==============================================================================
+## Force plot for the first 200 observations in the training set
+
 shap.initjs()
 shap.force_plot(explainer.expected_value, shap_values[:200, :], X_train.iloc[:200, :])
 ### Analisis Ketergantungan Variabel Suhu (Dependence Plot)
 Membuat grafik khusus untuk melihat hubungan linier atau non-linier antara fluktuasi variabel `Temperature` terhadap perubahan nilai prediksi, sekaligus mendeteksi interaksinya dengan variabel pendukung lain.
-# Dependence plot for Temperature
-# ==============================================================================
+## Dependence plot for Temperature
+
 fig, ax = plt.subplots(figsize=(7, 4))
 shap.dependence_plot("Temperature", shap_values, X_train, ax=ax)
 ### Melakukan Peramalan Masa Depan (Predict)
 Memerintahkan model yang telah dilatih untuk melakukan peramalan konsumsi listrik sebanyak 10 langkah ke depan (`steps=10`) dengan memasukkan data prediktor suhu dari masa data uji (`data_test`).
-# Predict
-# ==============================================================================
+## Predict
+
 predictions = forecaster.predict(steps=10, exog=data_test['Temperature'])
 predictions
 ### Membuat Matriks Input untuk Proses Prediksi
 Melihat bentuk matriks data ($X$) yang diatur secara otomatis oleh fungsi internal model sewaktu memproses langkah peramalan masa depan (tabel lag yang bergeser secara rekursif).
-# Create input matrix for predict method
-# ==============================================================================
+## Create input matrix for predict method
+
 X_predict = forecaster.create_predict_X(steps=10, exog=data_test['Temperature'])
 X_predict
 ### Membedah Alasan Hasil Ramalan Tanggal 22 Desember 2014
 Menerapkan analisis *Force Plot* pada hasil tebakan masa depan untuk tanggal spesifik ('2014-12-22'). Ini membantu memberikan pertanggungjawaban logis mengapa model meramal angka kebutuhan listrik sebesar itu pada tanggal tersebut.
-# Force plot for a specific prediction
-# ==============================================================================
+## Force plot for a specific prediction
+
 shap.initjs()
 predicted_date = '2014-12-22'
 iloc_predicted_date = X_predict.index.get_loc(predicted_date)
@@ -123,15 +123,15 @@ shap.force_plot(
 )
 ### Memuat Ulang Matriks Latih untuk Evaluasi Lanjutan
 Menyiapkan kembali pasangan data $X\_train$ dan $y\_train$ dari model guna mempersiapkan pengujian sensitivitas alternatif menggunakan fitur evaluasi bawaan dari `scikit-learn`.
-# Training matrices used by the forecaster to fit the internal regressor
-# ==============================================================================
+## Training matrices used by the forecaster to fit the internal regressor
+
 X_train, y_train = forecaster.create_train_X_y(
                        y    = data_train['Demand'],
                        exog = data_train['Temperature']
                    )
 
-# Permutation importances
-# ==============================================================================
+## Permutation importances
+
 r = permutation_importance(
     estimator    = forecaster.estimator,  # Ganti dari forecaster.regressor menjadi forecaster.estimator
     X            = X_train,
@@ -150,8 +150,8 @@ importances = pd.DataFrame({
 importances
 ### Grafik Ketergantungan Parsial (Partial Dependence Plots)
 Menampilkan visualisasi akhir menggunakan modul `sklearn.inspection` untuk mengukur efek marjinal dari satu atau dua fitur terpilih terhadap hasil prediksi model *decision tree*, sebagai validasi pelengkap dari hasil SHAP.
-# Scikit-learn partial dependence plots
-# ==============================================================================
+## Scikit-learn partial dependence plots
+
 fig, ax = plt.subplots(figsize=(9, 4))
 ax.set_title("Decision Tree")
 pd.plots = PartialDependenceDisplay.from_estimator(
