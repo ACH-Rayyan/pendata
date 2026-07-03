@@ -152,6 +152,7 @@ importances
 Menampilkan visualisasi akhir menggunakan modul `sklearn.inspection` untuk mengukur efek marjinal dari satu atau dua fitur terpilih terhadap hasil prediksi model *decision tree*, sebagai validasi pelengkap dari hasil SHAP.
 ## Scikit-learn partial dependence plots
 #
+
 fig, ax = plt.subplots(figsize=(9, 4))
 ax.set_title("Decision Tree")
 pd.plots = PartialDependenceDisplay.from_estimator(
