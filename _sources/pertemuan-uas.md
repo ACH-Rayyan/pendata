@@ -83,7 +83,7 @@ Parameter tersebut dipilih agar pohon keputusan dapat membentuk aturan klasifika
 
 Evaluasi dilakukan menggunakan metode **5-Fold Cross Validation**.
 
-```{figure} images/test and score.png
+```{figure} images/testandscore.png
 ---
 width: 700px
 align: center
